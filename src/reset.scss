@@ -32,7 +32,7 @@ img, picture, video, svg {
 
 /* Anchor Reset - Hover/Visited/Unvisited colours differ between browsers, 
     text-decoration removes underlining from safari */
-a { 
+a, a:visited, a:active, a:hover, a:link { 
     text-decoration: none; 
     color: inherit; 
     text-decoration-skip-ink: auto;
