@@ -8,6 +8,7 @@
     "test:reset": "playwright test -c playwright.reset.config.ts",
     "test:tokens": "playwright test -c playwright.tokens.config.ts",
     "test:system": "playwright test -c playwright.system.config.ts",
+    "test:layout": "playwright test -c playwright.layout.config.ts",
     "test:ui": "playwright test --ui",
     "compile:scss": "sass reset.scss reset.css",
     "test:with-build": "npm run compile:scss && playwright test"
