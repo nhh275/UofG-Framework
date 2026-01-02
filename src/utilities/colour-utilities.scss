@@ -1,0 +1,31 @@
+// Text Colour
+@each $name, $value in $colours {
+    .text-#{$name} {
+        color: var(--#{$value});
+    }
+}
+
+// Background Colour
+@each $name, $value in $colours {
+    .bg-#{$name} {
+        background-color: var(--#{$value});
+    }
+}
+
+// Border Colour
+@each $name, $value in $colours {
+    .border-#{$name} {
+        border-color: var(--#{$value});
+    }
+}
+
+// State Colours
+@each $name, $value in $colours {
+    .hover\:bg-#{$name}:hover {
+        background-color: var(--#{$value});
+    }
+
+    .hover\:text-#{$name}:hover {
+        color: var(--#{$value});
+    }
+}
