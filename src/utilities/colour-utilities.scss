@@ -29,3 +29,10 @@
         color: var(--#{$value});
     }
 }
+
+// Opacity
+@for $i from 0 through 10 {
+    .opacity-#{$i * 10} {
+        opacity: $i / 10;
+    }
+}
