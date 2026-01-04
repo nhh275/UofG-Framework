@@ -1,0 +1,82 @@
+.btn-primary { /* should be using primary (light) font */
+    background-color: var(--uni-blue);
+    color: var(--lgrey1);
+    border: var(--uni-blue);
+    border-radius: var(--space1);
+    text-align: center;
+    cursor: pointer;
+    padding: var(--space2) var(--space5); /* Vertical padding | Horizontal padding of text*/
+}
+
+.btn-primary:hover {
+    background-color: var(--lgrey1);
+    color: var(--uni-blue);
+}
+
+.btn-primary:focus {
+    outline: var(--space1) solid var(--highlight);
+}
+
+.btn-primary:disabled {
+    background-color: var(--uni-blue40);
+    color: var(--lgrey3);
+    cursor: not-allowed;
+}
+
+
+
+.btn-secondary { 
+    background-color: var(--uni-blue20);
+    color: var(--uni-blue);
+    border: var(--uni-blue);
+    border-radius: var(--space1);
+    text-align: center;
+    cursor: pointer;
+    padding: var(--space2) var(--space5); /* Vertical padding | Horizontal padding of text*/
+}
+
+.btn-secondary:hover {
+    background-color: var(--lgrey1);
+    color: var(--uni-blue);
+}
+
+.btn-secondary:focus {
+    color: var(--uni-blue);
+    outline: var(--space1) solid var(--highlight);
+}
+
+.btn-secondary:disabled {
+    background-color: var(--uni-blue20);
+    color: var(--lgrey2);
+    cursor: not-allowed;
+}
+
+
+
+.btn-outline { 
+    background-color: var(--lgrey1);
+    color: var(--uni-blue80);
+    border: solid var(--uni-blue);
+    border-radius: var(--space1);
+    text-align: center;
+    cursor: pointer;
+    padding: var(--space2) var(--space5); /* Vertical padding | Horizontal padding of text*/
+}
+
+.btn-outline:hover {
+    background-color: var(--lgrey1);
+    color: var(--uni-blue);
+    border: none;
+}
+
+.btn-outline:focus {
+    color: var(--uni-blue);
+    outline: var(--space1) solid var(--highlight);
+    border: none; 
+}
+
+.btn-outline:disabled {
+    border-color: var(--uni-blue20);
+    color: var(--lgrey3);
+    cursor: not-allowed;
+}
