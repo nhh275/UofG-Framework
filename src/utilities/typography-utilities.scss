@@ -1,0 +1,175 @@
+// Text Alignment
+.text-start {
+    text-align: start;
+}
+
+.text-end {
+    text-align: end;
+}
+
+.text-center {
+    text-align: center;   
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+// Responsive text alignments
+@each $bp, $width in $breakpoints {
+    @media (min-width: $width) {
+        .text-#{$bp}-start {
+            text-align: start;
+        }
+        
+        .text-#{$bp}-end {
+            text-align: end;
+        }
+        
+        .text-#{$bp}-center {
+            text-align: center;
+        }
+        
+        .text-#{$bp}-justify {
+            text-align: justify;
+        }
+    }
+}
+
+
+// Text Wrapping
+.text-wrap {
+    white-space: normal;
+}
+
+.text-nowrap {
+    white-space: nowrap;
+}
+
+.text-break {
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+
+// Text Transform
+.text-decoration-none {
+    text-decoration: none;
+}
+
+.text-decoration-underline {
+    text-decoration: underline;
+}
+
+.text-decoration-line-through {
+    text-decoration: line-through;
+}
+
+.text-decoration-dashed {
+    text-decoration-style: dashed;
+}
+
+.text-decoration-dotted {
+    text-decoration-style: dotted;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-lowercase {
+    text-transform: lowercase;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+
+// Text Size
+@each $key, $size in $font-sizes {
+    .fs-#{$key} {
+        font-size: $size;
+    }
+}
+
+// Responsive Text Sizes
+@each $bp, $width in $breakpoints {
+    @media (min-width: $width) {
+        @each $key, $size in $font-sizes {
+            .fs-#{$bp}-#{$key} {
+                font-size: $size;
+            }
+        }
+    }
+}
+
+
+// Text Weight
+.text-lighter {
+    font-weight: lighter;
+}
+
+.text-normal {
+    font-weight: normal;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.text-bolder {
+    font-weight: bolder;
+}
+
+
+// Text Style
+.text-italic {
+    font-style: italic;
+}
+
+
+// Line Height
+@each $key, $value in $line-heights {
+    .lh-#{$key} {
+        line-height: $value;
+    }
+}
+
+// Responsive Line Height
+@each $bp, $width in $breakpoints {
+    @media (min-width: $width) {
+        @each $key, $value in $line-heights {
+            .lh-#{$bp}-#{$key} {
+                line-height: $value;
+            }
+        }
+    }
+}
+
+
+// Letter Spacing
+@each $name, $value in $letter-spacing {
+  .tracking-#{$name} {
+    letter-spacing: $value;
+  }
+}
+
+// Responsive Letter Spacing
+@each $bp, $width in $breakpoints {
+  @media (min-width: $width) {
+    @each $name, $value in $letter-spacing {
+      .tracking-#{$bp}-#{$name} {
+        letter-spacing: $value;
+      }
+    }
+  }
+}
+
+
+// Text Truncation
+.text-truncate-ellipses {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
