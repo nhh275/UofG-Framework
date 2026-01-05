@@ -56,7 +56,8 @@
 .btn-outline { 
     background-color: var(--lgrey1);
     color: var(--uni-blue80);
-    border: solid var(--uni-blue);
+    outline: solid var(--uni-blue);
+    border: none;
     border-radius: var(--space1);
     text-align: center;
     cursor: pointer;
@@ -66,13 +67,11 @@
 .btn-outline:hover {
     background-color: var(--lgrey1);
     color: var(--uni-blue);
-    border: none;
 }
 
 .btn-outline:focus {
     color: var(--uni-blue);
     outline: var(--space1) solid var(--highlight);
-    border: none; 
 }
 
 .btn-outline:disabled {
