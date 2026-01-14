@@ -1,0 +1,37 @@
+$tile-gap: var(--space5);
+$tile-border-radius: var(--space2);
+$tile-margin-top: var(--space4);
+$tile-padding: var(--space5);
+$tile-border-color: var(--rust);
+$tile-bg-color: var(--lgrey1);
+
+.tiles-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: $tile-gap;
+  align-items: start;
+
+  .tile {
+    margin-top: $tile-margin-top;
+    display: flex;
+    background-color: $tile-bg-color;
+    padding: $tile-padding;
+    flex-direction: column;
+    gap: $tile-margin-top;
+    border-top: 1px solid $tile-border-color;
+    border-bottom: 1px solid $tile-border-color;
+
+    &_img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      height: auto;
+      display: block;
+      border-radius: $tile-border-radius;
+      overflow: hidden;
+    }
+
+    &_text {
+      text-align: left;
+    }
+  }
+}
