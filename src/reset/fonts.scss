@@ -1,107 +1,110 @@
+$primary-font: "Swiss721 BT", sans-serif;
+$secondary-font: "Garamond", serif;
+
 .primary {
-    font-family: "Swiss721 BT", sans-serif;
-}
+  font-family: $primary-font;
 
-.secondary {
-    font-family: "Garamond", serif;
-}
-
-.primary.light {
+  &.light {
     font-weight: 300;
-}
+  }
 
-.primary.roman {
+  &.roman {
     font-weight: normal;
-}
+  }
 
-.primary.medium {
+  &.medium {
     font-weight: 500;
-}
+  }
 
-.primary.bold {
+  &.bold {
     font-weight: bold;
-}
+  }
 
-.secondary.regular {
-    font-weight: normal;
-}
-
-.secondary.semiBold {
-    font-weight: 600;
-}
-
-.secondary.bold {
-    font-weight: bold;
-}
-
-.primary.base {
+  &.base {
     font-size: 1rem;
     line-height: 1.3125rem;
     letter-spacing: 0px;
-}
+  }
 
-.primary.minusOne {
+  &.minusOne {
     font-size: 0.875rem;
     line-height: 1.125rem;
     letter-spacing: 0px;
-}
+  }
 
-.primary.minusTwo {
+  &.minusTwo {
     font-size: 0.75rem;
     line-height: 1rem;
     letter-spacing: 0px;
-}
+  }
 
-.primary.plusOne {
+  &.plusOne {
     font-size: 1.1875rem;
     line-height: 1.5rem;
     letter-spacing: 0px;
-}
+  }
 
-.primary.plusTwo {
+  &.plusTwo {
     font-size: 1.3125rem;
     line-height: 1.625rem;
     letter-spacing: 0px;
-}
+  }
 
-.primary.plusThree {
+  &.plusThree {
     font-size: 1.5rem;
     line-height: 2rem;
     letter-spacing: 0px;
-}
+  }
 
-.primary.plusFour {
+  &.plusFour {
     font-size: 2rem;
     line-height: 2.25rem;
     letter-spacing: 0px;
-}
+  }
 
-.primary.plusFive {
+  &.plusFive {
     font-size: 2.25rem;
     line-height: 2.75rem;
     letter-spacing: 0px;
-}
+  }
 
-.primary.plusSix {
+  &.plusSix {
     font-size: 3rem;
     line-height: 3.375rem;
     letter-spacing: -0.7px;
-}
+  }
 
-.primary.plusSeven {
+  &.plusSeven {
     font-size: 3.375rem;
     line-height: 4rem;
     letter-spacing: -0.8px;
-}
+  }
 
-.primary.plusEight {
+  &.plusEight {
     font-size: 3.75rem;
     line-height: 4.5rem;
     letter-spacing: -0.9px;
-}
+  }
 
-.primary.plusNine {
+  &.plusNine {
     font-size: 6rem;
     line-height: 6.125rem;
     letter-spacing: -1.4px;
+  }
+}
+
+.secondary {
+  font-family: $secondary-font;
+
+  &.regular {
+    font-weight: normal;
+  }
+
+  &.semiBold {
+    font-weight: 600;
+  }
+
+  &.bold {
+    font-weight: bold;
+  }
 }
