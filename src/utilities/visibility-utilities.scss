@@ -1,0 +1,59 @@
+/* Visibility */
+.u-visible {
+    visibility: visible;
+  }
+  
+  .u-invisible {
+    visibility: hidden;
+  }
+  
+  /* Screen-reader */
+  .u-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+/* Overflow */
+$overflow-values: (
+    hidden: hidden,
+    visible: visible,
+    scroll: scroll,
+    auto: auto
+  );
+  
+  @each $name, $value in $overflow-values {
+    .u-overflow-#{$name} {
+      overflow: $value;
+    }
+  
+    .u-overflow-x-#{$name} {
+      overflow-x: $value;
+    }
+  
+    .u-overflow-y-#{$name} {
+      overflow-y: $value;
+    }
+  }
+  
+/* Scroll Behavior */
+.u-scroll-auto {
+    scroll-behavior: auto;
+  }
+  
+  .u-scroll-smooth {
+    scroll-behavior: smooth;
+  }
+  
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .u-scroll-smooth {
+      scroll-behavior: auto;
+    }
+}
