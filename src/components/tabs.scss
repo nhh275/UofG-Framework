@@ -1,0 +1,60 @@
+.uofg-tabs {
+  width: 100%;
+}
+
+.uofg-tabs__list {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  border-bottom: 1px solid var(--lgrey3);
+}
+
+.uofg-tabs__tab {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2);
+  color: var(--mgrey3);
+  cursor: pointer;
+  position: relative;
+  font: inherit;
+}
+
+.uofg-tabs__tab::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 3px;
+  background: transparent;
+}
+
+.uofg-tabs__tab:hover {
+  color: var(--dgrey3);
+}
+
+.uofg-tabs__tab:hover::after {
+  background: var(--lgrey3);
+}
+
+.uofg-tabs__tab:focus {
+  outline: 2px solid var(--highlight);
+  outline-offset: 2px;
+}
+
+.uofg-tabs__tab--active {
+  color: var(--uni-blue);
+  font-weight: 700;
+}
+
+.uofg-tabs__tab--active::after {
+  background: var(--uni-blue);
+}
+
+.uofg-tabs__panel {
+  padding-top: var(--space-4);
+}

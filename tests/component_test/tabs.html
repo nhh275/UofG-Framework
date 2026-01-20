@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="../../distribution/tokens.css">
+  <link rel="stylesheet" href="../../distribution/components.css">
+  <script src="../../distribution/components.js" defer></script>
+</head>
+
+<body>
+  <div class="uofg-tabs" data-tabs>
+    <div class="uofg-tabs__list" role="tablist" aria-label="Study level">
+      <button class="uofg-tabs__tab uofg-tabs__tab--active"
+              type="button"
+              role="tab"
+              id="tab-undergrad"
+              aria-selected="true"
+              aria-controls="panel-undergrad"
+              tabindex="0">
+        Undergraduate
+      </button>
+
+      <button class="uofg-tabs__tab"
+              type="button"
+              role="tab"
+              id="tab-postgrad"
+              aria-selected="false"
+              aria-controls="panel-postgrad"
+              tabindex="-1">
+        Postgraduate
+      </button>
+    </div>
+
+    <div class="uofg-tabs__panel uofg-tabs__panel--active"
+        role="tabpanel"
+        id="panel-undergrad"
+        aria-labelledby="tab-undergrad">
+      Undergraduate content…
+    </div>
+
+    <div class="uofg-tabs__panel"
+        role="tabpanel"
+        id="panel-postgrad"
+        aria-labelledby="tab-postgrad"
+        hidden>
+      Postgraduate content…
+    </div>
+  </div>
+</body>
