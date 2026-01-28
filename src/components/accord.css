@@ -1,5 +1,20 @@
+:root {
+    --space1: 4px;
+    --space2: 8px;
+    --space4: 16px;
+    --space5: 20px;
+    --uni-blue: #003d7a;
+    --uni-blue20: rgba(0, 61, 122, 0.2);
+    --uni-blue40: rgba(0, 61, 122, 0.4);
+    --uni-blue80: rgba(0, 61, 122, 0.8);
+    --lgrey1: #ffffff;
+    --lgrey2: #e8e8e8;
+    --lgrey3: #d0d0d0;
+    --highlight: #ffd700;
+}
+
 .accordion {
-    border: 1px solid #ddd;
+    border: 2px solid #000000;
     border-radius: 4px;
     overflow: hidden;
 }
@@ -33,6 +48,16 @@
     padding: 12px 16px;
     background: #f7f7f7;
     cursor: pointer;
+}
+/* Hover state for accordion headings */
+.accordion-header:hover {
+    background-color: var(--lgrey2);
+}
+
+/* Keyboard focus state (when button or toggle is focused) */
+.accordion-header:focus-within {
+    outline: var(--space1) solid var(--highlight);
+    outline-offset: -2px;
 }
 
 input:checked + .accordion-header .toggle-button::after {
@@ -101,4 +126,15 @@ input:checked + .accordion-header + .accordion-collapse {
 .toggle-button:focus {
     outline: 2px solid rgba(0,0,0,0.08);
     outline-offset: 2px;
+}
+
+.accordion-toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.accordion-toggle:focus + .accordion-header {
+    outline: var(--space1) solid var(--highlight);
+    outline-offset: -2px;
 }
