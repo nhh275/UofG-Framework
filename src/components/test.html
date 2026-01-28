@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion Test</title>
+    <link rel="stylesheet" href="accord.css">
+    <script>
+        function toggleAccordion(button) {
+            const item = button.parentElement;
+            const content = item.querySelector('.accordion-content');
+            const icon = button.querySelector('.accordion-icon');
+            
+            button.classList.toggle('active');
+            content.classList.toggle('active');
+            icon.classList.toggle('active');
+        }
+    </script>
+</head>
+<body>
+<div class="accordion-item">
+  <input type="checkbox" id="acc-1" hidden>
+
+  <label class="accordion-header" for="acc-1">
+    <span class="accordion-button">Accordion heading</span>
+    <span class="toggle-button"></span>
+  </label>
+
+  <div class="accordion-collapse">
+    <div class="accordion-body">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque felis dui, accumsan nec erat ut, luctus consequat est. Fusce pharetra nisi ipsum, 
+      ac egestas mi eleifend facilisis. Nam euismod justo lobortis lobortis luctus. Donec placerat tincidunt porttitor. Nam et volutpat nibh. Curabitur imperdiet 
+      elementum est, sit amet dapibus nibh dapibus quis. Nulla sem lacus, mattis nec vehicula suscipit, varius eu nunc. Aliquam non suscipit metus, eu accumsan purus. 
+      Pellentesque a consequat erat. Cras non sollicitudin est..
+      Aliquam venenatis erat a purus vulputate, eget semper odio volutpat. Nulla facilisi. Vestibulum non accumsan nibh, a posuere massa. Duis id consequat urna. Vestibulum lobortis tellus sed nunc commodo, non molestie nisi convallis. Nam tincidunt, lorem nec maximus venenatis, eros ante tristique quam, id sagittis quam arcu et augue. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis eget nisi erat. In nisl leo, ultrices nec quam at, suscipit molestie magna. Donec sodales mauris dignissim, mollis diam euismod, iaculis turpis. Nulla porttitor nibh sit amet enim volutpat tincidunt. Vestibulum porta gravida lorem ut varius. Vestibulum felis orci, rutrum et ornare vel, vehicula eu est.
+    </div>
+  </div>
+</div>
+<div class="accordion-item">
+  <input type="checkbox" id="acc-2" hidden>
+
+  <label class="accordion-header" for="acc-2">
+    <span class="accordion-button">Accordion heading</span>
+    <span class="toggle-button"></span>
+  </label>
+
+  <div class="accordion-collapse">
+    <div class="accordion-body">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque felis dui, accumsan nec erat ut, luctus consequat est. Fusce pharetra nisi ipsum, 
+      ac egestas mi eleifend facilisis. Nam euismod justo lobortis lobortis luctus. Donec placerat tincidunt porttitor. Nam et volutpat nibh. Curabitur imperdiet 
+      elementum est, sit amet dapibus nibh dapibus quis. Nulla sem lacus, mattis nec vehicula suscipit, varius eu nunc. Aliquam non suscipit metus, eu accumsan purus. 
+      Pellentesque a consequat erat. Cras non sollicitudin est..
+      Aliquam venenatis erat a purus vulputate, eget semper odio volutpat. Nulla facilisi. Vestibulum non accumsan nibh, a posuere massa. Duis id consequat urna. Vestibulum lobortis tellus sed nunc commodo, non molestie nisi convallis. Nam tincidunt, lorem nec maximus venenatis, eros ante tristique quam, id sagittis quam arcu et augue. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis eget nisi erat. In nisl leo, ultrices nec quam at, suscipit molestie magna. Donec sodales mauris dignissim, mollis diam euismod, iaculis turpis. Nulla porttitor nibh sit amet enim volutpat tincidunt. Vestibulum porta gravida lorem ut varius. Vestibulum felis orci, rutrum et ornare vel, vehicula eu est.
+    </div>
+  </div>
+</div>
+</body>
+</html>
