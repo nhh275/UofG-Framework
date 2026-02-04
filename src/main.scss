@@ -4,18 +4,12 @@
 
 /* Tokens */
 
-@use './foundational_tokens/colourSheet.scss';
-@use './foundational_tokens/spaceSheet.scss';
-@use './foundational_tokens/breakpoints.scss';
 @use './foundational_tokens/colour-sheet';
 @use './foundational_tokens/space-sheet';
 @use './foundational_tokens/breakpoints';
 @use './foundational_tokens/text-sheet';    
 
-/* Reset */
-
 /* Raw fonts css file import */
-@use './reset/reset';
 @use './layout/grid';
 @use './utilities/accessibility';
 @use './utilities/alignments';
@@ -30,11 +24,11 @@
 @use './utilities/typography-utilities';
 @use './utilities/visibility-utilities';
 
-@import './foundational_tokens/fontSheet.css';
-
 /* Components */
 
 @use './components/buttons';
 @use './components/tabs';
 @use './components/dropdowns';
 @use './components/tiles';
+@use './components/download-links';
+@use './components/blockquotes';
