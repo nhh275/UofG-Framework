@@ -62,4 +62,41 @@
         border-color: #444444;
         cursor: not-allowed;
 
-        & + .zh-che
+        & + .zh-checkbox-label {
+          color: #777777;
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    /* Label container */
+    &-label {
+      display: flex;
+      flex-direction: column;
+
+      .zh-checkbox-text {
+        color: #000000;
+        font-size: 1rem;
+      }
+
+      .zh-checkbox-hint {
+        font-size: 0.875rem;
+        color: #000000;
+        margin-top: 4px;
+      }
+    }
+
+    /* Error state */
+    &.has-error {
+      input[type="checkbox"] {
+        border-color: #d4351c;
+      }
+
+      .zh-checkbox-error {
+        font-size: 0.875rem;
+        color: #d4351c;
+        margin-top: 4px;
+      }
+    }
+  }
+}
