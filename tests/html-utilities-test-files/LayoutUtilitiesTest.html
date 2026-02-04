@@ -1,0 +1,321 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title> Layout Utilities Test - Display / Position / Float / Z-index </title>
+
+    <link rel="stylesheet" href="../../test-results/CommandTestProofs/layoututilsoutput.css" />
+
+    <style>
+
+        body {
+
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            line-height: 1.4;
+
+        }
+
+        h2 {
+
+            margin-top: 50px;
+
+        }
+
+        h3 {
+
+            margin-top: 30px;
+
+        }
+
+        code {
+
+            background: #eee;
+            padding: 2px 6px;
+            border-radius: 6px;
+
+        }
+
+        .box {
+
+            border: 2px solid #ddd;
+            padding: 14px;
+            border-radius: 12px;
+            margin-top: 12px;
+
+        }
+
+        .demo {
+
+            border: 2px dashed #999;
+            padding: 14px;
+            border-radius: 12px;
+            margin-top: 12px;
+            background: #fafafa;
+
+        }
+
+        .tag {
+
+            font-size: 14px;
+            opacity: 0.85;
+
+        }
+
+        /* common blocks */
+
+        .block {
+
+            border: 2px solid #333;
+            padding: 10px;
+            background: white;
+            border-radius: 10px;
+            margin: 6px 0;
+
+        }
+
+        /* for flex/grid */
+
+        .items>div {
+
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 12px;
+            background: white;
+
+        }
+
+        /* positioning demo helper */
+
+        .pos-wrap {
+
+            height: 260px;
+            border: 2px dashed #666;
+            border-radius: 12px;
+            position: relative;
+            background: #f7f7f7;
+            overflow: hidden;
+            margin-top: 12px;
+
+        }
+
+        .pos-elem {
+
+            width: 140px;
+            height: 80px;
+            border-radius: 12px;
+            border: 2px solid #000;
+            padding: 10px;
+            background: #fff;
+
+        }
+
+        /* float helper */
+
+        .clearfix::after {
+
+            content: "";
+            display: block;
+            clear: both;
+
+        }
+
+        .float-box {
+
+            width: 140px;
+            border: 2px solid #000;
+            padding: 10px;
+            border-radius: 12px;
+            background: #fff;
+            margin: 6px;
+
+        }
+
+        /* z-index helper */
+
+        .z-stack {
+
+            position: relative;
+            height: 220px;
+            border: 2px dashed #666;
+            border-radius: 12px;
+            background: #f7f7f7;
+            margin-top: 12px;
+
+        }
+
+        .layer {
+
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            width: 200px;
+            height: 120px;
+            border: 2px solid #000;
+            border-radius: 12px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.9);
+
+        }
+
+        .layer.two {
+
+            top: 70px;
+            left: 90px;
+
+        }
+
+        .layer.three {
+
+            top: 100px;
+            left: 140px;
+
+        }
+
+        /* sticky helper */
+
+        .sticky-demo {
+
+            height: 250px;
+            overflow: auto;
+            border: 2px dashed #666;
+            border-radius: 12px;
+            margin-top: 12px;
+            padding: 0;
+
+        }
+
+        .sticky-header {
+
+            padding: 10px;
+            border-bottom: 2px solid #ddd;
+            background: #fff;
+
+        }
+
+        .content {
+
+            padding: 14px;
+            height: 600px;
+            background: linear-gradient(#fff, #eee);
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1> Layout Utility Test Page </h1>
+
+    <!-- DISPLAY -->
+
+    <h2> Display Utilities </h2>
+
+    <h3><code> .u-d-block </code> vs <code> .u-d-inline </code> vs <code> .u-d-inline-block </code></h3>
+
+    <div class="demo">
+
+        <span class="block u-d-inline"> inline </span>
+        <span class="block u-d-inline"> inline </span>
+        <span class="block u-d-inline-block" style="width:120px;"> inline-block </span>
+        <span class="block u-d-block"> block (takes full row) </span>
+
+    </div>
+
+    <h3><code> .u-d-flex </code></h3>
+
+    <div class="demo u-d-flex items" style="gap:10px;">
+
+        <div> Flex 1 </div>
+        <div> Flex 2 </div>
+        <div> Flex 3 </div>
+
+    </div>
+
+    <h3><code> .u-d-grid </code></h3>
+
+    <div class="demo u-d-grid items" style="grid-template-columns: repeat(3, 1fr); gap:10px;">
+
+        <div> Grid 1 </div>
+        <div> Grid 2 </div>
+        <div> Grid 3 </div>
+        <div> Grid 4 </div>
+        <div> Grid 5 </div>
+        <div> Grid 6 </div>
+
+    </div>
+
+    <h3><code> .u-d-none </code> / <code> .u-hidden </code></h3>
+
+    <div class="demo">
+
+        <div class="block"> Visible block </div>
+
+        <div class="block u-d-none"> Should NOT appear (.u-d-none) </div>
+        <div class="block u-hidden"> Should NOT appear (.u-hidden) </div>
+
+    </div>
+
+    <!-- POSITIONING -->
+
+    <h2> Position Utilities </h2>
+
+    <h3><code> .u-position-relative </code> + absolute child </h3>
+
+    <div class="pos-wrap u-position-relative">
+
+        <div class="pos-elem u-position-absolute u-top-2 u-left-2">
+
+            <div class="tag"><code> .u-position-absolute .u-top-2 .u-left-2 </code></div>
+
+        </div>
+    </div>
+
+    <h3><code> .u-position-absolute </code> + right/bottom offsets </h3>
+
+    <div class="pos-wrap u-position-relative">
+
+        <div class="pos-elem u-position-absolute u-bottom-3 u-right-3">
+
+            <div class="tag"><code> .u-bottom-3 .u-right-3 </code></div>
+
+        </div>
+
+    </div>
+
+    <h3><code> .u-position-fixed </code></h3>
+
+    <p> This box should stick to the bottom-right of the page. </p>
+
+    <div class="pos-elem u-position-fixed u-bottom-2 u-right-2" style="width: 200px;">
+
+        <strong> Fixed </strong><br />
+
+        <span class="tag"><code> .u-position-fixed .u-bottom-2 .u-right-2 </code></span>
+
+    </div>
+
+    <h3><code> .u-position-sticky </code></h3>
+
+    <p> Scroll inside the panel. The header should stick at the top. </p>
+
+    <div class="sticky-demo">
+
+        <div class="sticky-header u-position-sticky u-top-0">
+
+            Sticky header (<code> .u-position-sticky .u-top-0 </code>)
+
+        </div>
+        
+        <div class="content">
+
+            Scroll content… <br /><br />
+
+            Keep scrolling to test sticky positioning.

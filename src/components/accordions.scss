@@ -1,0 +1,124 @@
+@use "src/foundational_tokens/colour-sheet.scss" as *;
+@use "src/foundational_tokens/spacing-sheet.scss" as *;
+
+.accordion {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  border: 2px solid $dgrey3;
+  border-radius: $space4;
+  overflow: hidden;
+  background: $lgrey1;
+  box-shadow: 0 0 0 1px rgba($dgrey3, 0.02);
+
+  + .accordion {
+    margin-top: $space4;
+  }
+}
+
+.accordion-item {
+  width: 100%;
+  border-top: 1px solid $lgrey3;
+  border-bottom: 1px solid $dgrey3;
+
+  &:first-child {
+    border-top: 0;
+  }
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space3;
+  padding: $space3 $space4;
+  background: $lgrey2;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $lgrey2;
+  }
+
+  &:focus-within {
+    outline: $space1 solid $highlight;
+    outline-offset: -2px;
+  }
+}
+
+.accordion-button {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.2;
+  text-align: left;
+  flex: 1;
+  cursor: pointer;
+
+  &:focus {
+    outline: 2px solid rgba($dgrey3, 0.08);
+    outline-offset: -2px;
+  }
+}
+
+.toggle-button {
+  background: none;
+  border: 0;
+  width: $space12;
+  height: $space12;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:focus {
+    outline: 2px solid rgba($dgrey3, 0.08);
+    outline-offset: -2px;
+  }
+
+  &::after {
+    content: "";
+    width: $space2;
+    height: $space2;
+    border-right: 2px solid $dgrey3;
+    border-bottom: 2px solid $dgrey3;
+    transform: rotate(45deg);
+    transition: transform 0.1s ease;
+  }
+}
+
+.accordion-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+
+  &:focus + .accordion-header {
+    outline: $space1 solid $highlight;
+    outline-offset: -2px;
+  }
+
+  &:checked + .accordion-header {
+    .toggle-button::after {
+      transform: rotate(225deg);
+    }
+
+    + .accordion-collapse {
+      display: block;
+    }
+  }
+}
+
+.accordion-collapse {
+  display: none;
+
+  &.show {
+    display: block;
+  }
+}
+
+.accordion-body {
+  padding: $space3 $space4;
+  background: $lgrey1;
+  border-top: 1px solid $lgrey3;
+}

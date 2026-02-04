@@ -1,0 +1,44 @@
+$vertical-align: (
+  baseline: baseline,
+  top: top,
+  middle: middle,
+  bottom: bottom,
+  text-top: text-top,
+  text-bottom: text-bottom
+);
+
+@each $name, $value in $vertical-align {
+  .align-#{$name} {
+    vertical-align: $value;
+  }
+}
+
+/*<span class="align-middle">Aligned middle</span>*/
+
+$content-align: (
+  start: flex-start,
+  center: center,
+  end: flex-end,
+  between: space-between,
+  around: space-around,
+  evenly: space-evenly
+);
+
+.d-flex {
+  display: flex;
+}
+
+.d-inline-flex {
+  display: inline-flex;
+}
+
+@each $name, $value in $content-align {
+  .justify-#{$name} {
+    justify-content: $value;
+  }
+
+  .items-#{$name} {
+    align-items: $value;
+  }
+}
+

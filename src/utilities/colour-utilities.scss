@@ -1,38 +1,43 @@
+@use "../foundational_tokens/colour-sheet.scss" as *;
+
+@use "sass:math";
+
+
 // Text Colour
 @each $name, $value in $colours {
     .text-#{$name} {
-        color: var(--#{$value});
+        color: var(--#{$name});
     }
 }
 
 // Background Colour
 @each $name, $value in $colours {
     .bg-#{$name} {
-        background-color: var(--#{$value});
+        background-color: var(--#{$name});
     }
 }
 
 // Border Colour
 @each $name, $value in $colours {
     .border-#{$name} {
-        border-color: var(--#{$value});
+        border-color: var(--#{$name});
     }
 }
 
 // State Colours
 @each $name, $value in $colours {
     .hover\:bg-#{$name}:hover {
-        background-color: var(--#{$value});
+        background-color: var(--#{$name});
     }
 
     .hover\:text-#{$name}:hover {
-        color: var(--#{$value});
+        color: var(--#{$name});
     }
 }
 
 // Opacity
 @for $i from 0 through 10 {
     .opacity-#{$i * 10} {
-        opacity: $i / 10;
+        opacity: math.div($i, 10);
     }
 }

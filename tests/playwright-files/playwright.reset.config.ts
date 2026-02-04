@@ -1,7 +1,7 @@
 import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
-    testDir: './tests/reset_test',
+    testDir: '../tests/reset_test',
   
 
     globalSetup: "./playwright.setup.reset.mjs",

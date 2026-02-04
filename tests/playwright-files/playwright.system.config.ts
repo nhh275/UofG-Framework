@@ -1,6 +1,6 @@
 import { defineConfig } from "@playwright/test";
 
 export default defineConfig({
-  testDir: "./tests/token_test",
-  globalSetup: "./playwright.setup.tokens.mjs",
+  testDir: "../tests/system_test",
+  globalSetup: "./playwright.setup.main.mjs",
 });

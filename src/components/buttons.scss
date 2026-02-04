@@ -1,0 +1,78 @@
+$btn-border-radius: var(--space1);
+$btn-padding-vertical: var(--space2);
+$btn-padding-horizontal: var(--space5);
+$btn-outline-color: var(--uni-blue);
+$btn-disabled-cursor: not-allowed;
+
+.btn { /* Base button style */
+  border-radius: $btn-border-radius;
+  text-align: center;
+  cursor: pointer;
+  padding: $btn-padding-vertical $btn-padding-horizontal;
+
+  &-primary { /* Primary button style */
+    background-color: var(--uni-blue);
+    color: var(--lgrey1);
+    border: var(--uni-blue);
+
+    &:hover { /* Hover state for primary button - mouse hover*/
+      background-color: var(--lgrey1);
+      color: var(--uni-blue);
+    }
+
+    &:focus { /* Focus state for primary button - once clicked or in autofocus */
+      outline: $btn-border-radius solid var(--highlight);
+    }
+
+    &:disabled { /* Disabled state for primary button - greyed out */
+      background-color: var(--uni-blue40);
+      color: var(--lgrey3);
+      cursor: $btn-disabled-cursor;
+    }
+  }
+  /* as above for secondary and outline buttons */
+  &-secondary {
+    background-color: var(--uni-blue20);
+    color: var(--uni-blue);
+    border: var(--uni-blue);
+
+    &:hover {
+      background-color: var(--lgrey1);
+      color: var(--uni-blue);
+    }
+
+    &:focus {
+      color: var(--uni-blue);
+      outline: $btn-border-radius solid var(--highlight);
+    }
+
+    &:disabled {
+      background-color: var(--uni-blue20);
+      color: var(--lgrey2);
+      cursor: $btn-disabled-cursor;
+    }
+  }
+
+  &-outline {
+    background-color: var(--lgrey1);
+    color: var(--uni-blue80);
+    outline: solid $btn-outline-color;
+    border: none;
+
+    &:hover {
+      background-color: var(--lgrey1);
+      color: var(--uni-blue);
+    }
+
+    &:focus {
+      color: var(--uni-blue);
+      outline: $btn-border-radius solid var(--highlight);
+    }
+
+    &:disabled {
+      border-color: var(--uni-blue20);
+      color: var(--lgrey3);
+      cursor: $btn-disabled-cursor;
+    }
+  }
+}

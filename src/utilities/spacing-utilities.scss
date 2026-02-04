@@ -1,0 +1,44 @@
+@use "../foundational_tokens/space-sheet.scss" as *;
+
+
+$space-scale: (
+  0: 0,
+  1: $space1,
+  2: $space2,
+  3: $space3,
+  4: $space4,
+  5: $space5,
+  6: $space6,
+  7: $space7,
+  8: $space8,
+  9: $space9,
+  10: $space10,
+  11: $space11,
+  12: $space12
+);
+
+@each $k, $v in $space-scale {
+  /* Margin */
+  .u-m-#{$k}  { margin: $v; }
+  .u-mt-#{$k} { margin-top: $v; }
+  .u-mr-#{$k} { margin-right: $v; }
+  .u-mb-#{$k} { margin-bottom: $v; }
+  .u-ml-#{$k} { margin-left: $v; }
+  .u-mx-#{$k} { margin-left: $v; margin-right: $v; }
+  .u-my-#{$k} { margin-top: $v; margin-bottom: $v; }
+
+  /* Padding */
+  .u-p-#{$k}  { padding: $v; }
+  .u-pt-#{$k} { padding-top: $v; }
+  .u-pr-#{$k} { padding-right: $v; }
+  .u-pb-#{$k} { padding-bottom: $v; }
+  .u-pl-#{$k} { padding-left: $v; }
+  .u-px-#{$k} { padding-left: $v; padding-right: $v; }
+  .u-py-#{$k} { padding-top: $v; padding-bottom: $v; }
+}
+
+/* Auto spacing (centering helpers) */
+.u-m-auto  { margin: auto; }
+.u-mx-auto { margin-left: auto; margin-right: auto; }
+.u-my-auto { margin-top: auto; margin-bottom: auto; }
+.u-ml-auto { margin-left: auto; }

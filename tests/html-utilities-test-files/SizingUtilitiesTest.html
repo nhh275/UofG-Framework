@@ -1,0 +1,284 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title> Sizing Utilities Test </title>
+
+    <link rel="stylesheet" href="../../test-results/CommandTestProofs/sizingutilsoutput.css" />
+
+    <style>
+
+        body {
+
+            font-family: Arial, sans-serif;
+            padding: 20px;
+
+        }
+
+        h2 {
+
+            margin-top: 50px;
+
+        }
+
+        .demo {
+
+            border: 2px dashed #999;
+            border-radius: 12px;
+            padding: 14px;
+            background: #fafafa;
+            margin-top: 14px;
+
+        }
+
+        .box {
+
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 10px;
+            background: white;
+            margin: 12px 0;
+
+        }
+
+        .container {
+
+            border: 2px solid #ccc;
+            padding: 12px;
+            border-radius: 12px;
+            background: #fff;
+            width: 360px;
+
+            /* fixed container so widths are easy to compare */
+
+            margin-top: 14px;
+
+        }
+
+        .tall-container {
+
+            border: 2px solid #ccc;
+            padding: 12px;
+            border-radius: 12px;
+            background: #fff;
+            height: 200px;
+
+            /* fixed height container for height tests */
+
+            margin-top: 14px;
+            position: relative;
+
+        }
+
+        .label {
+
+            font-weight: bold;
+            margin-top: 20px;
+
+        }
+
+        code {
+
+            background: #eee;
+            padding: 2px 6px;
+            border-radius: 6px;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1> Width / Height / Aspect-Ratio Utility Test </h1>
+
+    <!-- WIDTH TESTS -->
+
+    <h2> Width utilities </h2>
+
+    <div class="container">
+
+        <div class="label"><code> .w-full </code></div>
+        <div class="box w-full"> w-full (should fill container width) </div>
+
+        <div class="label"><code> .w-auto </code></div>
+        <div class="box w-auto"> w-auto (default) </div>
+
+        <div class="label"><code> .w-fit </code></div>
+        <div class="box w-fit"> w-fit (fit-content) </div>
+
+        <div class="label"><code> .w-min </code></div>
+        <div class="box w-min"> w-min (min-content) </div>
+
+        <div class="label"><code> .w-max </code></div>
+        <div class="box w-max"> w-max (max-content) </div>
+        
+    </div>
+
+    <!-- MIN/MAX WIDTH TESTS -->
+
+    <h2> min/max width </h2>
+
+    <div class="container">
+
+        <div class="label"><code> .min-w-full </code></div>
+        <div class="box min-w-full"> min-w-full (forces full width) </div>
+
+        <div class="label"><code> .max-w-full </code></div>
+        <div class="box w-max max-w-full">
+
+            w-max + max-w-full (this text is long so the element wants to grow, but should not exceed the container
+            width)
+
+        </div>
+
+        <div class="label"><code> .min-w-0 </code> (useful in flex) </div>
+        <div class="demo" style="display:flex; gap:10px;">
+
+            <div class="box" style="width:120px;"> Fixed </div>
+
+            <div class="box min-w-0" style="flex:1;">
+
+                min-w-0 allows shrinking inside flex. Looooooooooooooooooooong text should wrap instead of forcing
+                overflow.
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- HEIGHT TESTS -->
+
+    <h2> Height utilities </h2>
+
+    <div class="tall-container">
+
+        <div class="label"><code> .h-full </code></div>
+        <div class="box h-full">
+
+            h-full (should fill height of this 200px container)
+
+        </div>
+
+    </div>
+
+
+    <div class="tall-container">
+
+        <div class="label"><code> .h-auto </code></div>
+        <div class="box h-auto">
+
+            h-auto (height fits content) <br>
+            Line 2 <br>
+            Line 3
+
+        </div>
+
+    </div>
+
+    <h2> Screen height utilities </h2>
+
+    <div class="demo h-screen" style="border:3px solid #333;">
+
+        <strong> .h-screen </strong> (this should be 100vh tall)
+
+    </div>
+
+    <!-- MIN/MAX HEIGHT TESTS -->
+
+    <h2> min/max height </h2>
+
+    <div class="tall-container">
+
+        <div class="label"><code> .min-h-full </code></div>
+        <div class="box min-h-full">
+
+            min-h-full (should at least fill container height)
+
+        </div>
+
+    </div>
+
+    <div class="demo" style="max-height: 120px; overflow:auto;">
+
+        <div class="box max-h-full">
+
+            <strong> max-h-full </strong><br>
+
+            Put this inside a container with max-height and overflow to test. <br><br>
+            Extra lines... <br>
+            Extra lines... <br>
+            Extra lines... <br>
+            Extra lines... <br>
+            Extra lines...
+
+        </div>
+
+    </div>
+
+    <div class="demo min-h-screen">
+
+        <strong> .min-h-screen </strong> (should be at least 100vh height)
+
+    </div>
+
+    <!-- ASPECT RATIO -->
+
+    <h2> Aspect ratio utilities </h2>
+
+    <p> These elements only need a width (height is calculated automatically). </p>
+
+    <div class="demo" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+
+        <div>
+
+            <div class="box ratio-1x1" style="width: 200px;">
+
+                <code> .ratio-1x1 </code>
+
+            </div>
+
+        </div>
+
+        <div>
+
+            <div class="box ratio-4x3" style="width: 200px;">
+
+                <code> .ratio-4x3 </code>
+
+            </div>
+
+        </div>
+
+        <div>
+
+            <div class="box ratio-16x9" style="width: 260px;">
+
+                <code> .ratio-16x9 </code>
+
+            </div>
+
+        </div>
+
+        <div>
+
+            <div class="box ratio-21x9" style="width: 260px;">
+
+                <code>.ratio-21x9</code>
+
+            </div>
+
+        </div>
+        
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+.u-flex { display: flex; }
+.u-inline-flex { display: inline-flex; }
+
+/* Flex direction */
+$flex-directions: (row, row-reverse, column, column-reverse);
+@each $dir in $flex-directions {
+  .u-flex-#{$dir} { flex-direction: $dir; }
+}
+
+/* Justify content */
+$justify: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around,
+  evenly: space-evenly
+);
+
+@each $name, $value in $justify {
+  .u-justify-#{$name} { justify-content: $value; }
+}
+
+/* Align items */
+$align-items: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  baseline: baseline,
+  stretch: stretch
+);
+
+@each $name, $value in $align-items {
+  .u-items-#{$name} { align-items: $value; }
+}
+
+/* Align self */
+$align-self: (
+  auto: auto,
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  baseline: baseline,
+  stretch: stretch
+);
+
+@each $name, $value in $align-self {
+  .u-self-#{$name} { align-self: $value; }
+}
+
+/* Wrap */
+$wrap: (wrap, nowrap, wrap-reverse);
+@each $w in $wrap {
+  .u-flex-#{$w} { flex-wrap: $w; }
+}
+
+/* Grow / shrink */
+@for $i from 0 through 5 {
+  .u-grow-#{$i} { flex-grow: $i; }
+  .u-shrink-#{$i} { flex-shrink: $i; }
+}

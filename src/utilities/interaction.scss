@@ -1,0 +1,44 @@
+$pointer-events: (
+  none: none,
+  auto: auto
+);
+
+@each $name, $value in $pointer-events {
+  .pe-#{$name} {
+    pointer-events: $value;
+  }
+}
+
+/*<div class="pe-none">No mouse interaction</div>
+<div class="pe-auto">Default behavior</div>*/
+
+$user-select: (
+  none: none,
+  text: text,
+  all: all,
+  auto: auto
+);
+
+@each $name, $value in $user-select {
+  .us-#{$name} {
+    user-select: $value;
+  }
+}
+
+/*<p class="us-none">Can't select this</p>*/
+
+$cursor: (
+  auto: auto,
+  default: default,
+  pointer: pointer,
+  wait: wait,
+  text: text,
+  move: move,
+  not-allowed: not-allowed
+);
+
+@each $name, $value in $cursor {
+  .cursor-#{$name} {
+    cursor: $value;
+  }
+}

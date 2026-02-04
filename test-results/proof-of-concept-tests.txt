@@ -1,0 +1,1 @@
+The tests results in Command Test Proofs folder where done by way of proof of concept. Where the proof it the the scss files compile with no warning and error and the main compontents of each file can be found and observed in the compiled output version

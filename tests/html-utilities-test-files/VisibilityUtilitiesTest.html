@@ -1,0 +1,337 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title> Visibility Utilities Test </title>
+
+    <link rel="stylesheet" href="../../test-results/CommandTestProofs/visibilityutilsoutput.css" />
+
+    <style>
+
+        body {
+
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            line-height: 1.4;
+
+        }
+
+        h2 {
+
+            margin-top: 60px;
+
+        }
+
+        h3 {
+
+            margin-top: 28px;
+
+        }
+
+        code {
+
+            background: #eee;
+            padding: 2px 6px;
+            border-radius: 6px;
+
+        }
+
+        .panel {
+
+            border: 2px dashed #999;
+            border-radius: 12px;
+            padding: 14px;
+            margin-top: 12px;
+            background: #fafafa;
+
+        }
+
+        .box {
+
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 12px;
+            background: white;
+            margin-top: 10px;
+
+        }
+
+        .demo-area {
+
+            height: 120px;
+            width: 320px;
+            border: 3px solid #333;
+            border-radius: 12px;
+            background: #fff;
+            padding: 10px;
+
+        }
+
+        .big-content {
+
+            width: 650px;
+
+            /* force horizontal overflow */
+
+            height: 220px;
+
+            /* force vertical overflow */
+
+            border-radius: 10px;
+            border: 2px solid #666;
+            background: #f1f1f1;
+            padding: 10px;
+
+        }
+
+        .spacer {
+
+            height: 500px;
+            background: linear-gradient(#fff, #eee);
+            border-radius: 12px;
+            margin-top: 14px;
+
+        }
+
+        .jump-links a {
+
+            display: inline-block;
+            margin-right: 12px;
+            font-weight: bold;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1> Visibility / Overflow / Scroll Utility Test </h1>
+
+    <!-- VISIBILITY -->
+
+    <h2> Visibility </h2>
+
+    <div class="panel">
+
+        <div class="box u-visible">
+
+            <code> .u-visible </code> — This should show normally.
+
+        </div>
+
+        <div class="box u-invisible">
+
+            <code> .u-invisible </code> — This should NOT be visible (but space is still reserved).
+
+        </div>
+
+        <div class="box">
+
+            This box should appear below, showing that invisible still takes up space.
+
+        </div>
+
+    </div>
+
+    <!-- SR ONLY -->
+
+    <h2> Screen-reader-only (.u-sr-only) </h2>
+
+    <div class="panel">
+
+        <p>
+
+            You should <strong> not </strong> see the “SR ONLY TEXT” below, but it is still in the DOM for screen readers.
+
+        </p>
+
+        <p class="box">
+
+            Visible text ✅
+
+            <span class="u-sr-only"> SR ONLY TEXT (should not be visible) </span>
+
+        </p>
+
+        <p class="box">
+
+            If you inspect in devtools, you’ll see the hidden span exists.
+        
+        </p>
+    
+    </div>
+
+    <!-- OVERFLOW -->
+
+    <h2> Overflow utilities </h2>
+
+    <p> Each box below is a fixed-size container with content too big for it. </p>
+
+    <h3><code> .u-overflow-hidden </code></h3>
+
+    <div class="panel">
+
+        <div class="demo-area u-overflow-hidden">
+
+            <div class="big-content">
+
+                Big content inside container. <br>
+
+                It should be clipped with no scrollbars.
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <h3><code> .u-overflow-scroll </code></h3>
+
+    <div class="panel">
+
+        <div class="demo-area u-overflow-scroll">
+
+            <div class="big-content">
+
+                Big content inside container. <br>
+
+                You should see scrollbars (even if not needed).
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <h3><code> .u-overflow-auto </code></h3>
+
+    <div class="panel">
+
+        <div class="demo-area u-overflow-auto">
+
+            <div class="big-content">
+
+                Big content inside container. <br>
+
+                Scrollbars should appear only as needed.
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <h3><code> .u-overflow-x-scroll </code> + <code> .u-overflow-y-hidden </code></h3>
+
+    <div class="panel">
+
+        <div class="demo-area u-overflow-x-scroll u-overflow-y-hidden">
+
+            <div class="big-content">
+
+                Horizontal scroll only. Vertical should be clipped.
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <h3><code> .u-overflow-y-scroll </code> + <code> .u-overflow-x-hidden </code></h3>
+
+    <div class="panel">
+
+        <div class="demo-area u-overflow-y-scroll u-overflow-x-hidden">
+
+            <div class="big-content">
+
+                Vertical scroll only. Horizontal should be clipped.
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <h3><code> .u-overflow-visible </code></h3>
+
+    <div class="panel">
+
+        <div class="demo-area u-overflow-visible">
+
+            <div class="big-content">
+
+                This content should overflow OUTSIDE the container (not clipped).
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- SCROLL BEHAVIOR -->
+
+    <h2 id="top"> Scroll behavior (auto vs smooth) </h2>
+
+    <div class="panel jump-links u-scroll-smooth">
+
+        <p>
+
+            This whole panel has <code> .u-scroll-smooth </code>.
+
+            Clicking the anchor links should scroll smoothly (unless reduced-motion is enabled).
+
+        </p>
+
+        <a href="#section1"> Go to Section 1 </a>
+        <a href="#section2"> Go to Section 2 </a>
+        <a href="#bottom"> Go to Bottom </a>
+
+        <div class="spacer" id="section1">
+
+            <strong> Section 1 </strong>
+
+        </div>
+
+        <div class="spacer" id="section2">
+
+            <strong> Section 2 </strong>
+
+        </div>
+
+        <div class="spacer" id="bottom">
+
+            <strong> Bottom </strong><br>
+
+            <a href="#top"> Back to top </a>
+
+        </div>
+
+    </div>
+
+    <div class="panel jump-links u-scroll-auto" style="margin-top:30px;">
+
+        <p>
+
+            This panel uses <code> .u-scroll-auto </code>.
+
+            Clicking links should jump instantly.
+
+        </p>
+
+        <a href="#section1"> Go to Section 1 </a>
+        <a href="#section2"> Go to Section 2 </a>
+        <a href="#bottom"> Go to Bottom </a>
+        
+    </div>
+
+</body>
+
+</html>

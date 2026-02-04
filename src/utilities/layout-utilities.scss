@@ -1,0 +1,75 @@
+@use "../foundational_tokens/space-sheet.scss" as *;
+
+/* Display */
+$displays: (
+  block: block,
+  inline: inline,
+  inline-block: inline-block,
+  flex: flex,
+  inline-flex: inline-flex,
+  grid: grid,
+  inline-grid: inline-grid,
+  none: none
+);
+
+@each $name, $value in $displays {
+  .u-d-#{$name} { display: $value; }
+}
+
+/* Visibility helpers */
+.u-hidden { display: none !important; }
+
+/* Position */
+$positions: (static, relative, absolute, fixed, sticky);
+
+@each $pos in $positions {
+  .u-position-#{$pos} { position: $pos; }
+}
+
+/* Offset (top/right/bottom/left), works when positioned */
+$space-scale: (
+  0: 0,
+  1: $space1,
+  2: $space2,
+  3: $space3,
+  4: $space4,
+  5: $space5,
+  6: $space6,
+  7: $space7,
+  8: $space8,
+  9: $space9,
+  10: $space10,
+  11: $space11,
+  12: $space12
+);
+
+@each $k, $v in $space-scale {
+  .u-top-#{$k}    { top: $v; }
+  .u-right-#{$k}  { right: $v; }
+  .u-bottom-#{$k} { bottom: $v; }
+  .u-left-#{$k}   { left: $v; }
+
+/* Logical offsets (recommended for RTL safety) */
+  .u-start-#{$k}  { inset-inline-start: $v; }
+  .u-end-#{$k}    { inset-inline-end: $v; }
+}
+
+/* Float */
+$floats: (start: left, end: right, none: none);
+
+@each $name, $value in $floats {
+  .u-float-#{$name} { float: $value; }
+}
+
+/* Z-index (simple scale) */
+$z: (
+  0: 0,
+  1: 1,
+  10: 10,
+  100: 100,
+  1000: 1000
+);
+
+@each $k, $v in $z {
+  .u-z-#{$k} { z-index: $v; }
+}

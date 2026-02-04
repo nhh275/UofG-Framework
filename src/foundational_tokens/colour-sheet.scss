@@ -3,7 +3,8 @@ $uni-blue: #003865; // University blue is a staple of the university's overall b
 $rust: #9A3A06; // A secondary colour should complement the primary colour of a brand and be used as an accent or background colour.
 
 // Tints
-$uni-blue80: #435F81; // Tint colours are lighter shades of the primary and secondary colours. They should be used sparingly to create depth and variation.
+// Tint colours are lighter shades of the primary and secondary colours. They should be used sparingly to create depth and variation.
+$uni-blue80: #435F81; 
 $uni-blue60: #6D87A0;
 $uni-blue40: #9DAEBF;
 $uni-blue20: #CED7DF;
@@ -14,7 +15,8 @@ $rust40: #D1B29E;
 $rust20: #E8D9CE;
 
 // Neutral Colours
-$dgrey1: #666666; // Vanilla colours are neutral, foundational elements you can build on for versatile user experiences across platforms.
+// Vanilla colours are neutral, foundational elements you can build on for versatile user experiences across platforms.
+$dgrey1: #666666; 
 $dgrey2: #4D4D4D;
 $dgrey3: #323232;
 $lgrey1: #F5F5F5;
@@ -25,7 +27,9 @@ $mgrey2: #999999;
 $mgrey3: #757575;
 
 // UI Colours
-$error: #D4351C; // UI colours should be used for alerts based on user actions such as filling a field or submitting a form. These are not brand colours, they are for communication only.
+/* UI colours should be used for alerts based on user actions such as filling a field or submitting a form. 
+// These are not brand colours, they are for communication only. */
+$error: #D4351C;
 $success: #8BC34A;
 $highlight: #FFDD00;
 

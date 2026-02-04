@@ -1,0 +1,43 @@
+/*visually-hidden mean that the element is hidden visually but still accessible to screen readers
+Focusable elements are those that can receive keyboard focus using tab etc (e.g., links, buttons, form controls).*/
+
+.visually-hidden {
+  position: absolute;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.focus-visible:focus-visible {
+  outline: 3px solid #0d6efd;
+  outline-offset: 2px;
+}
+
+.focus-visible:focus:not(:focus-visible) {
+  outline: none;
+}
+
+
+.screen-reader-only {
+  @extend .visually-hidden;
+}
+
+.screen-reader-only-focusable {
+  @extend .visually-hidden;
+
+  &:focus,
+  &:active {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    clip: auto !important;
+    white-space: normal !important;
+  }
+}
