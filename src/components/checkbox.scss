@@ -1,53 +1,48 @@
-// ===== Checkbox Group =====
 .zh-checkbox-group {
   display: flex;
   flex-direction: column;
   gap: 8px;
 
-  // ===== Checkbox Wrapper (grey rectangle) =====
+  /* Checkbox wrapper (grey rectangle) */
   .zh-checkbox {
-    display: inline-flex; // shrink to content
-    align-items: flex-start; // align checkbox + text
+    display: inline-flex;
+    align-items: flex-start;
     cursor: pointer;
     position: relative;
-    background-color: #F5F5F5; // grey rectangle
+    background-color: #F5F5F5;
     padding: 8px 12px;
-    border-radius: 0; // square corners
+    border-radius: 0;
     transition: background-color 0.2s ease;
-    max-width: fit-content; // rectangle only as wide as content
+    max-width: fit-content;
 
-    // ===== Checkbox Input =====
+    /* Checkbox input */
     input[type="checkbox"] {
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
       width: 24px;
       height: 24px;
-      border-radius: 0; // square
-      border: 2px solid #000000; // border color
-      background-color: #F5F5F5; // default background same as rectangle
+      border-radius: 0;
+      border: 2px solid #000000;
+      background-color: #F5F5F5;
       margin-right: 12px;
       position: relative;
       cursor: pointer;
       transition: all 0.2s ease;
 
-      // Hover
       &:hover {
-        border-color: #335f87; // uni-blue80
+        border-color: #335f87;
       }
 
-      // Focus - yellow border on checkbox only
       &:focus {
         outline: none;
-        border-color: #ffbf47; // yellow focus
+        border-color: #ffbf47;
       }
 
-      // Checked state - uni-blue background
       &:checked {
-        background-color: #003865; // uni-blue
+        background-color: #003865;
         border-color: #003865;
 
-        // Checkmark - centered
         &::after {
           content: "";
           position: absolute;
@@ -55,54 +50,16 @@
           left: 50%;
           width: 6px;
           height: 12px;
-          border: solid #ffffff; // white tick
+          border: solid #ffffff;
           border-width: 0 2px 2px 0;
           transform: translate(-50%, -55%) rotate(45deg);
           pointer-events: none;
         }
       }
 
-      // Disabled
       &:disabled {
-        background-color: #444444; // dark grey for disabled
+        background-color: #444444;
         border-color: #444444;
         cursor: not-allowed;
 
-        & + .zh-checkbox-label {
-          color: #777777;
-          cursor: not-allowed;
-        }
-      }
-    }
-
-    // ===== Label container =====
-    &-label {
-      display: flex;
-      flex-direction: column;
-
-      .zh-checkbox-text {
-        color: #000000; // black text
-        font-size: 1rem;
-      }
-
-      .zh-checkbox-hint {
-        font-size: 0.875rem;
-        color: #000000; // black hint
-        margin-top: 4px;
-      }
-    }
-
-    // ===== Error state =====
-    &.has-error {
-      input[type="checkbox"] {
-        border-color: #d4351c;
-      }
-
-      .zh-checkbox-error {
-        font-size: 0.875rem;
-        color: #d4351c;
-        margin-top: 4px;
-      }
-    }
-  }
-}
+        & + .zh-che
