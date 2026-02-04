@@ -1,132 +1,84 @@
-/* src/components/blockquotes.scss */
-
-/* Blockquote component
-   - Quote icon (required)
-   - Quote text (required)
-   - Avatar (optional)
-   - Name (optional)
-   - Job description (optional)
-*/
-
 .zh-blockquote {
-  /* sizing / spacing */
-  --bq-pad-y: var(--space8);
-  --bq-pad-x: var(--space7);
-  --bq-gap: var(--space6);
-
-  /* icon + text */
-  --bq-icon-size: 4.25rem;
-  --bq-quote-size: 3.25rem; /* big editorial quote */
-  --bq-quote-line-height: 1.1;
-
-  /* avatar */
-  --bq-avatar-size: 4.75rem;
-
-  width: 100%;
-  margin: 0;
-  padding: var(--bq-pad-y) var(--bq-pad-x);
-
-  /* “body text width” feel */
+  /* match body text width  */
   max-width: 1100px;
+  margin: var(--space10) 0;
 
   background: transparent;
+  border: 0;
+  padding: 0;
 }
 
 .zh-blockquote__inner {
   display: grid;
   grid-template-columns: auto 1fr;
-  column-gap: var(--bq-gap);
+  column-gap: var(--space6);
   align-items: start;
 }
 
+/* Big quote icon */
 .zh-blockquote__icon {
-  /* big rust quote mark */
-  width: var(--bq-icon-size);
-  height: var(--bq-icon-size);
-  display: inline-grid;
-  place-items: start;
-  color: var(--rust);
   line-height: 1;
-
-  /* keep it aligned nicely with first line */
-  transform: translateY(0.1em);
+  transform: translateY(-0.1em);
 }
 
 .zh-blockquote__icon::before {
   content: "“";
-  font-size: var(--bq-icon-size);
-  font-weight: 700;
+  font-family: var(--uofg-font-serif, "Garamond", serif);
+  font-size: clamp(3rem, 6vw, 6rem);
+  color: var(--rust);
 }
 
-.zh-blockquote__content {
-  min-width: 0;
-}
-
+/* quote text */
 .zh-blockquote__quote {
   margin: 0;
-
-  /* big serif look like your screenshot */
-  font-family: var(--uofg-font-serif, Georgia, "Times New Roman", Times, serif);
-  font-size: var(--bq-quote-size);
-  line-height: var(--bq-quote-line-height);
+  font-family: var(--uofg-font-serif, "Garamond", serif);
+  font-weight: 400;
   color: var(--dgrey3);
+
+  font-size: clamp(1.75rem, 3vw, 3rem);
+  line-height: 1.15;
 }
 
+/* avatar optional */
 .zh-blockquote__attribution {
   margin-top: var(--space7);
-
   display: grid;
   grid-template-columns: auto 1fr;
-  column-gap: var(--space5);
+  gap: var(--space5);
   align-items: center;
 }
 
 .zh-blockquote__avatar {
-  width: var(--bq-avatar-size);
-  height: var(--bq-avatar-size);
-  border-radius: 999px;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: var(--lgrey3);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.zh-blockquote__avatar img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   display: block;
-
-  /* fallback if image fails */
-  background: var(--lgrey3);
 }
 
 .zh-blockquote__byline {
-  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space1);
 }
 
 .zh-blockquote__name {
   margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.25;
   font-weight: 700;
+  font-size: 1.125rem;
   color: var(--dgrey3);
 }
 
 .zh-blockquote__role {
-  margin: 0.15rem 0 0;
-  font-size: 1.1rem;
-  line-height: 1.25;
+  margin: 0;
+  font-size: 1rem;
   color: var(--mgrey3);
-}
-
-/* If there is NO avatar, keep alignment clean */
-.zh-blockquote--no-avatar .zh-blockquote__attribution {
-  grid-template-columns: 1fr;
-}
-
-/* Optional: make it a bit smaller on narrow screens */
-@media (max-width: 768px) {
-  .zh-blockquote {
-    --bq-pad-y: var(--space7);
-    --bq-pad-x: var(--space5);
-    --bq-icon-size: 3.25rem;
-    --bq-quote-size: 2.25rem;
-    --bq-avatar-size: 4.25rem;
-  }
-
-  .zh-blockquote__inner {
-    column-gap: var(--space4);
-  }
 }
