@@ -1,0 +1,102 @@
+.zh-checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  /* Checkbox wrapper (grey rectangle) */
+  .zh-checkbox {
+    display: inline-flex;
+    align-items: flex-start;
+    cursor: pointer;
+    position: relative;
+    background-color: #F5F5F5;
+    padding: 8px 12px;
+    border-radius: 0;
+    transition: background-color 0.2s ease;
+    max-width: fit-content;
+
+    /* Checkbox input */
+    input[type="checkbox"] {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 0;
+      border: 2px solid #000000;
+      background-color: #F5F5F5;
+      margin-right: 12px;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        border-color: #335f87;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: #ffbf47;
+      }
+
+      &:checked {
+        background-color: #003865;
+        border-color: #003865;
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 6px;
+          height: 12px;
+          border: solid #ffffff;
+          border-width: 0 2px 2px 0;
+          transform: translate(-50%, -55%) rotate(45deg);
+          pointer-events: none;
+        }
+      }
+
+      &:disabled {
+        background-color: #444444;
+        border-color: #444444;
+        cursor: not-allowed;
+
+        & + .zh-checkbox-label {
+          color: #777777;
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    /* Label container */
+    &-label {
+      display: flex;
+      flex-direction: column;
+
+      .zh-checkbox-text {
+        color: #000000;
+        font-size: 1rem;
+      }
+
+      .zh-checkbox-hint {
+        font-size: 0.875rem;
+        color: #000000;
+        margin-top: 4px;
+      }
+    }
+
+    /* Error state */
+    &.has-error {
+      input[type="checkbox"] {
+        border-color: #d4351c;
+      }
+
+      .zh-checkbox-error {
+        font-size: 0.875rem;
+        color: #d4351c;
+        margin-top: 4px;
+      }
+    }
+  }
+}

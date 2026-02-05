@@ -24,6 +24,14 @@ $content-align: (
   evenly: space-evenly
 );
 
+.d-flex {
+  display: flex;
+}
+
+.d-inline-flex {
+  display: inline-flex;
+}
+
 @each $name, $value in $content-align {
   .justify-#{$name} {
     justify-content: $value;
@@ -33,7 +41,4 @@ $content-align: (
     align-items: $value;
   }
 }
-
-/* !!!These assume display: flex is already applied (or you create a .d-flex utility)*/
-
 
