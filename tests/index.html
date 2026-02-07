@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SCSS Library – Test Index</title>
+
+    <style>
+        :root {
+            --border: #d0d0d0;
+            --muted: #555;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            margin: 32px;
+            line-height: 1.5;
+        }
+
+        h1 {
+            margin: 0 0 6px;
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 20px;
+            margin-top: 18px;
+        }
+
+        .panel {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px;
+        }
+
+        .search {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        .sectionTitle {
+            margin: 14px 0 8px;
+            font-size: 14px;
+            letter-spacing: .02em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .item {
+            display: grid;
+            gap: 6px;
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: #fff;
+        }
+
+        .itemTitle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .name {
+            font-weight: 650;
+        }
+
+        .pill {
+            font-size: 12px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 2px 8px;
+            color: var(--muted);
+        }
+
+        .desc {
+            font-size: 13px;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        .actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        button,
+        a.btn {
+            appearance: none;
+            border: 1px solid var(--border);
+            background: #f7f7f7;
+            border-radius: 9px;
+            padding: 7px 10px;
+            cursor: pointer;
+            font-size: 13px;
+            text-decoration: none;
+            color: #111;
+        }
+
+        button:hover,
+        a.btn:hover {
+            background: #efefef;
+        }
+
+        .active {
+            outline: 2px solid #2a68ff55;
+        }
+
+        .previewHeader {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .viewportControls {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .label {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        #frameWrap {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px;
+            background: #fafafa;
+        }
+
+        #preview {
+            width: 1024px;
+            height: 760px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: white;
+            display: block;
+            margin: 0 auto;
+        }
+
+        #current {
+            font-size: 12px;
+            color: var(--muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 60ch;
+        }
+
+        .empty {
+            color: var(--muted);
+            font-size: 13px;
+            padding: 8px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>SCSS Component Library – Test Index</h1>
+    <p class="muted">
+        Choose a test on the left to preview it on the right. Use viewport buttons to check responsive behavior.
+    </p>
+
+    <div class="layout">
+        <!-- LEFT: Test list -->
+        <aside class="panel">
+            <input id="search" class="search" placeholder="Search tests… (e.g. spacing, typography, buttons)" />
+
+            <div class="sectionTitle">Utilities</div>
+            <div id="utilities" class="list">
+                <div class="item" data-name="alignment" data-type="utility">
+                    <div class="itemTitle">
+                        <span class="name">Alignment Utilities</span>
+                        <span class="pill">Utility</span>
+                    </div>
+                    <p class="desc">Text/box alignment helpers and edge cases.</p>
+                    <div class="actions">
+                        <a class="btn" href="./pages/AlignmentTest.html" data-preview>Preview</a>
+                        <a class="btn" href="./pages/AlignmentTest.html" target="_blank" rel="noopener">Open</a>
+                    </div>
+                </div>
+
+                <div class="item" data-name="Colour Utilites" data-type="utility">
+                    <div class="itemTitle"><span class="name">Colour Utilities</span><span class="pill">utility</span></div>
+                    <p class="desc">Token colors, semantic colors, states, contrast checks.</p>
+                    <div class="actions">
+                        <a class="btn" href="./pages/ColourUtilitiestest.html" data-preview>Preview</a>
+                        <a class="btn" href="./pages/ColourUtilitiestest.html" target="_blank" rel="noopener">Open</a>
+                    </div>
+                </div>
+
+                <div class="item" data-name="flex box utilities" data-type="utility">
+                    <div class="itemTitle"><span class="name">Flex-Box Utilities</span><span class="pill">utility</span>
+                    </div>
+                    <p class="desc">Flex helpers, alignment combos, wrapping, gaps.</p>
+                    <div class="actions">
+                        <a class="btn" href="./pages/FlexBoxUtilitiesTest.html" data-preview>Preview</a>
+                        <a class="btn" href="./pages/FlexBoxUtilitiesTest.html" target="_blank" rel="noopener">Open</a>
+                    </div>
+                </div>
+
+                <div class="item" data-name="interactions hover focus active disabled" data-type="utility">
+                    <div class="itemTitle"><span class="name">Interactions</span><span class="pill">utility</span></div>
+                    <p class="desc">Hover/focus/active styles, focus-visible, pointer states.</p>
+                    <div class="actions">
+                        <a class="btn" href="./pages/InteractionsTest.html" data-preview>Preview</a>
+                        <a class="btn" href="./pages/InteractionsTest.html" target="_blank" rel="noopener">Open</a>
+                    </div>
+                </div>
+
+                <div class="item" data-name="layout utilites grid container" data-type="utility">
+                    <div class="itemTitle"><span class="name">Layout Utilities</span><span class="pill">utility</span></div>
+                    <p class="desc">Layout primitives (grid, container rules, flow).</p>
+                    <div class="actions">
+                        <a class="btn" href="./pages/LayoutUtilitiesTest.html" data-preview>Preview</a>
+                        <a class="btn" href="./pages/LayoutUtilitiesTest.html" target="_blank" rel="noopener">Open</a>
+                    </div>
+                </div>
+
+                <div class="item" data-name="sizing utils width height min max" data-type="utility">
+                    <div class="itemTitle"><span class="name">Sizing Utilites</span><span class="pill">utility</span></div>
+                    <p class="desc">Width/height helpers, min/max constraints.</p>
+                    <div class="actions">
+                        <a class="btn" href="./pages/SizingUtilitiesTest.html" data-preview>Preview</a>
+                        <a class="btn" href="./pages/SizingUtilitiesTest.html" target="_blank" rel="noopener">Open</a>
+                    </div>
+                </div>
+
+                <div class="item" data-name="spacing utils margin padding gap" data-type="utility">
+                    <div class="itemTitle"><span class="name">Spacing Utilites</span><span class="pill">utility</span>
+                    </div>
+                    <p class="desc">Spacing scale, margin/padding utilities, gaps.</p>
+                    <div class="actions">
+                        <a class="btn" href="./pages/SpacingUtilitiesTest.html" data-preview>Preview</a>
+                        <a class="btn" href="./pages/SpacingUtilitiesTest.html" target="_blank" rel="noopener">Open</a>
+                    </div>
+                </div>
+
+                <div class="item" data-name="typography utils text fonts truncate wrap" data-type="utility">
+                    <div class="itemTitle"><span class="name">Typography Utilites</span><span class="pill">utility</span>
+                    </div>
+                    <p class="desc">Type scale, truncation, wrapping, line-height.</p>
+                    <div class="actions">
+                        <a class="btn" href="./pages/TypographyUtilitiesTest.html" data-preview>Preview</a>
+                        <a class="btn" href="./pages/TypographyUtilitiesTest.html" target="_blank" rel="noopener">Open</a>
+                    </div>
+                </div>
+
+                <div class="item" data-name="visibility utils sr-only hidden" data-type="utility">
+                    <div class="itemTitle"><span class="name">Visibility Utilites</span><span class="pill">utility</span>
+                    </div>
+                    <p class="desc">Hidden, visually-hidden, responsive visibility.</p>
+                    <div class="actions">
+                        <a class="btn" href="./pages/VisibilityUtilitiesTest.html" data-preview>Preview</a>
+                        <a class="btn" href="./pages/VisibilityUtilitiesTest.html" target="_blank" rel="noopener">Open</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sectionTitle" style="margin-top:18px;">Components</div>
+            <div id="components" class="list">
+                <div class="item" data-name="accordions accordion" data-type="component">
+                    <div class="itemTitle"><span class="name">Accordions</span><span class="pill">component</span></div>
+                    <p class="desc">Open/close behavior, spacing, typography, icon alignment.</p>
+                    <div class="actions">
+                        <a class="btn" href="pages/components-accordions.html" data-preview>Preview</a>
+                        <a class="btn" href="pages/components-accordions.html" target="_blank" rel="noopener">Open</a>
+                    </div>
+                </div>
+
+                <div class="item" data-name="blockquotes blockquote" data-type="component">
+                    <div class="itemTitle"><span class="name">Blockquotes</span><span class="pill">component</span>
+                    </div>
+                    <p class="desc">Quote styling, citations, spacing, responsive behavior.</p>
+                    <div class="actions">
+                        <a class="btn" href="pages/components-blockquotes.html" data-preview>Preview</a>
+                        <a class="btn" href="pages/components-blockquotes.html" target="_blank" rel="noopener">Open</a>
+                    </div>
+                </div>
+
+                <div class="item" data-name="buttons button" data-type="component">
+                    <div class="itemTitle"><span class="name">Buttons</span><span class="pill">component</span></div>
+                    <p class="desc">Variants, sizes, hover/focus/disabled/loading.</p>
+                    <div class="actions">
+                        <a class="btn" href="pages/components-buttons.html" data-preview>Preview</a>
+                        <a class="btn" href="pages/components-buttons.html" target="_blank" rel="noopener">Open</a>
+                    </div>
+                </div>
+
+                <div class="item" data-name="checkbox checkbox components" data-type="component">
+                    <div class="itemTitle"><span class="name">Checkbox</span><span class="pill">component</span></div>
+                    <p class="desc">Checked/unchecked/indeterminate, focus, disabled.</p>
+                    <div class="actions">
+                        <a class="btn" href="pages/components-checkbox.html" data-preview>Preview</a>
+                        <a class="btn" href="pages/components-checkbox.html" target="_blank" rel="noopener">Open</a>
+                    </div>
+                </div>
+
+                <div class="item" data-name="download links downloadlinks" data-type="component">
+                    <div class="itemTitle"><span class="name">Download links</span><span class="pill">component</span>
+                    </div>
+                    <p class="desc">Icon alignment, states, long filenames, wrapping.</p>
+                    <div class="actions">
+                        <a class="btn" href="pages/components-downloadlinks.html" data-preview>Preview</a>
+                        <a class="btn" href="pages/components-downloadlinks.html" target="_blank"
+                            rel="noopener">Open</a>
+                    </div>
+                </div>
+
+                <div class="item" data-name="dropdowns dropdown" data-type="component">
+                    <div class="itemTitle"><span class="name">Dropdowns</span><span class="pill">component</span></div>
+                    <p class="desc">Menu placement, scrolling, focus, disabled items.</p>
+                    <div class="actions">
+                        <a class="btn" href="pages/components-dropdowns.html" data-preview>Preview</a>
+                        <a class="btn" href="pages/components-dropdowns.html" target="_blank" rel="noopener">Open</a>
+                    </div>
+                </div>
+
+                <div class="item" data-name="images image" data-type="component">
+                    <div class="itemTitle"><span class="name">Images</span><span class="pill">component</span></div>
+                    <p class="desc">Aspect ratios, fit modes, captions, loading states.</p>
+                    <div class="actions">
+                        <a class="btn" href="pages/components-images.html" data-preview>Preview</a>
+                        <a class="btn" href="pages/components-images.html" target="_blank" rel="noopener">Open</a>
+                    </div>
+                </div>
+
+                <div class="item" data-name="tables table" data-type="component">
+                    <div class="itemTitle"><span class="name">Tables</span><span class="pill">component</span></div>
+                    <p class="desc">Striping, alignment, overflow, responsive wrappers.</p>
+                    <div class="actions">
+                        <a class="btn" href="pages/components-tables.html" data-preview>Preview</a>
+                        <a class="btn" href="pages/components-tables.html" target="_blank" rel="noopener">Open</a>
+                    </div>
+                </div>
+
+                <div class="item" data-name="tabs tab" data-type="component">
+                    <div class="itemTitle"><span class="name">Tabs</span><span class="pill">component</span></div>
+                    <p class="desc">Active states, overflow scrolling, focus behavior.</p>
+                    <div class="actions">
+                        <a class="btn" href="pages/components-tabs.html" data-preview>Preview</a>
+                        <a class="btn" href="pages/components-tabs.html" target="_blank" rel="noopener">Open</a>
+                    </div>
+                </div>
+
+                <div class="item" data-name="text blocks text-blocks" data-type="component">
+                    <div class="itemTitle"><span class="name">Text blocks</span><span class="pill">component</span>
+                    </div>
+                    <p class="desc">Rich text content, spacing, lists, headings, links.</p>
+                    <div class="actions">
+                        <a class="btn" href="pages/components-text-blocks.html" data-preview>Preview</a>
+                        <a class="btn" href="pages/components-text-blocks.html" target="_blank" rel="noopener">Open</a>
+                    </div>
+                </div>
+
+                <div class="item" data-name="tiles tile" data-type="component">
+                    <div class="itemTitle"><span class="name">Tiles</span><span class="pill">component</span></div>
+                    <p class="desc">Layout, spacing, hover states, responsive wrapping.</p>
+                    <div class="actions">
+                        <a class="btn" href="pages/components-tiles.html" data-preview>Preview</a>
+                        <a class="btn" href="pages/components-tiles.html" target="_blank" rel="noopener">Open</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="noResults" class="empty" style="display:none;">No tests match your search.</div>
+        </aside>
+
+        <!-- RIGHT: Preview -->
+        <section class="panel">
+            <div class="previewHeader">
+                <div>
+                    <div style="font-weight:650;">Preview</div>
+                    <div id="current" class="muted">Select a test to preview</div>
+                </div>
+
+                <div class="viewportControls">
+                    <span class="label">Viewport:</span>
+                    <button type="button" data-width="360">360</button>
+                    <button type="button" data-width="768">768</button>
+                    <button type="button" data-width="1024" class="active">1024</button>
+                    <button type="button" data-width="1280">1280</button>
+                </div>
+            </div>
+
+            <div id="frameWrap">
+                <iframe id="preview" src=""></iframe>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const iframe = document.getElementById("preview");
+        const current = document.getElementById("current");
+        const search = document.getElementById("search");
+        const noResults = document.getElementById("noResults");
+        const items = Array.from(document.querySelectorAll(".item"));
+
+        // Preview click
+        document.querySelectorAll("[data-preview]").forEach(a => {
+            a.addEventListener("click", (e) => {
+                e.preventDefault();
+                const url = a.getAttribute("href");
+                iframe.src = url;
+                current.textContent = url;
+
+                // highlight selected item
+                items.forEach(x => x.classList.remove("active"));
+                a.closest(".item")?.classList.add("active");
+            });
+        });
+
+        // Viewport sizing
+        function setWidth(px) {
+            iframe.style.width = px + "px";
+            document.querySelectorAll("[data-width]").forEach(b => b.classList.remove("active"));
+            const btn = document.querySelector(`.viewportControls [data-width="${px}"]`);
+            if (btn) btn.classList.add("active");
+        }
+        document.querySelectorAll(".viewportControls [data-width]").forEach(btn => {
+            btn.addEventListener("click", () => setWidth(Number(btn.dataset.width)));
+        });
+
+        // Default width
+        setWidth(1024);
+
+        // Search filtering
+        function applyFilter() {
+            const q = search.value.trim().toLowerCase();
+            let visible = 0;
+
+            items.forEach(item => {
+                const hay = (item.getAttribute("data-name") || "").toLowerCase();
+                const match = !q || hay.includes(q);
+                item.style.display = match ? "" : "none";
+                if (match) visible++;
+            });
+
+            noResults.style.display = visible === 0 ? "" : "none";
+        }
+        search.addEventListener("input", applyFilter);
+    </script>
+</body>
+
+</html>
