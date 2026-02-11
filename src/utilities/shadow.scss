@@ -1,3 +1,5 @@
+@use '../foundational-tokens/shadow-sheet.scss' as *;
+
 /* Transition for hover and focus shadow effects */
 $shadow-transition: box-shadow 0.25s ease;
 
