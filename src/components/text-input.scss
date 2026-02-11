@@ -1,0 +1,123 @@
+@use '../foundational_tokens/space-sheet' as space;
+@use '../foundational_tokens/colour-sheet' as colour;
+@use '../reset/fonts' as fonts;
+
+$control-padding-y: var(--space3);
+$control-padding-x: var(--space4);
+$control-border-width: 2px;
+$control-border: $control-border-width solid var(--lgrey3);
+$control-border-hover: $control-border-width solid var(--mgrey1);
+$control-border-error: $control-border-width solid var(--error);
+
+$control-bg: var(--lgrey1);
+$control-text: var(--dgrey3);
+
+$label-color: var(--dgrey3);
+$hint-color: var(--mgrey3);
+$error-color: var(--error);
+
+$focus-outline: var(--space1) solid var(--highlight);
+$focus-outline-offset: 0;
+
+$required-color: var(--uni-blue); /* blue asterisk */
+
+.zh-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space2);
+  width: 100%;
+  max-width: 100%;
+
+  /* label above input */
+  &__label {
+    font-family: fonts.$primary-font;
+    font-weight: 700;
+    color: $label-color;
+    line-height: 1.25;
+  }
+
+  &__required {
+    margin-left: var(--space1);
+    color: $required-color;
+    font-weight: 700;
+  }
+
+  &__hint {
+    margin: 0;
+    font-family: fonts.$primary-font;
+    font-weight: 400;
+    color: $hint-color;
+    font-size: 0.875rem;
+    line-height: 1.25;
+  }
+
+  &__error {
+    margin: 0;
+    font-family: fonts.$primary-font;
+    font-weight: 700;
+    color: $error-color;
+    font-size: 0.875rem;
+    line-height: 1.25;
+  }
+
+  &__control {
+    font-family: fonts.$primary-font;
+    color: $control-text;
+    background: $control-bg;
+
+    border: $control-border;
+    border-radius: 0;
+    padding: $control-padding-y $control-padding-x;
+
+    width: 100%;
+    max-width: 100%;
+
+    /* match form height */
+    min-height: 44px;
+    box-sizing: border-box;
+
+    &::placeholder {
+      color: var(--mgrey2);
+    }
+
+    &:hover {
+      border: $control-border-hover;
+    }
+
+    &:focus,
+    &:focus-visible {
+      outline: $focus-outline;
+      outline-offset: $focus-outline-offset;
+      border-color: var(--dgrey3);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      background: var(--lgrey2);
+      color: var(--mgrey2);
+      border-color: var(--lgrey3);
+    }
+  }
+
+  /* Error modifier affecting border & spacing */
+  &--error {
+    .zh-form-field__control {
+      border: $control-border-error;
+    }
+
+    .zh-form-field__control:focus,
+    .zh-form-field__control:focus-visible {
+      outline: $focus-outline;
+      outline-offset: $focus-outline-offset;
+      border-color: var(--error);
+    }
+  }
+}
+
+.zh-text-area {
+  .zh-form-field__control {
+    min-height: auto;
+    resize: vertical;
+    line-height: 1.5;
+  }
+}
