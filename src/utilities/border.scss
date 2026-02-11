@@ -1,4 +1,4 @@
-// Border 
+/* Border */
 .border {
     border: 1px solid currentColor;
 }
@@ -7,8 +7,7 @@
     border: none;
 }
 
-
-// Border Sides
+/* Border Sides */
 .border-top {
   border-top: 1px solid currentColor;
 }
@@ -41,8 +40,7 @@
     border-left: 0;
 }
 
-
-// Border Width
+/* Border Width */
 .border-1 {
     border-width: 1px;
 }
@@ -63,8 +61,7 @@
     border-width: 5px;
 }
 
-
-// Radius
+/* Radius */
 .rounded {
   border-radius: 0.25rem;
 }
@@ -105,8 +102,7 @@
   border-bottom-right-radius: 0.25rem;
 }
 
-
-// Shape
+/* Shape */
 .rounded-circle {
   border-radius: 50%;
 }

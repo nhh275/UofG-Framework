@@ -31,8 +31,10 @@ $grid-margin: $space6;
 
 }
 
-/* Media query helpers
-   This makes breakpoint testable */
+/* 
+Media query helpers
+This makes breakpoint testable 
+*/
 
 @media (min-width: #{map.get($breakpoints, small)}) {
     .bp-test {

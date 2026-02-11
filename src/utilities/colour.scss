@@ -2,28 +2,28 @@
 @use "sass:math";
 
 
-// Text Colour
+/* Text Colour */
 @each $name, $value in $colours {
     .text-#{$name} {
         color: var(--#{$name});
     }
 }
 
-// Background Colour
+/* Background Colour */
 @each $name, $value in $colours {
     .bg-#{$name} {
         background-color: var(--#{$name});
     }
 }
 
-// Border Colour
+/* Border Colour */
 @each $name, $value in $colours {
     .border-#{$name} {
         border-color: var(--#{$name});
     }
 }
 
-// State Colours
+/* State Colours */
 @each $name, $value in $colours {
     .hover\:bg-#{$name}:hover {
         background-color: var(--#{$name});
@@ -34,7 +34,7 @@
     }
 }
 
-// Opacity
+/* Opacity */
 @for $i from 0 through 10 {
     .opacity-#{$i * 10} {
         opacity: math.div($i, 10);

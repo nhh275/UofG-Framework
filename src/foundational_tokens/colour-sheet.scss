@@ -1,9 +1,9 @@
-// Primary Brand Colours
-$uni-blue: #003865; // University blue is a staple of the university's overall brand. This should always be treated as the primary brand colour.
-$rust: #9A3A06; // A secondary colour should complement the primary colour of a brand and be used as an accent or background colour.
+/* Primary Brand Colours */
+$uni-blue: #003865; /* University blue is a staple of the university's overall brand. This should always be treated as the primary brand colour. */
+$rust: #9A3A06; /* A secondary colour should complement the primary colour of a brand and be used as an accent or background colour. */
 
-// Tints
-// Tint colours are lighter shades of the primary and secondary colours. They should be used sparingly to create depth and variation.
+/* Tints */
+/* Tint colours are lighter shades of the primary and secondary colours. They should be used sparingly to create depth and variation. */
 $uni-blue80: #435F81; 
 $uni-blue60: #6D87A0;
 $uni-blue40: #9DAEBF;
@@ -14,8 +14,8 @@ $rust60: #BA8B6F;
 $rust40: #D1B29E;
 $rust20: #E8D9CE;
 
-// Neutral Colours
-// Vanilla colours are neutral, foundational elements you can build on for versatile user experiences across platforms.
+/* Neutral Colours */
+/* Vanilla colours are neutral, foundational elements you can build on for versatile user experiences across platforms. */
 $dgrey1: #666666; 
 $dgrey2: #4D4D4D;
 $dgrey3: #323232;
@@ -26,14 +26,14 @@ $mgrey1: #B3B3B3;
 $mgrey2: #999999;
 $mgrey3: #757575;
 
-// UI Colours
-/* UI colours should be used for alerts based on user actions such as filling a field or submitting a form. 
-// These are not brand colours, they are for communication only. */
+/* UI Colours */
+/* UI colours should be used for alerts based on user actions such as filling a field or submitting a form. */
+/* These are not brand colours, they are for communication only. */
 $error: #D4351C;
 $success: #8BC34A;
 $highlight: #FFDD00;
 
-// Colour Map
+/* Colour Map */
 $colours: (
     "uni-blue": $uni-blue,
     "rust": $rust,
@@ -101,5 +101,4 @@ $colours: (
     --error: #{$error};
     --success: #{$success};
     --highlight: #{$highlight};
-
 }

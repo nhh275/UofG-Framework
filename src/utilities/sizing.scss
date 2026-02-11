@@ -1,4 +1,4 @@
-// Width / Height Helpers
+/* Width / Height Helpers */
 .w-full {
     width: 100%;
 }
@@ -31,8 +31,7 @@
     height: 100vh;
 }
 
-
-// Min / Max Constraints
+/* Min / Max Constraints */
 .min-w-0 {
     min-width: 0;
 }
@@ -65,8 +64,7 @@
     max-height: 100vh;
 }
 
-
-// Aspect Ratio
+/* Aspect Ratio */
 .ratio-1x1 {
     aspect-ratio: 1 / 1;
 }
@@ -82,4 +80,3 @@
 .ratio-21x9 {
     aspect-ratio: 21 / 9;
 }
-

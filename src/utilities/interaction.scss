@@ -9,9 +9,6 @@ $pointer-events: (
   }
 }
 
-/*<div class="pe-none">No mouse interaction</div>
-<div class="pe-auto">Default behavior</div>*/
-
 $user-select: (
   none: none,
   text: text,
@@ -24,8 +21,6 @@ $user-select: (
     user-select: $value;
   }
 }
-
-/*<p class="us-none">Can't select this</p>*/
 
 $cursor: (
   auto: auto,
