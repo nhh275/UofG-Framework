@@ -1,4 +1,4 @@
-// Spacing Variables
+/* Spacing Variables */
 $space1: 0.25rem;
 $space2: 0.5rem;
 $space3: 0.75rem;
@@ -11,9 +11,38 @@ $space9: 3rem;
 $space10: 3.5rem;
 $space11: 4rem;
 $space12: 6rem;
+$space13: 8rem;
+$space14: 10rem;
+
+/* Space mapping */
+$space-scale: (
+  0: 0,
+  1: $space1,
+  2: $space2,
+  3: $space3,
+  4: $space4,
+  5: $space5,
+  6: $space6,
+  7: $space7,
+  8: $space8,
+  9: $space9,
+  10: $space10,
+  11: $space11,
+  12: $space12,
+  13: $space13,
+  14: $space14
+);
+
+/* Z-index (simple scale) */
+$z: (
+  0: 0,
+  1: 1,
+  10: 10,
+  100: 100,
+  1000: 1000
+);
 
 /* CSS Variables for testing */
-
 :root {
 
     --space1: #{$space1};

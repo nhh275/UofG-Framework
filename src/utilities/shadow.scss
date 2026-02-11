@@ -1,15 +1,6 @@
 /* Transition for hover and focus shadow effects */
 $shadow-transition: box-shadow 0.25s ease;
 
-/* Shadow size definitions */
-$shadows: (
-  none: none,
-  sm: 0 1px 2px rgba(0, 0, 0, 0.08),
-  md: 0 4px 6px rgba(0, 0, 0, 0.12),
-  lg: 0 10px 20px rgba(0, 0, 0, 0.15),
-  xl: 0 20px 40px rgba(0, 0, 0, 0.2)
-);
-
 /* Static shadow utility classes */
 @each $name, $value in $shadows {
   .shadow-#{$name} {

@@ -1,22 +1,5 @@
 @use "../foundational_tokens/space-sheet.scss" as *;
 
-
-$space-scale: (
-  0: 0,
-  1: $space1,
-  2: $space2,
-  3: $space3,
-  4: $space4,
-  5: $space5,
-  6: $space6,
-  7: $space7,
-  8: $space8,
-  9: $space9,
-  10: $space10,
-  11: $space11,
-  12: $space12
-);
-
 @each $k, $v in $space-scale {
   /* Margin */
   .u-m-#{$k}  { margin: $v; }
