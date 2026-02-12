@@ -8,10 +8,11 @@
 @use './foundational-tokens/space-sheet';
 @use './foundational-tokens/breakpoints';
 @use './foundational-tokens/text-sheet';
+@use './foundational-tokens/shadow-sheet.scss';
 
 /* Raw fonts css file import */
 
-@use './layout/grid';
+@use './utilities/grid.scss';
 @use './utilities/accessibility';
 @use './utilities/alignments';
 @use './utilities/border';
@@ -27,12 +28,16 @@
 
 /* Components */
 
-@use './components/radio-buttons';
-@use './components/buttons';
-@use './components/tabs';
-@use './components/dropdowns';
-@use './components/tiles';
-@use './components/download-links';
-@use './components/blockquotes';
-@use './components/text-input';
+@use './components/accordions';
 @use './components/billboards';
+@use './components/blockquotes';
+@use './components/buttons';
+@use './components/checkbox';
+@use './components/dropdowns';
+@use './components/download-links';
+@use './components/images';
+@use './components/radio-buttons';
+@use './components/tables';
+@use './components/tabs';
+@use './components/text-input';
+@use './components/tiles';
