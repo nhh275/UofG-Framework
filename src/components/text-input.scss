@@ -1,5 +1,5 @@
-@use '../foundational_tokens/space-sheet' as space;
-@use '../foundational_tokens/colour-sheet' as colour;
+@use '../foundational-tokens/space-sheet' as space;
+@use '../foundational-tokens/colour-sheet' as colour;
 @use '../reset/fonts' as fonts;
 
 $control-padding-y: var(--space3);
