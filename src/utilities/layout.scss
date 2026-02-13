@@ -1,17 +1,7 @@
 @use "../foundational-tokens/space-sheet.scss" as *;
+@use '../foundational-tokens/layout-sheet.scss' as *;
 
 /* Display */
-$displays: (
-  block: block,
-  inline: inline,
-  inline-block: inline-block,
-  flex: flex,
-  inline-flex: inline-flex,
-  grid: grid,
-  inline-grid: inline-grid,
-  none: none
-);
-
 @each $name, $value in $displays {
   .u-d-#{$name} { display: $value; }
 }
@@ -20,8 +10,6 @@ $displays: (
 .u-hidden { display: none !important; }
 
 /* Position */
-$positions: (static, relative, absolute, fixed, sticky);
-
 @each $pos in $positions {
   .u-position-#{$pos} { position: $pos; }
 }
@@ -39,8 +27,6 @@ $positions: (static, relative, absolute, fixed, sticky);
 }
 
 /* Float */
-$floats: (start: left, end: right, none: none);
-
 @each $name, $value in $floats {
   .u-float-#{$name} { float: $value; }
 }

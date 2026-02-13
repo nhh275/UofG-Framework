@@ -1,0 +1,14 @@
+$displays: (
+  block: block,
+  inline: inline,
+  inline-block: inline-block,
+  flex: flex,
+  inline-flex: inline-flex,
+  grid: grid,
+  inline-grid: inline-grid,
+  none: none
+);
+
+$positions: (static, relative, absolute, fixed, sticky);
+
+$floats: (start: left, end: right, none: none);
