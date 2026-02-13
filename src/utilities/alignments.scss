@@ -1,26 +1,10 @@
-$vertical-align: (
-  baseline: baseline,
-  top: top,
-  middle: middle,
-  bottom: bottom,
-  text-top: text-top,
-  text-bottom: text-bottom
-);
+@use '../foundational-tokens/alignment-sheet.scss' as *;
 
 @each $name, $value in $vertical-align {
   .align-#{$name} {
     vertical-align: $value;
   }
 }
-
-$content-align: (
-  start: flex-start,
-  center: center,
-  end: flex-end,
-  between: space-between,
-  around: space-around,
-  evenly: space-evenly
-);
 
 .d-flex {
   display: flex;

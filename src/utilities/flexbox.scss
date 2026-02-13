@@ -1,3 +1,5 @@
+@use '../foundational-tokens/alignment-sheet.scss' as *;
+
 .u-flex { display: flex; }
 .u-inline-flex { display: inline-flex; }
 
@@ -7,43 +9,17 @@ $flex-directions: (row, row-reverse, column, column-reverse);
   .u-flex-#{$dir} { flex-direction: $dir; }
 }
 
-/* Justify content */
-$justify: (
-  start: flex-start,
-  end: flex-end,
-  center: center,
-  between: space-between,
-  around: space-around,
-  evenly: space-evenly
-);
-
+/* Justify items */ 
 @each $name, $value in $justify {
   .u-justify-#{$name} { justify-content: $value; }
 }
 
 /* Align items */
-$align-items: (
-  start: flex-start,
-  end: flex-end,
-  center: center,
-  baseline: baseline,
-  stretch: stretch
-);
-
 @each $name, $value in $align-items {
   .u-items-#{$name} { align-items: $value; }
 }
 
 /* Align self */
-$align-self: (
-  auto: auto,
-  start: flex-start,
-  end: flex-end,
-  center: center,
-  baseline: baseline,
-  stretch: stretch
-);
-
 @each $name, $value in $align-self {
   .u-self-#{$name} { align-self: $value; }
 }
