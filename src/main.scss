@@ -8,7 +8,9 @@
 @use './foundational-tokens/space-sheet';
 @use './foundational-tokens/breakpoints';
 @use './foundational-tokens/text-sheet';
-@use './foundational-tokens/shadow-sheet.scss';
+@use './foundational-tokens/shadow-sheet';
+@use './foundational-tokens/alignment-sheet';
+@use './foundational-tokens/layout-sheet';
 
 /* Raw fonts css file import */
 
