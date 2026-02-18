@@ -1,0 +1,107 @@
+/* Checkbox wrapper */
+.zh-checkbox {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--lgrey1);
+  padding: var(--space3);
+  border-radius: 4px;
+  gap: var(--space2);
+}
+
+/* Heading above group */
+.zh-checkbox__heading {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--dgrey3);
+}
+
+/* Optional description under heading */
+.zh-checkbox__description {
+  font-size: 0.875rem;
+  color: var(--mgrey3);
+  margin: 0;
+}
+
+/* Error message above checkbox row */
+.zh-checkbox__error {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--error);
+  margin: 0;
+}
+
+/* Checkbox row: checkbox + single label inline */
+.zh-checkbox__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space2);
+}
+
+/* Checkbox input */
+.zh-checkbox__input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 2px solid var(--dgrey3);
+  background-color: var(--lgrey1);
+  position: relative;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.zh-checkbox__input:hover {
+  border-color: var(--uni-blue);
+}
+
+.zh-checkbox__input:focus {
+  outline: none;
+  border-color: var(--highlight);
+  box-shadow: 0 0 0 2px rgba(255, 221, 0, 0.4);
+}
+
+.zh-checkbox__input:checked {
+  background-color: var(--uni-blue);
+  border-color: var(--uni-blue);
+}
+
+.zh-checkbox__input:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 12px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -55%) rotate(45deg);
+  pointer-events: none;
+}
+
+/* Disabled checkbox */
+.zh-checkbox__input:disabled {
+  background-color: var(--lgrey1);
+  border-color: var(--mgrey3);
+  cursor: not-allowed;
+}
+
+.zh-checkbox__input:disabled:checked::after {
+  border-color: var(--mgrey3);
+}
+
+/* Label next to checkbox */
+.zh-checkbox-label {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--dgrey3);
+}
+
+/* Disabled label text */
+.zh-checkbox__input:disabled + .zh-checkbox-label {
+  color: #505a5f;
+}
+
+/*# sourceMappingURL=checkbox.css.map */

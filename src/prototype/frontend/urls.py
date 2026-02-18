@@ -1,0 +1,31 @@
+from django.urls import path
+from . import views  # import views from this app
+
+urlpatterns = [
+    path('', views.home, name='home'),
+    path('alignment/', views.alignment, name='alignment'),
+    path('colourUtilities/', views.colourUtilities, name='colourUtilities'),
+    path('flexBoxUtilities/', views.flexBoxUtilities, name='flexBoxUtilities'),
+    path('interactions/', views.interactions, name='interactions'),
+    path('layoutUtilities/', views.layoutUtilities, name='layoutUtilities'),
+    path('sizingUtilities/', views.sizingUtilities, name='sizingUtilities'),
+    path('spacingUtilities/', views.spacingUtilities, name='spacingUtilities'),
+    path('typographyUtilities/', views.typographyUtilities, name='typographyUtilities'),
+    path('visibilityUtilities/', views.visibilityUtilities, name='visibilityUtilities'),
+    path('accessibility/', views.visibilityUtilities, name='accessibility'),
+    path('borderUtilities/', views.borderUtilities, name='borderUtilities'),
+    path('shadowUtilities/', views.shadowUtilities, name='shadowUtilities'),
+    path('tabs/', views.tabs, name='tabs'),
+    path('dropdown/', views.dropdown, name='dropdown'),
+    path('buttons/', views.buttons, name='buttons'),
+    path('tiles/', views.tiles, name='tiles'),
+    path('accordions/', views.accordions, name='accordions'),
+    path('block-quotes/', views.block_quotes, name='block_quotes'),
+    path('download-links/', views.download_links, name='download_links'),
+    path('images/', views.images, name='images'),
+    path('radio-buttons/', views.radio_buttons, name='radio_buttons'),
+    path('tables/', views.tables, name='tables'),
+    path('text-blocks/', views.text_blocks, name='text_blocks'),
+    path('checkbox/', views.checkbox, name='checkbox'),
+    path('text-input/', views.text_input, name='text_input'),
+]

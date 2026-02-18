@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="{% static 'index.css' %}">
+</head>
+<body>
+    <main class="container">
+        <header>
+            <h1>CSS Utilities and Components</h1>
+            <p>University of Glasgow toolkit for layout, alignment, and styling</p>
+        </header>
+
+        <nav class="menu">
+            <a href="{% url 'accessibility' %}">Accessibility</a>
+            <a href="{% url 'alignment' %}">Alignment</a>
+            <a href="{% url 'borderUtilities' %}">Border</a>
+            <a href="{% url 'colourUtilities' %}">Colour</a>
+            <a href="{% url 'flexBoxUtilities' %}">FlexBox</a>
+            <a href="{% url 'interactions' %}">Interactions</a>
+            <a href="{% url 'layoutUtilities' %}">Layout</a>
+            <a href="{% url 'shadowUtilities' %}">Shadow</a>
+            <a href="{% url 'sizingUtilities' %}">Sizing</a>
+            <a href="{% url 'spacingUtilities' %}">Spacing</a>
+            <a href="{% url 'typographyUtilities' %}">Typography</a>
+            <a href="{% url 'visibilityUtilities' %}">Visibility</a>
+            <a href="{% url 'tabs' %}">Tabs</a>
+            <a href="{% url 'dropdown' %}">Dropdown</a>
+            <a href="{% url 'buttons' %}">Buttons</a>
+            <a href="{% url 'tiles' %}">Tiles</a>
+            <a href="{% url 'accordions' %}">Accordions</a>
+            <a href="{% url 'block_quotes' %}">Blockquotes</a>
+            <a href="{% url 'download_links' %}">Download Links</a>
+            <a href="{% url 'images' %}">Images</a>
+            <a href="{% url 'radio_buttons' %}">Radio Buttons</a>
+            <a href="{% url 'tables' %}">Tables</a>
+            <a href="{% url 'text_blocks' %}">Text Blocks</a>
+            <a href="{% url 'checkbox' %}">Checkbox</a>
+            <a href="{% url 'text_input' %}">Text Input</a>
+        </nav>
+    </main>
+</body>
+</html>
