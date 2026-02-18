@@ -36,21 +36,21 @@
 }
 
 /* Numeric alignment for numbers in tables */
-.table .zh-table-cell-num,
-.table .zh-table-col-num {
+.zh-table .zh-table-cell-num,
+.zh-table .zh-table-col-num {
     text-align: right;
     font-variant-numeric: tabular-nums;
 }
 
 /* Footer styles */
 .zh-table .table-footer {
-    border-top: 1px solid var(--dgray3);
+    border-top: 1px solid var(--dgrey3);
     font-weight: 600;
     color: var(--dgray3);
 }
 
 .zh-table .table-footer .table-cell {
     border-bottom: 0;
-    border-top: 2px solid var(--dgray3);
+    border-top: 2px solid var(--dgrey3);
     text-align: right;
 }
