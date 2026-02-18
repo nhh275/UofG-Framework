@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Text input + textarea test</title>
 
-  <link rel="stylesheet" href="../../distribution/main.css" />
+    <link rel="stylesheet" href="{% static 'styleUtilities.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+
 
   <style>
     body { padding: 2rem; }

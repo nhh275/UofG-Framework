@@ -76,5 +76,4 @@ def checkbox(request):
     return render(request, 'checkbox.html')
 
 def text_input(request):
-    return render(request, 'text-input.html')
-    
+    return render(request, 'text-input.html')   

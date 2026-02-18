@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,10 +6,8 @@
   <title>Checkbox Component Demo</title>
 
   <!-- Compiled design system -->
-  <link rel="stylesheet" href="../../distribution/main.css" />
-
-  <!-- Checkbox specific styles -->
-  <link rel="stylesheet" href="./checkbox.css" />
+    <link rel="stylesheet" href="{% static 'styleUtilities.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
 
   <style>
     body {

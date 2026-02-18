@@ -8,8 +8,8 @@
 
     <title>Table Component Test Page</title>
 
-    <link rel="stylesheet" href="{% static 'tables.css' %}">
     <link rel="stylesheet" href="{% static 'styleUtilities.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
 
     <style>
         body {
@@ -52,12 +52,12 @@
 
 <div class="demo-section">
 
-    <table class="zh-table">
+    <table class="table">
         <thead>
             <tr class="table-row">
                 <th class="table-col">Name</th>
                 <th class="table-col">Course</th>
-                <th class="table-col table-col-num">Credits</th>
+                <th class="table-col table-col-num">City</th>
             </tr>
         </thead>
 
@@ -65,26 +65,19 @@
             <tr class="table-row">
                 <td class="table-cell">Alice Smith</td>
                 <td class="table-cell">Computer Science</td>
-                <td class="table-cell zh-table-cell-num">20</td>
+                <td class="table-cell">New York</td>
             </tr>
             <tr class="table-row">
                 <td class="table-cell">Bob Johnson</td>
                 <td class="table-cell">Software Engineering</td>
-                <td class="table-cell zh-table-cell-num">25</td>
+                <td class="table-cell">San Francisco</td>
             </tr>
             <tr class="table-row">
                 <td class="table-cell">Carol Williams</td>
                 <td class="table-cell">Data Science</td>
-                <td class="table-cell zh-table-cell-num">15</td>
+                <td class="table-cell">Chicago</td>
             </tr>
         </tbody>
-
-        <tfoot class="table-footer">
-            <tr class="table-row">
-                <td class="table-cell" colspan="2">Total Credits</td>
-                <td class="table-cell zh-table-cell-num">60</td>
-            </tr>
-        </tfoot>
     </table>
 
 </div>
@@ -100,34 +93,30 @@
         <thead>
             <tr class="table-row">
                 <th class="table-col">Student</th>
-                <th class="table-col">Course</th>
-                <th class="table-col table-col-num">Credits</th>
-                <th class="table-col table-col-num">Grade</th>
+                <th class="table-col zh-table-col-num">Credits</th>
+                <th class="table-col zh-table-col-num">Grade</th>
             </tr>
         </thead>
 
         <tbody>
             <tr class="table-row">
                 <td class="table-cell">David Lee</td>
-                <td class="table-cell">AI & ML</td>
                 <td class="table-cell zh-table-cell-num">30</td>
                 <td class="table-cell zh-table-cell-num">85</td>
             </tr>
             <tr class="table-row">
                 <td class="table-cell">Emma Brown</td>
-                <td class="table-cell">Cyber Security</td>
                 <td class="table-cell zh-table-cell-num">20</td>
                 <td class="table-cell zh-table-cell-num">90</td>
             </tr>
+            <tr class="table-footer">
+                <td class="table-cell">Totals</td>
+                <td class="table-cell">50</td>
+                <td class="table-cell">175</td>
+            </tr>
         </tbody>
 
-        <tfoot class="table-footer">
-            <tr class="table-row">
-                <td class="table-cell" colspan="2">Totals</td>
-                <td class="table-cell zh-table-cell-num">50</td>
-                <td class="table-cell zh-table-cell-num">175</td>
-            </tr>
-        </tfoot>
+
     </table>
 
 </div>

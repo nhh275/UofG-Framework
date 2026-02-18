@@ -1,176 +1,72 @@
 {% load static %}
 <!doctype html>
-
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="utf-8" />
+  <title>Download link test</title>
 
-    <title>Download Link Component Test Page</title>
-
-    <link rel="stylesheet" href="{% static 'download-links.css' %}">
     <link rel="stylesheet" href="{% static 'styleUtilities.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-        }
+    <link rel="stylesheet" href="{% static 'main.css' %}">
 
-        h2 {
-            margin-top: 50px;
-        }
 
-        .demo-section {
-            border: 2px dashed #ccc;
-            padding: 25px;
-            border-radius: 12px;
-            margin-top: 20px;
-            background: #fafafa;
-        }
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+    }
 
-        code {
-            background: #eee;
-            padding: 2px 6px;
-            border-radius: 6px;
-        }
-    </style>
+    .download-list {
+      display: grid;
+      gap: 1.25rem;
+      max-width: 1100px;
+    }
+  </style>
 </head>
 
 <body>
 
-<h1>Download Link Component Demonstration</h1>
+  <h1>Download link test</h1>
+  <p>Hover with mouse and press TAB to test focus.</p>
 
+  <div class="download-list">
+    <a class="zh-download-link" href="#" download>
+      <span class="zh-download-link__bar"></span>
 
-<!-- BASIC DOWNLOAD -->
-<h2>Basic Download Link</h2>
+      <span class="zh-download-link__content">
+        <span class="zh-download-link__title">Document title</span>
+        <span class="zh-download-link__meta">
+          <span>PDF</span>
+          <span class="zh-download-link__sep">|</span>
+          <span>545K</span>
+        </span>
+      </span>
 
-<div class="demo-section">
-
-    <a href="#" class="zh-download-link">
-
-        <span class="zh-download-link__bar"></span>
-
-        <div class="zh-download-link__content">
-
-            <span class="zh-download-link__title">
-                Course Handbook 2026
-            </span>
-
-            <span class="zh-download-link__meta">
-                <span>PDF</span>
-                <span>•</span>
-                <span>1.2 MB</span>
-            </span>
-
-        </div>
-
-        <div class="zh-download-link__right">
-            <span class="zh-download-link__icon">⬇</span>
-        </div>
-
+      <span class="zh-download-link__right">
+        <span class="zh-download-link__icon">⬇</span>
+      </span>
     </a>
 
-</div>
+    <a class="zh-download-link" href="#" download>
+      <span class="zh-download-link__bar"></span>
 
+      <span class="zh-download-link__content">
+        <span class="zh-download-link__title">
+          Really long document title wow long coursework type shit
+        </span>
+        <span class="zh-download-link__meta">
+          <span>DOCX</span>
+          <span class="zh-download-link__sep">|</span>
+          <span>1.2MB</span>
+        </span>
+      </span>
 
-
-<!-- LONG TITLE TEST -->
-<h2>Long Title Truncation</h2>
-
-<div class="demo-section">
-
-    <a href="#" class="zh-download-link">
-
-        <span class="zh-download-link__bar"></span>
-
-        <div class="zh-download-link__content">
-
-            <span class="zh-download-link__title">
-                Extremely Long File Name Demonstrating Ellipsis Truncation Behaviour For Accessibility Testing
-            </span>
-
-            <span class="zh-download-link__meta">
-                <span>DOCX</span>
-                <span>•</span>
-                <span>840 KB</span>
-            </span>
-
-        </div>
-
-        <div class="zh-download-link__right">
-            <span class="zh-download-link__icon">⬇</span>
-        </div>
-
+      <span class="zh-download-link__right">
+        <span class="zh-download-link__icon">⬇</span>
+      </span>
     </a>
-
-</div>
-
-
-
-<!-- MULTIPLE DOWNLOAD LINKS -->
-<h2>Stacked Download Links</h2>
-
-<div class="demo-section">
-
-    <a href="#" class="zh-download-link">
-        <span class="zh-download-link__bar"></span>
-
-        <div class="zh-download-link__content">
-            <span class="zh-download-link__title">Lecture Slides Week 1</span>
-            <span class="zh-download-link__meta">
-                <span>PPT</span>
-                <span>•</span>
-                <span>3.4 MB</span>
-            </span>
-        </div>
-
-        <div class="zh-download-link__right">
-            <span class="zh-download-link__icon">⬇</span>
-        </div>
-    </a>
-
-
-    <a href="#" class="zh-download-link" style="margin-top:10px;">
-        <span class="zh-download-link__bar"></span>
-
-        <div class="zh-download-link__content">
-            <span class="zh-download-link__title">Assignment Brief</span>
-            <span class="zh-download-link__meta">
-                <span>PDF</span>
-                <span>•</span>
-                <span>550 KB</span>
-            </span>
-        </div>
-
-        <div class="zh-download-link__right">
-            <span class="zh-download-link__icon">⬇</span>
-        </div>
-    </a>
-
-
-    <a href="#" class="zh-download-link" style="margin-top:10px;">
-        <span class="zh-download-link__bar"></span>
-
-        <div class="zh-download-link__content">
-            <span class="zh-download-link__title">Dataset Resources</span>
-            <span class="zh-download-link__meta">
-                <span>ZIP</span>
-                <span>•</span>
-                <span>18 MB</span>
-            </span>
-        </div>
-
-        <div class="zh-download-link__right">
-            <span class="zh-download-link__icon">⬇</span>
-        </div>
-    </a>
-
-</div>
-
-
-<hr>
-<a href="/">Back to Home</a>
+  </div>
 
 </body>
 </html>
