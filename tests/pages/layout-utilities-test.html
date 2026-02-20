@@ -219,7 +219,11 @@
     <h2> Display Utilities </h2>
 
     <h3><code> .d-block </code> vs <code> .d-inline </code> vs <code> .d-inline-block </code></h3>
-
+    <p>
+        Demonstrates how different display values affect layout flow.
+        Inline elements sit on the same line, inline-block respects width/height, and block
+        elements take the full row.
+    </p>
     <div class="demo">
 
         <span class="block d-inline"> inline </span>
@@ -230,7 +234,7 @@
     </div>
 
     <h3><code> .d-flex </code></h3>
-
+    <p>Turns the container into a flex-box, laying children out along a flexible main axis</p>
     <div class="demo d-flex items" style="gap:10px;">
 
         <div> Flex 1 </div>
@@ -240,7 +244,7 @@
     </div>
 
     <h3><code> .d-grid </code></h3>
-
+    <p>Truns the container into a CSS grid, positioning children into defined grid columns and rows</p>
     <div class="demo d-grid items" style="grid-template-columns: repeat(3, 1fr); gap:10px;">
 
         <div> Grid 1 </div>
@@ -253,7 +257,7 @@
     </div>
 
     <h3><code> .d-none </code> / <code> .hidden </code></h3>
-
+    <p>Completely removes the element from layout and rendering</p>
     <div class="demo">
 
         <div class="block"> Visible block </div>
@@ -268,7 +272,7 @@
     <h2> Position Utilities </h2>
 
     <h3><code> .position-relative </code> + absolute child </h3>
-
+    <p>Establishes a positioning context so absolutely positioned children are offset relative to this container</p>
     <div class="pos-wrap position-relative">
 
         <div class="pos-elem position-absolute top-2 left-2">
@@ -279,7 +283,7 @@
     </div>
 
     <h3><code> .position-absolute </code> + right/bottom offsets </h3>
-
+    <p>Positions the element relative to the nearest positioned ancestor using bottom and right offsets</p>
     <div class="pos-wrap position-relative">
 
         <div class="pos-elem position-absolute bottom-3 right-3">
@@ -292,8 +296,12 @@
 
     <h3><code> .position-fixed </code></h3>
 
-    <p> This box should stick to the bottom-right of the page. </p>
-
+    <p> 
+        Fixes the element relative to the viewport;
+        it stays in place when the page scrolls
+        This box should stick to the bottom-right of the page. 
+    </p>
+    
     <div class="pos-elem position-fixed bottom-2 right-2" style="width: 200px;">
 
         <strong> Fixed </strong><br />
@@ -303,7 +311,7 @@
     </div>
 
     <h3><code> .position-sticky </code></h3>
-
+    <p>Behaves like relative positioning until a scroll threshhold is reached, then sticks to the defined edge</p>
     <p> Scroll inside the panel. The header should stick at the top. </p>
 
     <div class="sticky-demo">
@@ -319,3 +327,101 @@
             Scroll content… <br /><br />
 
             Keep scrolling to test sticky positioning.
+        </div>
+    </div>
+
+    <!-- LOGICAL OFFSET TEST -->
+
+    <h2>3) Logical Offsets (start/end)</h2>
+
+    <p>These use <code>inset-inline-start</code> and <code>inset-inline-end</code>.</p>
+    
+    <h3>Left-to-right layouts (default: ltr)</h3>
+    <p>Uses logical start/end offsets that map to left/right in left-toright layouts</p>
+    <div class="pos-wrap u-position-relative">
+
+        <div class="pos-elem u-position-absolute u-start-2 u-top-2">
+            <code>.u-start-2</code>
+        </div>
+
+        <div class="pos-elem u-position-absolute u-end-2 u-top-2">
+            <code>.u-end-2</code>
+        </div>
+
+    </div>
+    
+    <h3>Right-to-left layouts (direction: rtl)</h3>
+    <p>Demonstates how logical offsets automatically adapt to right-to-left layouts without changing classes</p>
+    <div class="pos-wrap u-position-relative" dir="rtl">
+
+        <div class="pos-elem u-position-absolute u-start-2 u-top-2">
+            <code>.u-start-2</code>
+        </div>
+
+        <div class="pos-elem u-position-absolute u-end-2 u-top-2">
+            <code>.u-end-2</code>
+        </div>
+
+    </div>
+    
+    <!-- FLOAT -->
+
+    <h2>4) Float Utilities</h2>
+    
+    <h3><code>.u-float-start</code> / <code>.u-float-end</code></h3>
+    <p>Floats elements to the logical start or end, allowing surrounding text to wrap around them</p>
+    <div class="demo clearfix">
+
+        <div class="float-box u-float-start">
+            <code>.u-float-start</code>
+        </div>
+    
+        <div class="float-box u-float-end">
+            <code>.u-float-end</code>
+        </div>
+    
+        <p>
+            This text should wrap around floated boxes. This is a float demo — modern
+            layouts usually use flex/grid, but floats are still sometimes useful.
+        </p>
+    </div>
+    
+    <h3><code>.u-float-none</code></h3>
+    <p>Cancels any float behaviour so the element participates in normal document flow</p>
+    <div class="demo clearfix">
+
+        <div class="float-box u-float-start u-float-none">
+            <code>.u-float-none</code> (should not float)
+        </div>
+
+        <p>This should appear below / not wrap around it like a float.</p>
+
+    </div>
+    
+    <!-- Z-INDEX -->
+
+    <h2>5) Z-index Utilities</h2>
+
+    <p>
+        Controls stacking order of positioned elements; higher values appear above lower ones
+        These only work on positioned elements (relative/absolute/fixed etc).
+    </p>
+    
+    <div class="z-stack">
+
+        <div class="layer u-z-0">
+            Layer 1<br><code>.u-z-0</code>
+        </div>
+
+        <div class="layer two u-z-10">
+            Layer 2<br><code>.u-z-10</code>
+        </div>
+
+        <div class="layer three u-z-100">
+            Layer 3<br><code>.u-z-100</code>
+        </div>
+
+    </div>
+</body>
+    
+</html>
