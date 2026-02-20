@@ -97,25 +97,38 @@
 <body>
 
     <h1> Width / Height / Aspect-Ratio Utility Test </h1>
-
+    <p>
+        Important Informatiom to help confusion reguarding visual tests
+        <br>
+        Percentage-based width and height utilities (*-full) resolve against the parent's
+        content box, not its padding or border.
+    </p>
     <!-- WIDTH TESTS -->
 
     <h2> Width utilities </h2>
-
     <div class="container">
-
+        <p>Sets width: 100%, causing the element to fill the parents contents width</p>
         <div class="label"><code> .w-full </code></div>
         <div class="box w-full"> w-full (should fill container width) </div>
-
+        <p>
+            Uses the browser default width behaviour; the element sizes based on 
+            its content and layout context
+        </p>
         <div class="label"><code> .w-auto </code></div>
         <div class="box w-auto"> w-auto (default) </div>
-
+        <p>
+            Sets width: fit-content, shrinking the element to fit its 
+            contents without unnecessary extra space
+        </p>
         <div class="label"><code> .w-fit </code></div>
         <div class="box w-fit"> w-fit (fit-content) </div>
-
+        <p>
+            Sets width:min-content, reducing the element to the smallest width 
+            its content can occupy (may cause wrapping)
+        </p>
         <div class="label"><code> .w-min </code></div>
         <div class="box w-min"> w-min (min-content) </div>
-
+        <p>Sets width: max-content, allowing the element to grow as wide as its content requires</p>
         <div class="label"><code> .w-max </code></div>
         <div class="box w-max"> w-max (max-content) </div>
         
@@ -124,12 +137,12 @@
     <!-- MIN/MAX WIDTH TESTS -->
 
     <h2> min/max width </h2>
-
+    
     <div class="container">
-
+        <p>Sets min-width: 100%, ensuring the element is at least as wide as its parent</p>
         <div class="label"><code> .min-w-full </code></div>
         <div class="box min-w-full"> min-w-full (forces full width) </div>
-
+        <p>Sets max-width: 100%, preventing the element from exceding the parents width</p>
         <div class="label"><code> .max-w-full </code></div>
         <div class="box w-max max-w-full">
 
@@ -137,7 +150,7 @@
             width)
 
         </div>
-
+        <p>Allows the element to shrink below its content's intrinsic width</p>
         <div class="label"><code> .min-w-0 </code> (useful in flex) </div>
         <div class="demo" style="display:flex; gap:10px;">
 
@@ -157,19 +170,18 @@
     <!-- HEIGHT TESTS -->
 
     <h2> Height utilities </h2>
-
+    <p>Sets height: 100%, filling the parents content height</p>
+    <div class="label"><code> .h-full </code></div>
+    
     <div class="tall-container">
 
-        <div class="label"><code> .h-full </code></div>
         <div class="box h-full">
-
-            h-full (should fill height of this 200px container)
-
+            h-full (should fill height the parents content area, not padding, border and visible box.)
         </div>
 
     </div>
 
-
+    <p>Uses natural height based on the elements content</p>
     <div class="tall-container">
 
         <div class="label"><code> .h-auto </code></div>
@@ -184,7 +196,7 @@
     </div>
 
     <h2> Screen height utilities </h2>
-
+    <p>Sets height: 100vh, making the element exactly the height of the viewport</p>
     <div class="demo h-screen" style="border:3px solid #333;">
 
         <strong> .h-screen </strong> (this should be 100vh tall)
@@ -194,18 +206,26 @@
     <!-- MIN/MAX HEIGHT TESTS -->
 
     <h2> min/max height </h2>
+    <p>
+        Sets min-height: 100%, ensuring the element is at least as tall 
+        as its parent's content height, but able to grow taller if needed
+
+    </p>
+    <div class="label"><code> .min-h-full </code></div>
 
     <div class="tall-container">
 
-        <div class="label"><code> .min-h-full </code></div>
         <div class="box min-h-full">
 
-            min-h-full (should at least fill container height)
+            min-h-full (should at least fill parents content area, not padding, border and visible box.)
 
         </div>
 
     </div>
-
+    <p>
+        Sets max-height: 100%, preventing the element from becoming taller 
+        than its parent's content height. Overflow behaviour handled seperatly (e.g. scrolling)
+    </p>
     <div class="demo" style="max-height: 120px; overflow:auto;">
 
         <div class="box max-h-full">
@@ -222,7 +242,7 @@
         </div>
 
     </div>
-
+    <p>Sets max-height: 100vh, ensuring the element is at least the height of the viewport</p>
     <div class="demo min-h-screen">
 
         <strong> .min-h-screen </strong> (should be at least 100vh height)
@@ -236,12 +256,13 @@
     <p> These elements only need a width (height is calculated automatically). </p>
 
     <div class="demo" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
-
+        
         <div>
 
             <div class="box ratio-1x1" style="width: 200px;">
 
                 <code> .ratio-1x1 </code>
+                <br>Forces 1:1 aspect ratio (Square)
 
             </div>
 
@@ -252,7 +273,7 @@
             <div class="box ratio-4x3" style="width: 200px;">
 
                 <code> .ratio-4x3 </code>
-
+                <br>Forces 4:3 aspect ratio (Classic photo/Media ratio)
             </div>
 
         </div>
@@ -262,7 +283,7 @@
             <div class="box ratio-16x9" style="width: 260px;">
 
                 <code> .ratio-16x9 </code>
-
+                <br>Forces 16:9 aspect ratio (Widescreen video)
             </div>
 
         </div>
@@ -272,7 +293,7 @@
             <div class="box ratio-21x9" style="width: 260px;">
 
                 <code>.ratio-21x9</code>
-
+                <br>Forces 21:9 aspect ratio (Ultrawide/Cinematic)
             </div>
 
         </div>
