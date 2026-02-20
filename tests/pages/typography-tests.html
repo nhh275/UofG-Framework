@@ -90,19 +90,19 @@
     <h2> Breakpoint test helpers </h2>
     
     <div class="panel">
-
+        <p>Tablet breakpoint</p>
         <p class="bp-test">
 
             <strong> .bp-test </strong> turns <span class="bp-test"> red </span> at <code> min-width: 768px </code>.
 
         </p>
-
+        <p>Desktop breakpoint</p>
         <p class="bp-test-md">
 
             <strong> .bp-test-md </strong> turns <span class="bp-test-md"> blue </span> at <code> min-width: 1024px </code>.
 
         </p>
-
+        <p>Large desktop breakpoint</p>
         <p class="bp-test-lg">
 
             <strong> .bp-test-lg </strong> turns <span class="bp-test-lg"> green </span> at <code> min-width: 1400px </code>.
@@ -122,14 +122,17 @@
     <h2> Text alignment </h2>
 
     <div class="panel">
-
+        <p>Aligns text to the start edge (left in LTR, right RTL)</p>
         <div class="box text-start"><code> .text-start </code> This text should align start. </div>
+        <p>Centres text horizontally</p>
         <div class="box text-center"><code> .text-center </code> This text should be centered. </div>
+        <p>Aligns text to the end edge (right in LTR, left in RTL)</p>
         <div class="box text-end"><code> .text-end </code> This text should align end. </div>
+        <p>Spreads text to align both left and right edges by adjusting word spacing</p>
         <div class="box text-justify"><code> .text-justify </code> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </div>
 
         <div class="rule"></div>
-
+        <p>Demostrates alignment changing at breakpoints: start → centre → end → justify as the viewpoint gets wider </p>
         <p>
 
             Responsive align demo (resize window):
@@ -158,7 +161,7 @@
     <h2> Wrap / nowrap / break / truncate </h2>
 
     <div class="panel">
-
+        <p>Allows text to wrap onto multiple lines (normal wrapping behaviour)</p>
         <div class="box narrow text-wrap">
 
             <code> .text-wrap </code><br>
@@ -166,15 +169,15 @@
             ThisIsAReallyReallyReallyLongWordThatShouldWrapNormallyIfAllowed (depends on browser rules)
 
         </div>
-
+        <p>Prevents wrapping; text stays on one line and will overflow</p>
         <div class="box narrow text-nowrap">
-
+            
             <code> .text-nowrap </code><br>
 
             This is a long sentence that should stay on ONE line and overflow the box.
         
         </div>
-
+        <p>Forces long words/string to break to avoid overflow</p>
         <div class="box narrow text-break">
 
             <code> .text-break </code><br>
@@ -182,7 +185,10 @@
             ThisIsAReallyReallyReallyLongWordThatShouldBreakInTheMiddleToAvoidOverflow
         
         </div>
-
+        <p>
+            Turncates overflow text and shows an slipsis 
+            (typically requires overflow: hidden and white-space: nowrap)
+        </p>
         <div class="box narrow text-truncate-ellipsis">
 
             <code>.text-truncate-ellipsis</code> This line is too long so it should truncate with an ellipsis at the end.
@@ -196,17 +202,19 @@
     <h2> Text decoration </h2>
 
     <div class="panel">
-
+        <p>Removes text decoration</p>
         <p class="box text-decoration-none"><code> .text-decoration-none </code> No decoration </p>
+        <p>Underlines text</p>
         <p class="box text-decoration-underline"><code> .text-decoration-underline </code> Underline </p>
+        <p>Applies a line through text</p>
         <p class="box text-decoration-line-through"><code> .text-decoration-line-through </code> Line-through </p>
-
+        <p>Makes underline style dashed (used with underline)</p>
         <p class="box text-decoration-underline text-decoration-dashed">
 
             <code> .text-decoration-underline </code> + <code> .text-decoration-dashed </code>
         
         </p>
-
+        <p>Makes underline style dotted (used with underline)</p>
         <p class="box text-decoration-underline text-decoration-dotted">
 
             <code> .text-decoration-underline </code> + <code> .text-decoration-dotted </code>
@@ -220,9 +228,11 @@
     <h2> Text transform </h2>
 
     <div class="panel">
-
+        <p>Transforms text to uppercase</p>
         <p class="box text-uppercase"><code> .text-uppercase</code> This should be uppercase </p>
+        <p>Transforms text to lowercase</p>
         <p class="box text-lowercase"><code> .text-lowercase</code> THIS SHOULD BE LOWERCASE </p>
+        <p>Capitalizes the first letter of each word</p>
         <p class="box text-capitalize"><code> .text-capitalize</code> this should be capitalized word by word </p>
 
     </div>
@@ -232,7 +242,7 @@
     <h2> Font size </h2>
 
     <div class="panel">
-
+        <p>For each: Applies the font-size steps on a predefined scale (usually 1 = largest, 6 = smallest)</p>
         <p class="box fs-1"><code> .fs-1 </code> Size 1 </p>
         <p class="box fs-2"><code> .fs-2 </code> Size 2 </p>
         <p class="box fs-3"><code> .fs-3 </code> Size 3 </p>
@@ -243,7 +253,7 @@
         <div class="rule"></div>
 
         <p class="box fs-extra-small-6 fs-small-5 fs-medium-4 fs-large-3 fs-extra-large-2">
-
+            <p>Demostrates font size changing at breakpoints</p>
             <strong> Responsive font-size (resize window): </strong><br>
 
             <code> fs-extra-small-6 </code> → <code> fs-small-5 </code> → <code> fs-medium-4 </code> → <code> fs-large-3 </code>
@@ -258,11 +268,15 @@
     <h2> Weight + italic </h2>
 
     <div class="panel">
-
+        <p>Uses a lighter font weight</p>
         <p class="box text-lighter"><code> .text-lighter </code> Lighter weight </p>
+        <p>Uses the default/regualr weight</p>
         <p class="box text-normal"><code> .text-normal </code> Normal weight </p>
+        <p>Uses a bold weight</p>
         <p class="box text-bold"><code> .text-bold </code> Bold weight </p>
+        <p>Uses a heavier bold weight (relative "bolder")</p>
         <p class="box text-bolder"><code> .text-bolder </code> Bolder weight </p>
+        <p>Applies italic styling</p>
         <p class="box text-italic"><code> .text-italic </code> Italic style </p>
 
     </div>
@@ -272,6 +286,51 @@
     <h2> Line height </h2>
 
     <div class="panel">
-
+        <p>Tight line height (often 1)</p>
         <p class="box lh-1"><code> .lh-1 </code><br> Line 1 <br> Line 2 <br> Line 3 </p>
-        <p class="box lh-sm"><code> .lh-sm </code><br> Line 1 <b
+        <p>Small/tighter than base</p>
+        <p class="box lh-sm"><code> .lh-sm </code><br> Line 1 <br>Line 2<br>Line 3</p>
+        <p>Default line height</p>
+        <p class="box lh-base"><code>.lh-base</code><br>Line 1<br>Line 2<br>Line 3</p>
+        <p>Larger/more readable spacing</p>
+        <p class="box lh-lg"><code>.lh-lg</code><br>Line 1<br>Line 2<br>Line 3</p>
+        <p>Extra large spacing</p>
+        <p class="box lh-xl"><code>.lh-xl</code><br>Line 1<br>Line 2<br>Line 3</p>
+        
+        <div class="rule"></div>
+        
+        <p class="box lh-extra-small-1 lh-small-base lh-medium-lg lh-large-xl">
+            <p>Demostrates line-height increasing at breakpoints for readablility on larger screens</p>
+            <strong>Responsive line-height (resize window):</strong><br>
+            <code>lh-extra-small-1</code> → <code>lh-small-base</code> → <code>lh-medium-lg</code> →
+            <code>lh-large-xl</code><br>
+            Line 1<br>Line 2<br>Line 3
+        </p>
+        </div>
+        
+        <!-- TRACKING -->
+        <h2>9) Letter spacing (tracking)</h2>
+        <div class="panel">
+            <p>Slightly reduced letter spacing</p>
+            <p class="box tracking-tight"><code>.tracking-tight</code> Tracking tight</p>
+            <p>Default letter spacing</p>
+            <p class="box tracking-normal"><code>.tracking-normal</code> Tracking normal</p>
+            <p>Increased letter spacing</p>
+            <p class="box tracking-wide"><code>.tracking-wide</code> Tracking wide</p>
+            <p>More spacing than wide</p>
+            <p class="box tracking-wider"><code>.tracking-wider</code> Tracking wider</p>
+            <p>Maximum spacing in this scale</p>
+            <p class="box tracking-widest"><code>.tracking-widest</code> Tracking widest</p>
+        
+            <div class="rule"></div>
+            <p>Demostrates letter spacing changing at breakpoint (normal → wide → wider → widest) </p>
+            <p class="box tracking-extra-small-normal tracking-small-wide tracking-medium-wider tracking-large-widest">
+                <strong>Responsive tracking (resize window):</strong><br>
+                <code>tracking-extra-small-normal</code> → <code>tracking-small-wide</code> → <code>tracking-medium-wider</code>
+                → <code>tracking-large-widest</code>
+            </p>
+        </div>
+        
+</body>
+        
+</html>
