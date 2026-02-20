@@ -70,6 +70,19 @@
 
         }
 
+        /* Demo-only overrides for my-auto example*/
+
+        .frame.my-auto-demo .chip {
+
+            margin-bottom: 0;
+            margin-right: 0;
+        }
+
+        .frame.my-auto-demo {
+
+            gap: 10px;
+        }
+
         .fixed-width {
 
             width: 320px;
@@ -93,14 +106,14 @@
 
 <body>
 
-    <h1> Margin / Padding Utility Test </h1>
+    <h1> Spacing Utility Tests </h1>
 
     <!-- PADDING -->
 
     <h2> Padding utilities (.p-*, .px-*, .py-*) </h2>
 
     <h3><code> .p-4 </code> (padding all sides) </h3>
-
+    <p>Adds padding on all four sides (space inside the border around the content)</p>
     <div class="frame">
 
         <div class="content p-4">
@@ -112,7 +125,7 @@
     </div>
 
     <h3><code> .px-6 </code> (left + right only) </h3>
-
+    <p>Adds padding on the left and right only (horizontal padding)</p>
     <div class="frame">
 
         <div class="content px-6">
@@ -124,7 +137,7 @@
     </div>
 
     <h3><code> .py-6 </code> (top + bottom only) </h3>
-
+    <p>Adds padding on top and bottom only (vertical padding)</p>
     <div class="frame">
 
         <div class="content py-6">
@@ -136,13 +149,13 @@
     </div>
 
     <h3> Side-specific padding: <code> .pt-6 </code> / <code> .pr-6 </code> / <code> .pb-6 </code> / <code> .pl-6 </code></h3>
-
+    <p>Adds padding on one side only: top/right/bottom/left</p>
     <div class="frame">
 
         <div class="content pt-6"> Top padding only ( <code> .pt-6 </code>)</div>
         <div class="content pr-6" style="margin-top:10px;"> Right padding only ( <code> .pr-6 </code> ) </div>
-        <div class="content pb-6" style="margin-top:10px;"> Bottom padding only ( <code> .pb-6 </code> ) </div>
         <div class="content pl-6" style="margin-top:10px;"> Left padding only ( <code> .pl-6 </code> ) </div>
+        <div class="content pb-6" style="margin-top:10px;"> Bottom padding only ( <code> .pb-6 </code> ) </div>
 
     </div>
 
@@ -151,7 +164,7 @@
     <h2> Margin utilities (.m-*, .mx-*, .my-*) </h2>
 
     <h3><code> .m-4 </code> (margin all sides) </h3>
-
+    <p>Adds margin on all four side (space outside the element)</p>
     <div class="frame">
 
         <div class="content m-4">
@@ -163,7 +176,7 @@
     </div>
 
     <h3><code> .mx-6 </code> (left + right only) </h3>
-
+    <p>Adds margin on left and right only (horizontal outside space)</p>
     <div class="frame">
 
         <div class="content mx-6">
@@ -175,7 +188,7 @@
     </div>
 
     <h3><code> .my-6 </code> (top + bottom only) </h3>
-
+    <p>Adds margin on top and bottom only (vertical outside space)</p>
     <div class="frame">
 
         <div class="content my-6">
@@ -187,14 +200,14 @@
     </div>
 
     <h3> Side-specific margin: <code> .mt-6 </code> / <code> .mr-6 </code> / <code> .mb-6 </code> / <code> .ml-6 </code></h3>
-
+    <p>Adds margin on side only: top/right/bottom/left</p>
     <div class="frame">
 
         <div class="content mt-6"> Top margin only ( <code> .mt-6 </code> ) </div>
         <div class="content mr-6" style="margin-top:10px;"> Right margin only ( <code> .mr-6 </code> ) </div>
-        <div class="content mb-6" style="margin-top:10px;"> Bottom margin only ( <code> .mb-6 </code> ) </div>
         <div class="content ml-6" style="margin-top:10px;"> Left margin only ( <code> .ml-6 </code> ) </div>
-
+        <div class="content mb-6" style="margin-top:10px;"> Bottom margin only ( <code> .mb-6 </code> ) </div>
+        
     </div>
 
     <!-- RESET TO 0 -->
@@ -202,7 +215,7 @@
     <h2> Reset tests (0 utilities) </h2>
 
     <p> This shows that <code> .m-0 </code> / <code> .p-0 </code> remove spacing. </p>
-
+    <p>Resets margin/padding to 0, overriding any spacing added earlier</p>
     <div class="frame">
 
         <div class="content p-6 m-6">
@@ -224,7 +237,10 @@
     <h2> Auto spacing (centering helpers) </h2>
 
     <h3><code> .mx-auto </code> (centers a fixed-width element) </h3>
-
+    <p>
+        Centres a fixed-width element by setting left and right 
+        margins to auto (requires available horizontal space)
+    </p>
     <div class="frame">
 
         <div class="content fixed-width mx-auto p-4">
@@ -236,7 +252,10 @@
     </div>
 
     <h3><code> .ml-auto </code> (push item to the right in flex) </h3>
-
+    <p>
+        In a flex row, pushes the item to the end by taking up remaining 
+        space on left (creates a "spacer" before the item)
+    </p>
     <div class="frame" style="display:flex; gap:10px; align-items:center;">
 
         <div class="chip"> Left </div>
@@ -246,8 +265,14 @@
     </div>
 
     <h3><code> .my-auto </code> (vertical centering in a fixed-height flex container) </h3>
+    <p>
+        In a fixed-height flex column, vertically centres the item by setting margin-top:auto
+        and margin-bottom:auto (it absorbs leftover space above and below that item)
 
-    <div class="frame" style="height: 180px; display:flex; flex-direction:column;">
+        Extra: Centres the element by absorbing available vertical space
+        (auto top and bottom margins) Not equal gap between top and bottom
+    </p>
+    <div class="frame my-auto-demo" style="height: 180px; display:flex; flex-direction:column;">
 
         <div class="chip"> Top </div>
         <div class="chip my-auto"> Centered vertically (my-auto) </div>
