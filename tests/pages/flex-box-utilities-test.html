@@ -39,8 +39,9 @@
 
             border: 2px dashed #999;
             padding: 10px;
-            margin-top: 10px;
-            height: 140px;
+            margin: 10px 0 26px;
+            min-height: 140px;
+            height: auto;
             /* makes align-items visible */
             gap: 10px;
             background: #fafafa;
@@ -99,7 +100,7 @@
 
 
     <h3><code> .flex .flex-row </code></h3>
-
+    <p>Lays items left to right on the main axis</p>
     <div class="demo flex flex-row">
 
         <div class="item"> 1 </div>
@@ -109,7 +110,7 @@
     </div>
 
     <h3><code> .flex .flex-row-reverse </code></h3>
-
+    <p>Lays items right to left on the main axis in reversed order</p>
     <div class="demo flex flex-row-reverse">
 
         <div class="item"> 1 </div>
@@ -119,7 +120,7 @@
     </div>
 
     <h3><code> .flex .flex-column </code></h3>
-
+    <p>Stacks items top to bottom</p>
     <div class="demo flex flex-column">
 
         <div class="item"> 1 </div>
@@ -129,7 +130,7 @@
     </div>
 
     <h3><code> .flex .flex-column-reverse </code></h3>
-
+    <p>Stacks items bottom to top in reversed order</p>
     <div class="demo flex flex-column-reverse">
 
         <div class="item"> 1 </div>
@@ -143,7 +144,7 @@
     <h2> justify-content </h2>
 
     <h3><code> .justify-start </code></h3>
-    
+    <p>Packs items to the start</p>
     <div class="demo flex justify-start items-center">
 
         <div class="item"> A </div>
@@ -153,7 +154,7 @@
     </div>
 
     <h3><code> .justify-center </code></h3>
-
+    <p>Centres items</p>
     <div class="demo flex justify-center items-center">
 
         <div class="item"> A </div>
@@ -163,7 +164,7 @@
     </div>
 
     <h3><code> .justify-end </code></h3>
-
+    <p>Packs items to the end</p>
     <div class="demo flex justify-end items-center">
 
         <div class="item"> A </div>
@@ -173,17 +174,17 @@
     </div>
 
     <h3><code> .justify-between </code></h3>
-
+    <p>First at start, last at end, even space between</p>
     <div class="demo flex justify-between items-center">
 
-        <div class="item"> A </div>
-        <div class="item"> B </div>
-        <div class="item"> C </div>
+        <div class="item"> First </div>
+        <div class="item"> Middle </div>
+        <div class="item"> Last </div>
 
     </div>
 
     <h3><code> .justify-around </code></h3>
-
+    <p>Equal space around items</p>
     <div class="demo flex justify-around items-center">
 
         <div class="item"> A </div>
@@ -193,7 +194,7 @@
     </div>
 
     <h3><code> .justify-evenly </code></h3>
-
+    <p>Equal space between all items and edges</p>
     <div class="demo flex justify-evenly items-center">
 
         <div class="item"> A </div>
@@ -207,7 +208,7 @@
     <h2> align-items </h2>
 
     <h3><code> .items-start </code></h3>
-    
+    <p>Align to cross-axis start</p>
     <div class="demo flex justify-between items-start">
 
         <div class="item"> 1 </div>
@@ -217,7 +218,7 @@
     </div>
 
     <h3><code> .items-center </code></h3>
-
+    <p>Centre on cross-axis</p>
     <div class="demo flex justify-between items-center">
 
         <div class="item"> 1 </div>
@@ -227,7 +228,7 @@
     </div>
 
     <h3><code> .items-end </code></h3>
-
+    <p>Align to cross-axis end</p>
     <div class="demo flex justify-between items-end">
 
         <div class="item"> 1 </div>
@@ -237,7 +238,7 @@
     </div>
 
     <h3><code> .items-stretch </code></h3>
-
+    <p>Strech items to fill cross-axis (if they don't have fixed size)</p>
     <div class="demo flex justify-between items-stretch">
 
         <div class="item"> 1 </div>
@@ -265,7 +266,7 @@
     <h2> flex-wrap </h2>
 
     <h3><code> .flex-wrap </code></h3>
-
+    <p>Items wrap onto new lines when space runs out</p>
     <div class="demo wrap-demo flex flex-wrap justify-start items-start">
 
         <div class="item wide"> Item 1 </div>
@@ -277,7 +278,7 @@
     </div>
 
     <h3><code> .flex-nowrap </code></h3>
-
+    <p>Items stay on one line</p>
     <div class="demo wrap-demo flex flex-nowrap justify-start items-start" style="overflow:auto;">
 
         <div class="item wide"> Item 1 </div>
@@ -293,7 +294,7 @@
     <h2> grow / shrink </h2>
 
     <p> Resize your browser to see shrink behaviour. </p>
-
+    <p>Controls how extra space is distributed (Higher = grows more)</p>
     <h3><code> .grow-1 </code> vs <code> .grow-3 </code></h3>
 
     <div class="demo flex justify-start items-stretch">
@@ -305,7 +306,7 @@
     </div>
 
     <h3><code> .shrink-0 </code> (won’t shrink) </h3>
-
+    <p>Prevents an item from shrinking when space is tight</p>
     <div class="demo flex justify-start items-center" style="width: 320px; overflow:auto;">
 
         <div class="item wide shrink-0"> shrink 0 </div>
@@ -319,7 +320,7 @@
     <h2> inline-flex </h2>
 
     <p> These should only take as much width as needed. </p>
-
+    <p>Like flex, but the container sizes to its content (doesn't automatically fill the row)</p>
     <div class="inline-flex justify-center items-center" style="border:2px solid #333; padding: 10px; gap: 10px;">
 
         <div class="item"> Inline </div>
