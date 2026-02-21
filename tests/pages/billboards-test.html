@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Billboard – Component Test</title>
+
+    <link rel="stylesheet" href="../../distribution/main.css" />
+
+    <style>
+        /* Test-page helpers only */
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 24px;
+            background: #fff;
+            color: #111;
+            line-height: 1.5;
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            gap: 18px;
+        }
+
+        header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+        }
+
+        h1 {
+            margin: 0 0 6px;
+            font-size: 20px;
+        }
+
+        p {
+            margin: 0;
+            color: #555;
+            max-width: 90ch;
+        }
+
+        .note {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #555;
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            align-items: start;
+        }
+
+        @media (min-width: 960px) {
+            .grid2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            border: 1px dashed #bbb;
+            border-radius: 12px;
+            padding: 14px;
+            background: #fff;
+            display: grid;
+            gap: 10px;
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .kbd {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+            font-size: 12px;
+        }
+
+        /* Make the demo image always available without external assets */
+        .demoImg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Constrain billboard visuals in test page */
+        .demoPad {
+            padding: 8px;
+        }
+
+        /* If tokens don’t include these, provide safe fallbacks */
+        :root {
+            --space14: var(--space12, 6rem);
+            --space: var(--space2, 0.5rem);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1>Billboard – Component test</h1>
+            <p>
+                This page tests billboard variants: <span class="kbd">--image</span> (normal + reverse),
+                <span class="kbd">--text</span>, and themes <span class="kbd">--light</span>/<span
+                    class="kbd">--dark</span>.
+                Resize the viewport to cross <span class="kbd">768px</span> to verify grid layout changes.
+            </p>
+            <div class="note">
+                <strong>What to check:</strong><br>
+                • At <span class="kbd">&lt; 768px</span>, the layout stacks in one column (media then content).<br>
+                • At <span class="kbd">≥ 768px</span>, <span class="kbd">billboard--image</span> becomes two columns,
+                and
+                <span class="kbd">billboard--reverse</span> swaps content/media order.<br>
+                • <span class="kbd">billboard--image</span> content should have a top divider line (pseudo-element) and
+                padding-top.<br>
+                • <span class="kbd">billboard__content</span> maxes at ~60ch and doesn’t overflow.<br>
+                • Link and button styles (inline-flex, gap, border) render correctly across themes.
+            </div>
+        </header>
+
+        <div class="grid2">
+            <!-- IMAGE billboard (default order) -->
+            <section class="card">
+                <h2>Image billboard (default)</h2>
+                <p>
+                    Tests the standard billboard--image variant: media + content layout, padding, divider line on content, title/summary
+                    typography, and link/button styling.
+                </p>
+                <div class="billboard billboard--image">
+                    <div class="billboard__media">
+                        <img class="demoImg" alt="Demo image"
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='700'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23CED7DF'/%3E%3Cstop offset='1' stop-color='%239DAEBF'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1200' height='700' fill='url(%23g)'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='48' fill='%23323232'%3EImage 1200x700%3C/text%3E%3C/svg%3E" />
+                    </div>
+
+                    <div class="billboard__content">
+                        <p class="billboard__kicker">Kicker text</p>
+                        <h3 class="billboard__title">Billboard title tests clamp sizing across viewport width</h3>
+                        <p class="billboard__summary">
+                            Summary text should remain readable with line-height 1.6 and not exceed 60ch. This paragraph
+                            is long enough to
+                            wrap on smaller viewports and should demonstrate reflow without overflow.
+                        </p>
+
+                        <a class="billboard__link" href="#" onclick="return false;">
+                            Read more <span aria-hidden="true">→</span>
+                        </a>
+
+                        <a class="billboard__button" href="#" onclick="return false;">Primary action</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- IMAGE billboard (reverse) -->
+            <section class="card">
+                <h2>Image billboard (reverse at ≥ 768px)</h2>
+                <p>
+                    Tests billboard--reverse behavior: verifies column order swaps at tablet+ while remaining stacked correctly on small
+                    screens.
+                </p>
+                <div class="billboard billboard--image billboard--reverse">
+                    <div class="billboard__media">
+                        <img class="demoImg" alt="Demo image"
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='700'%3E%3Cdefs%3E%3ClinearGradient id='g2' x1='1' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23E8D9CE'/%3E%3Cstop offset='1' stop-color='%23D1B29E'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1200' height='700' fill='url(%23g2)'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='48' fill='%23323232'%3EReverse%3C/text%3E%3C/svg%3E" />
+                    </div>
+
+                    <div class="billboard__content">
+                        <p class="billboard__kicker">Kicker text</p>
+                        <h3 class="billboard__title">Reverse layout should swap columns on tablet+</h3>
+                        <p class="billboard__summary">
+                            At ≥ 768px, content should appear on the left and media on the right due to
+                            grid-template-areas override.
+                        </p>
+                        <a class="billboard__link" href="#" onclick="return false;">
+                            Secondary link <span aria-hidden="true">→</span>
+                        </a>
+                        <a class="billboard__button" href="#" onclick="return false;">Action</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="grid2">
+            <!-- TEXT billboard (default) -->
+            <section class="card">
+                <h2>Text billboard</h2>
+                <p>
+                    Tests billboard--text variant (no media): verifies content + aside layout and the responsive switch to a two-column grid
+                    at ≥768px (typically 2fr/1fr).
+                </p>
+                <div class="billboard billboard--text">
+                    <div class="billboard__content">
+                        <p class="billboard__kicker">Kicker</p>
+                        <h3 class="billboard__title">Text billboard layout</h3>
+                        <p class="billboard__summary">
+                            This version should have no media. At ≥ 768px it should become a two-column grid (2fr /
+                            1fr).
+                        </p>
+                        <a class="billboard__link" href="#" onclick="return false;">
+                            Learn more <span aria-hidden="true">→</span>
+                        </a>
+                        <a class="billboard__button" href="#" onclick="return false;">Do something</a>
+                    </div>
+
+                    <aside class="billboard__aside">
+                        <div class="note" style="margin:0;">
+                            <strong>Aside slot</strong><br>
+                            Use this area to test extra content: badges, secondary actions, download links, etc.
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- LIGHT theme -->
+            <section class="card">
+                <h2>Theme: light</h2>
+                <p>
+                    Tests billboard--light theme tokens: verifies background, text contrast, and theme-specific colors for
+                    title/link/button.
+                </p>
+                <div class="billboard billboard--image billboard--light">
+                    <div class="billboard__media">
+                        <img class="demoImg" alt="Demo image"
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='700'%3E%3Crect width='1200' height='700' fill='%23E6EBF0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='48' fill='%23003865'%3ELight theme%3C/text%3E%3C/svg%3E" />
+                    </div>
+
+                    <div class="billboard__content">
+                        <p class="billboard__kicker">Kicker</p>
+                        <h3 class="billboard__title">Light theme should use uni-blue for title/link</h3>
+                        <p class="billboard__summary">
+                            Check background is uni-blue10 and text/link/button colors match the theme rules.
+                        </p>
+                        <a class="billboard__link" href="#" onclick="return false;">Link <span
+                                aria-hidden="true">→</span></a>
+                        <a class="billboard__button" href="#" onclick="return false;">Button</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="grid2">
+            <!-- DARK theme -->
+            <section class="card">
+                <h2>Theme: dark</h2>
+                <p>
+                    Tests billboard--dark theme tokens: verifies dark background styling and accessible contrast for text, links, and button
+                    borders.
+                </p>
+                <div class="billboard billboard--image billboard--dark">
+                    <div class="billboard__media">
+                        <img class="demoImg" alt="Demo image"
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='700'%3E%3Crect width='1200' height='700' fill='%23003865'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='48' fill='%23E6EBF0'%3EDark theme%3C/text%3E%3C/svg%3E" />
+                    </div>
+
+                    <div class="billboard__content">
+                        <p class="billboard__kicker">Kicker</p>
+                        <h3 class="billboard__title">Dark theme title</h3>
+                        <p class="billboard__summary">
+                            Check text uses uni-blue10/lgrey1 contrast and that the button border matches uni-blue10.
+                        </p>
+                        <a class="billboard__link" href="#" onclick="return false;">Link <span
+                                aria-hidden="true">→</span></a>
+                        <a class="billboard__button" href="#" onclick="return false;">Button</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Overflow / long content edge cases -->
+            <section class="card">
+                <h2>Edge cases: long content + overflow</h2>
+                <p>
+                    Stress test for wrapping and overflow in the image variant: validates that normal long text wraps correctly and does not
+                    break the grid; also documents expected behavior for unbroken tokens.
+                </p>
+                <div class="note" style="margin:0;">
+                    <strong>Expected behavior:</strong><br>
+                    • Long <em>sentences</em> should wrap naturally and stay within the content column (this validates <span
+                        class="kbd">min-width: 0</span> on grid items).<br>
+                    • A single long <em>unbroken token</em> (no spaces) may overflow because the component does not apply <span
+                        class="kbd">overflow-wrap</span>/<span class="kbd">word-break</span>. This is a known limitation, not a test
+                    failure.
+                </div>
+            
+                <div style="height:12px;"></div>
+            
+                <div class="billboard billboard--image">
+                    <div class="billboard__media">
+                        <img class="demoImg" alt="Demo image"
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='700'%3E%3Crect width='1200' height='700' fill='%23CCCCCC'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='48' fill='%23323232'%3ELong content%3C/text%3E%3C/svg%3E" />
+                    </div>
+            
+                    <div class="billboard__content">
+                        <p class="billboard__kicker">
+                            Long kicker with spaces should wrap within the column and remain readable across breakpoints.
+                        </p>
+            
+                        <h3 class="billboard__title">
+                            Extremely long title with spaces should wrap normally, keep clamp sizing, and not blow out the layout.
+                        </h3>
+            
+                        <p class="billboard__summary">
+                            This sentence is intentionally long and uses spaces so it should wrap naturally. Confirm the content
+                            stays inside the
+                            billboard content column and that the media column remains stable at ≥ 768px.
+                        </p>
+            
+                        <p class="billboard__summary">
+                            <strong>Known limitation check:</strong> unbroken tokens may overflow:
+                            <span
+                                class="kbd">Looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong</span>
+                        </p>
+            
+                        <a class="billboard__link" href="#" onclick="return false;">Link <span aria-hidden="true">→</span></a>
+                        <a class="billboard__button" href="#" onclick="return false;">Button</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <script>
+        // Allow harness to read metrics during a resize demo
+        window.__HARNESS_METRICS__ = () => ({
+            viewport: window.innerWidth,
+            note: "Resize past 768px to test billboard--image grid switch + reverse areas."
+        });
+    </script>
+</body>
+
+</html>
