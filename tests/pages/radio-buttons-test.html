@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Radio – Component Test</title>
+
+    <link rel="stylesheet" href="../../distribution/main.css" />
+
+    <style>
+        /* Test-page helpers only */
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 24px;
+            background: #fff;
+            color: #111;
+            line-height: 1.5;
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            gap: 18px;
+        }
+
+        header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+        }
+
+        h1 {
+            margin: 0 0 6px;
+            font-size: 20px;
+        }
+
+        p {
+            margin: 0;
+            color: #555;
+            max-width: 90ch;
+        }
+
+        .note {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #555;
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            align-items: start;
+        }
+
+        @media (min-width: 960px) {
+            .grid2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            border: 1px dashed #bbb;
+            border-radius: 12px;
+            padding: 14px;
+            background: #fff;
+            display: grid;
+            gap: 12px;
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .kbd {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+            font-size: 12px;
+        }
+
+        /* Token fallbacks if opened standalone without full token set */
+        :root {
+            --space2: 0.5rem;
+            --space3: 0.75rem;
+            --space4: 1rem;
+            --lgrey1: #F5F5F5;
+            --lgrey2: #E6E6E6;
+            --lgrey3: #CCCCCC;
+            --dgrey3: #323232;
+            --dgrey1: #666666;
+            --uni-blue: #003865;
+            --highlight: #FFDD00;
+            --error: #D4351C;
+        }
+
+        /* Make the whole option clickable in a reliable way:
+       wrap input + visuals inside a <label class="radio-option">. */
+        label.radio-option {
+            padding: 10px 12px;
+            border: 1px solid transparent;
+        }
+
+        /* A subtle hover to help the tester find the click target (test-only) */
+        label.radio-option:hover {
+            border-color: #e0e0e0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1>Radio – Component test</h1>
+            <p>
+                This page tests the <span class="kbd">.radio</span> group layout, option styling,
+                checked state dot (<span class="kbd">:checked + .radio-control::after</span>),
+                focus-visible ring color (<span class="kbd">:focus-visible + .radio-control</span>),
+                disabled styling (via <span class="kbd">:has(input:disabled)</span>), and error visibility
+                (<span class="kbd">.radio-error-visible</span>).
+            </p>
+            <div class="note">
+                <strong>How to test:</strong><br>
+                • Click each option: only one should be checked per group.<br>
+                • Use <span class="kbd">Tab</span> to focus the radio (not the label). Expected: border becomes <span
+                    class="kbd">--highlight</span> on focus-visible.<br>
+                • Disabled option: cursor not-allowed, muted text, muted ring and dot.<br>
+                • Error group: add/remove <span class="kbd">radio-error-visible</span> class to show/hide the error
+                message.
+            </div>
+        </header>
+
+        <div class="grid2">
+            <!-- Normal radios -->
+            <section class="card">
+                <h2>Default group</h2>
+
+                <div class="radio-title">Choose a study mode</div><br>
+                <div class="radio-hint">This hint should use <span class="kbd">--dgrey1</span> and size <span
+                        class="kbd">--space3</span>.</div>
+
+                <div class="radio" role="radiogroup" aria-label="Study mode">
+                    <label class="radio-option">
+                        <input type="radio" name="mode" value="campus" checked />
+                        <span class="radio-control" aria-hidden="true"></span>
+                        <span class="radio-label">On campus</span>
+                    </label>
+
+                    <label class="radio-option">
+                        <input type="radio" name="mode" value="online" />
+                        <span class="radio-control" aria-hidden="true"></span>
+                        <span class="radio-label">Online</span>
+                    </label>
+
+                    <label class="radio-option">
+                        <input type="radio" name="mode" value="hybrid" />
+                        <span class="radio-control" aria-hidden="true"></span>
+                        <span class="radio-label">Hybrid (long label wrapping test) — this label is intentionally longer
+                            to see how the option grows while keeping the ring aligned.</span>
+                    </label>
+                </div>
+
+                <div class="note" style="margin:0;">
+                    Expected: the container shrink-wraps to the widest option (<span class="kbd">inline-grid</span> +
+                    <span class="kbd">max-content</span>).
+                </div>
+            </section>
+
+            <!-- Disabled + focus test -->
+            <section class="card">
+                <h2>Disabled + focus-visible</h2>
+
+                <div class="radio-title">Choose a campus</div><br>
+                <div class="radio-hint">Tab into the radios to test focus-visible highlight.</div>
+
+                <div class="radio" role="radiogroup" aria-label="Campus">
+                    <label class="radio-option">
+                        <input type="radio" name="campus" value="gilmorehill" />
+                        <span class="radio-control" aria-hidden="true"></span>
+                        <span class="radio-label">Gilmorehill</span>
+                    </label>
+
+                    <label class="radio-option">
+                        <input type="radio" name="campus" value="garscube" />
+                        <span class="radio-control" aria-hidden="true"></span>
+                        <span class="radio-label">Garscube</span>
+                    </label>
+
+                    <label class="radio-option">
+                        <input type="radio" name="campus" value="disabled" disabled />
+                        <span class="radio-control" aria-hidden="true"></span>
+                        <span class="radio-label">Disabled option</span>
+                    </label>
+
+                    <label class="radio-option">
+                        <input type="radio" name="campus" value="disabled-checked" disabled checked />
+                        <span class="radio-control" aria-hidden="true"></span>
+                        <span class="radio-label">Disabled (checked)</span>
+                    </label>
+                </div>
+
+                <div class="note" style="margin:0;">
+                    Expected: disabled styles are applied via <span class="kbd">:has(input:disabled)</span>.
+                    (If you test in an older browser without <span class="kbd">:has</span>, disabled styling may not
+                    apply—useful to note.)
+                </div>
+            </section>
+        </div>
+
+        <!-- Error visibility -->
+        <section class="card">
+            <h2>Error message visibility</h2>
+
+            <div class="radio-title">Choose a delivery method</div><br>
+            <div class="radio-hint">This group demonstrates <span class="kbd">.radio-error-visible</span>.</div>
+
+            <p class="radio-error" id="delivery-error">Error: please select a delivery method</p>
+
+            <div class="radio radio-error-visible" id="delivery-group" role="radiogroup">
+                <p class="radio-error">Error: please select a delivery method</p>
+            
+                <label class="radio-option">
+                    <input type="radio" name="delivery" value="standard" />
+                    <span class="radio-control"></span>
+                    <span class="radio-label">Standard delivery</span>
+                </label>
+            
+                <label class="radio-option">
+                    <input type="radio" name="delivery" value="express" />
+                    <span class="radio-control"></span>
+                    <span class="radio-label">Express delivery</span>
+                </label>
+            </div>
+
+            <div class="note" style="margin:0;">
+                Expected: <span class="kbd">.radio-error</span> is hidden by default and becomes visible when
+                the group has <span class="kbd">radio-error-visible</span>.
+            </div>
+        </section>
+    </div>
+
+    <script>
+        /* Expose metrics for harness */
+        window.__HARNESS_METRICS__ = () => ({
+            viewport: window.innerWidth,
+            note: "Tab to radios to test :focus-visible border color; click labels to test checked dot."
+        });
+    </script>
+
+   
+
+    <script>
+         /* Script to clear error selection */
+        const radioGroup = document.getElementById("delivery-group");
+        const radios = radioGroup.querySelectorAll('input[type="radio"]');
+
+        radios.forEach((radio) => {
+            radio.addEventListener("change", () => {
+                radioGroup.classList.remove("radio-error-visible");
+            });
+        });
+    </script>
+</body>
+
+</html>
