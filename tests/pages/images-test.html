@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Images – Component Test</title>
+
+    <link rel="stylesheet" href="../../distribution/main.css" />
+
+    <style>
+        /* Test-page helpers only */
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 24px;
+            background: #fff;
+            color: #111;
+            line-height: 1.5;
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            gap: 18px;
+        }
+
+        header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+        }
+
+        h1 {
+            margin: 0 0 6px;
+            font-size: 20px;
+        }
+
+        p {
+            margin: 0;
+            color: #555;
+            max-width: 90ch;
+        }
+
+        .note {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #555;
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            align-items: start;
+        }
+
+        @media (min-width: 960px) {
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            border: 1px dashed #bbb;
+            border-radius: 12px;
+            padding: 14px;
+            background: #fff;
+            display: grid;
+            gap: 12px;
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* Test helper: constrain figure width so aspect-ratio is easy to see */
+        .frame {
+            max-width: 520px;
+        }
+
+        /* Fallbacks if tokens not loaded */
+        :root {
+            --dgrey3: #323232;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1>Images – Component test</h1>
+            <p>
+                This page tests <code>.image</code>, <code>.image__img</code> (block, 100% width/height, object-fit:
+                cover),
+                <code>.image__caption</code>, and aspect-ratio modifiers: <code>.image-16x9</code>,
+                <code>.image-1x1</code>,
+                <code>.image-2x3</code>, <code>.image-5x3</code>.
+            </p>
+            <div class="note">
+                <strong>What to check:</strong><br>
+                • Each image container maintains its aspect ratio while the image fills it using
+                <code>object-fit: cover</code>.<br>
+                • Image should crop (not stretch) when the container ratio differs from the source image.<br>
+                • Caption spacing and color match the component rules.<br>
+                • The figure should never exceed its container width (<code>max-width: 100%</code>).
+            </div>
+        </header>
+
+        <div class="grid">
+            <!-- 16x9 -->
+            <section class="card">
+                <h2>16×9 (image-16x9)</h2>
+                <p>
+                    Aspect-ratio test for a 16:9 container using a source image with a different ratio to confirm cropping (not stretching).
+                </p>
+                <figure class="image image-16x9 frame">
+                    <img class="image__img" alt="Demo landscape"
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23CED7DF'/%3E%3Cstop offset='1' stop-color='%239DAEBF'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1200' height='800' fill='url(%23g)'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='48' fill='%23323232'%3ESource 1200x800%3C/text%3E%3C/svg%3E" />
+                    <figcaption class="image__caption">
+                        Expected: 16×9 container crops the 3:2-ish source using <code>object-fit: cover</code>.
+                    </figcaption>
+                </figure>
+            </section>
+
+            <!-- 1x1 -->
+            <section class="card">
+                <h2>1×1 (image-1x1)</h2>
+                <p>
+                    Square crop test to verify that a wide source image is cropped into a 1:1 container without distortion.
+                </p>
+                <figure class="image image-1x1 frame">
+                    <img class="image__img" alt="Demo square crop"
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1400' height='700'%3E%3Crect width='1400' height='700' fill='%23E6EBF0'/%3E%3Crect x='80' y='80' width='1240' height='540' fill='%239DAEBF'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='48' fill='%23003865'%3ESource 1400x700%3C/text%3E%3C/svg%3E" />
+                    <figcaption class="image__caption">
+                        Expected: square container crops the wide source. No stretching.
+                    </figcaption>
+                </figure>
+            </section>
+
+            <!-- 2x3 -->
+            <section class="card">
+                <h2>2×3 (image-2x3)</h2>
+                <p>
+                    Portrait ratio test to confirm tall containers behave correctly and the image still fills/crops properly.
+                </p>
+                <figure class="image image-2x3 frame">
+                    <img class="image__img" alt="Demo portrait crop"
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='1200'%3E%3Cdefs%3E%3ClinearGradient id='g2' x1='1' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23E8D9CE'/%3E%3Cstop offset='1' stop-color='%23D1B29E'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='900' height='1200' fill='url(%23g2)'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='48' fill='%23323232'%3ESource 900x1200%3C/text%3E%3C/svg%3E" />
+                    <figcaption class="image__caption">
+                        Expected: portrait ratio should be maintained; image fills container fully.
+                    </figcaption>
+                </figure>
+            </section>
+
+            <!-- 5x3 -->
+            <section class="card">
+                <h2>5×3 (image-5x3)</h2>
+                <p>
+                    Wide ratio test using a square source to confirm the component crops a square image into a wider container and preserves
+                    caption styling.
+                </p>
+                <figure class="image image-5x3 frame">
+                    <img class="image__img" alt="Demo 5 by 3 crop"
+                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='1200'%3E%3Crect width='1200' height='1200' fill='%23F5F5F5'/%3E%3Ccircle cx='600' cy='600' r='420' fill='%23CCCCCC'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='48' fill='%234D4D4D'%3ESource 1200x1200%3C/text%3E%3C/svg%3E" />
+                    <figcaption class="image__caption">
+                        Expected: 5×3 container crops the square image; caption is 0.875rem and uses
+                        <code>--dgrey3</code>.
+                    </figcaption>
+                </figure>
+            </section>
+        </div>
+
+        <section class="card">
+            <h2>Responsive width check</h2>
+            <p>
+                Layout constraint test ensuring the component never exceeds its container width and scales down cleanly on smaller
+                viewports.
+            </p>
+            <div class="note" style="margin:0;">
+                Resize the viewport narrower: each <code>.image</code> should remain within the container
+                (<code>max-width: 100%</code>).
+                The image should always fill its box (<code>width:100%; height:100%</code>) and crop via
+                <code>object-fit: cover</code>.
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Expose metrics for harness
+        window.__HARNESS_METRICS__ = () => ({
+            viewport: window.innerWidth,
+            note: "Resize to verify aspect-ratio containers and object-fit cropping."
+        });
+    </script>
+</body>
+
+</html>
