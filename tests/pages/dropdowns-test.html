@@ -26,6 +26,14 @@
             gap: 18px;
         }
 
+        .dropdown__control{
+            display: inline-block;
+            width: fit-content;
+        }
+        .dropdown__select{
+            width: 100%;
+        }
+
         header {
             border-bottom: 1px solid #eee;
             padding-bottom: 12px;
@@ -238,7 +246,7 @@
     </div>
 
     <script>
-        // Expose metrics for harness
+        /* Expose metrics for harness */
         window.__HARNESS_METRICS__ = () => ({
             viewport: window.innerWidth,
             note: "Hover/focus/active to test dropdown states. Resize to see min-width:max-content behavior."
