@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Text Blocks – Component Test</title>
+
+    <link rel="stylesheet" href="../../distribution/main.css" />
+
+    <style>
+        /* Test-page helpers only */
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 24px;
+            background: #fff;
+            color: #111;
+            line-height: 1.5;
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            gap: 24px;
+        }
+
+        header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+        }
+
+        h1 {
+            margin: 0 0 6px;
+            font-size: 20px;
+        }
+
+        p {
+            margin: 0;
+            color: #555;
+            max-width: 90ch;
+        }
+
+        .note {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #555;
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+
+        .card {
+            border: 1px dashed #bbb;
+            border-radius: 12px;
+            padding: 16px;
+            background: #fff;
+            display: grid;
+            gap: 14px;
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .kbd {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+            font-size: 12px;
+        }
+
+        /* Token fallbacks if opened standalone */
+        :root {
+            --space3: 0.75rem;
+            --space4: 1rem;
+            --space10: 3.5rem;
+            --dgrey3: #323232;
+            --uni-blue: #003865;
+            --highlight: #FFDD00;
+            --space-3: 0.75rem;
+        }
+
+        /* Test helper: show width boundary */
+        .ruler {
+            border: 1px dashed #e5e5e5;
+            border-radius: 12px;
+            padding: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1>Text Blocks – Component test</h1>
+            <p>
+                This page tests <span class="kbd">.zh-text-block</span> grid layout, border/padding, heading styles,
+                content spacing (<span class="kbd">> * + *</span>), responsive single-column mode (≤768px),
+                image sizing, and link focus outline.
+            </p>
+            <div class="note">
+                <strong>How to test:</strong><br>
+                • Desktop: two-column grid (heading column min 180px/max 320px) with column gap <span
+                    class="kbd">--space10</span>.<br>
+                • Mobile (≤768px): switches to one column with row gap <span class="kbd">--space-3</span>.<br>
+                • Content spacing: each block element after the first gets top margin <span
+                    class="kbd">--space3</span>.<br>
+                • Links: underline + blue, and show focus outline on Tab.
+            </div>
+        </header>
+
+        <section class="card">
+            <h2>Default text block (mixed content)</h2>
+            <p>
+                Baseline component test using mixed content (paragraphs, list, image, link) to confirm layout, spacing rules, and
+                typography apply consistently.
+            </p>
+            <div class="ruler">
+                <div class="zh-text-block">
+                    <h3 class="zh-text-block__heading">Heading column</h3>
+
+                    <div class="zh-text-block__content">
+                        <p>
+                            This is the first paragraph. Content line-height is set to <span class="kbd">1</span>,
+                            so it should look tighter than normal body text.
+                        </p>
+
+                        <p>
+                            This is a second paragraph to validate the selector
+                            <span class="kbd">.zh-text-block__content &gt; * + *</span> adds top margin.
+                            Here’s a <a href="#" onclick="return false;">link</a> to test link colour/underline and
+                            focus styles.
+                        </p>
+
+                        <ul>
+                            <li>List item one</li>
+                            <li>List item two</li>
+                            <li>List item three</li>
+                        </ul>
+
+                        <img alt="Demo image"
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect width='1200' height='600' fill='%23CCCCCC'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='42' fill='%23323232'%3EResponsive image%3C/text%3E%3C/svg%3E" />
+
+                        <p>
+                            Image should be <span class="kbd">display:block</span>, <span
+                                class="kbd">max-width:100%</span>,
+                            and have <span class="kbd">margin-bottom: --space3</span>.
+                        </p>
+
+                        <p>
+                            Final paragraph to confirm spacing continues to apply correctly.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="note" style="margin:0;">
+                Expected: top border across full width, padding-top <span class="kbd">--space4</span>.
+                Heading and content are aligned at the top.
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Edge case: long heading + long content</h2>
+            <p>
+                Stress test for column sizing and wrapping: ensures the heading column respects minmax(180px, 320px) and long content
+                wraps without breaking the grid.
+            </p>
+            <div class="ruler">
+                <div class="zh-text-block">
+                    <h3 class="zh-text-block__heading">
+                        A very long heading to test the min/max heading column sizing and wrapping behaviour
+                    </h3>
+
+                    <div class="zh-text-block__content">
+                        <p>
+                            This paragraph is intentionally long to test how the right column behaves with lots of
+                            content
+                            and whether the heading column stays within <span class="kbd">minmax(180px, 320px)</span>.
+                        </p>
+                        <p>
+                            Tab to focus this <a href="#" onclick="return false;">focusable link</a> and confirm the
+                            outline and offset appear as defined.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="note" style="margin:0;">
+                Resize to ≤768px to confirm the layout becomes a single column and spacing is controlled by <span
+                    class="kbd">row-gap</span>.
+            </div>
+        </section>
+    </div>
+
+    <script>
+        /* Expose metrics for harness */
+        window.__HARNESS_METRICS__ = () => ({
+            viewport: window.innerWidth,
+            note: "Resize to test the 768px breakpoint; Tab to test link focus outline."
+        });
+    </script>
+</body>
+
+</html>
