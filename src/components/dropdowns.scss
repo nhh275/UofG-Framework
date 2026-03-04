@@ -1,7 +1,6 @@
 .dropdown {
   display: inline-block;
   width: auto;
-
   & + & {
     margin-top: var(--space-4);
   }
@@ -32,9 +31,7 @@
     display: block;
     width: auto;
     min-width: max-content;
-
     padding: var(--space-2) var(--space-5) var(--space-2) var(--space-2);
-
     color: var(--dgrey3);
     background-color: var(--lgrey1);
     border: 1px solid var(--lgrey3);
