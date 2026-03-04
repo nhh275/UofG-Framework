@@ -1,0 +1,12 @@
+stages:
+    - lint
+
+stylelint:
+    stage: lint
+    image: node:20
+    script: 
+        - npm ci
+        - npm run lint:scss
+    only: 
+        - merge_requests
+        - main
