@@ -1,10 +1,16 @@
 @use '../foundational-tokens/alignment-sheet.scss' as *;
 
-.flex { display: flex; }
-.inline-flex { display: inline-flex; }
+.flex {
+  display: flex; 
+}
+
+.inline-flex { 
+  display: inline-flex;
+}
 
 /* Flex direction */
 $flex-directions: (row, row-reverse, column, column-reverse);
+
 @each $dir in $flex-directions {
   .flex-#{$dir} { flex-direction: $dir; }
 }
@@ -21,11 +27,14 @@ $flex-directions: (row, row-reverse, column, column-reverse);
 
 /* Align self */
 @each $name, $value in $align-self {
-  .self-#{$name} { align-self: $value; }
+  .self-#{$name} { 
+    align-self: $value; 
+  }
 }
 
 /* Wrap */
 $wrap: (wrap, nowrap, wrap-reverse);
+
 @each $w in $wrap {
   .flex-#{$w} { flex-wrap: $w; }
 }
