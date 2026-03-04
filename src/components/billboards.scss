@@ -68,7 +68,7 @@
     align-items: center;
     justify-content: center;
     padding: var(--space2) var(--space4);
-    border: 1px solid currentColor;
+    border: 1px solid currentcolor;
     text-decoration: none;
     font-weight: 600;
     background-color: inherit;
@@ -90,7 +90,7 @@
       }
     }
 
-    @media (min-width: 768px) {
+    @media (width >= 768px) {
       grid-template-columns: 1fr 1fr;
       column-gap: var(--space14);
       align-items: start;
@@ -113,7 +113,7 @@
   &--text {
     gap: var(--space);
 
-    @media (min-width: 768px) {
+    @media (width >= 768px) {
       grid-template-columns: 2fr 1fr;
       align-items: start;
     }

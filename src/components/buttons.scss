@@ -15,7 +15,7 @@ $btn-disabled-cursor: not-allowed;
     color: var(--lgrey1);
     border: var(--uni-blue);
 
-    &:hover { /* Hover state for primary button - mouse hover*/
+    &:hover { /* Hover state for primary button - mouse hover */
       background-color: var(--lgrey1);
       color: var(--uni-blue);
     }
@@ -30,6 +30,7 @@ $btn-disabled-cursor: not-allowed;
       cursor: $btn-disabled-cursor;
     }
   }
+  
   /* as above for secondary and outline buttons */
   &-secondary {
     background-color: var(--uni-blue20);

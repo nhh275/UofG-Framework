@@ -1,42 +1,42 @@
 /* Border */
 .border {
-    border: 1px solid currentColor;
+    border: 1px solid currentcolor;
 }
 
-.border-0 {
+.border-none {
     border: none;
 }
 
 /* Border Sides */
 .border-top {
-  border-top: 1px solid currentColor;
+  border-top: 1px solid currentcolor;
 }
 
 .border-end {
-  border-right: 1px solid currentColor;
+  border-right: 1px solid currentcolor;
 }
 
 .border-bottom {
-  border-bottom: 1px solid currentColor;
+  border-bottom: 1px solid currentcolor;
 }
 
 .border-start {
-  border-left: 1px solid currentColor;
+  border-left: 1px solid currentcolor;
 }
 
-.border-top-0 {
+.border-top-none {
     border-top: 0;
 }
 
-.border-end-0 {
+.border-end-none {
     border-right: 0;
 }
 
-.border-bottom-0 {
+.border-bottom-none {
     border-bottom: 0;
 }
 
-.border-start-0 {
+.border-start-none {
     border-left: 0;
 }
 
@@ -62,12 +62,12 @@
 }
 
 /* Radius */
-.rounded {
-  border-radius: 0.25rem;
-}
-
 .rounded-sm {
   border-radius: 0.125rem;
+}
+
+.rounded-md {
+  border-radius: 0.25rem;
 }
 
 .rounded-lg {

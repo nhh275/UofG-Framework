@@ -51,6 +51,16 @@
 
         }
 
+        .jump-links {
+
+            height: 260px;
+            overflow: auto;
+
+        }
+
+        .scroll-smooth{ scroll-behavior: smooth; }
+        .scroll-auto{ scroll-behavior: auto; }
+
         .box {
 
             border: 2px solid #333;
@@ -119,16 +129,16 @@
     <h2> Visibility </h2>
 
     <div class="panel">
+        <p>Ensures the element is visible (normal rendering)</p>
+        <div class="box visible">
 
-        <div class="box u-visible">
-
-            <code> .u-visible </code> — This should show normally.
+            <code> .visible </code> — This should show normally.
 
         </div>
+        <p>Hides the element but keeps its layout space (it still affects page flow)</p>
+        <div class="box invisible">
 
-        <div class="box u-invisible">
-
-            <code> .u-invisible </code> — This should NOT be visible (but space is still reserved).
+            <code> .invisible </code> — This should NOT be visible (but space is still reserved).
 
         </div>
 
@@ -142,7 +152,7 @@
 
     <!-- SR ONLY -->
 
-    <h2> Screen-reader-only (.u-sr-only) </h2>
+    <h2> Screen-reader-only (.sr-only) </h2>
 
     <div class="panel">
 
@@ -151,12 +161,12 @@
             You should <strong> not </strong> see the “SR ONLY TEXT” below, but it is still in the DOM for screen readers.
 
         </p>
-
+        <p>Visually hides content while keepng it available to assistive technologies (screen readers)</p>
         <p class="box">
 
             Visible text ✅
-
-            <span class="u-sr-only"> SR ONLY TEXT (should not be visible) </span>
+            
+            <span class="sr-only"> SR ONLY TEXT (should not be visible) </span>
 
         </p>
 
@@ -174,11 +184,11 @@
 
     <p> Each box below is a fixed-size container with content too big for it. </p>
 
-    <h3><code> .u-overflow-hidden </code></h3>
-
+    <h3><code> .overflow-hidden </code></h3>
+    <p>Clips any content that exceeds the container; no scrollbars</p>
     <div class="panel">
 
-        <div class="demo-area u-overflow-hidden">
+        <div class="demo-area overflow-hidden">
 
             <div class="big-content">
 
@@ -192,11 +202,11 @@
 
     </div>
 
-    <h3><code> .u-overflow-scroll </code></h3>
-
+    <h3><code> .overflow-scroll </code></h3>
+    <p>Always shows scrollbars and allows scrolling even if overflow isn't necessary</p>
     <div class="panel">
 
-        <div class="demo-area u-overflow-scroll">
+        <div class="demo-area overflow-scroll">
 
             <div class="big-content">
 
@@ -210,11 +220,11 @@
 
     </div>
 
-    <h3><code> .u-overflow-auto </code></h3>
-
+    <h3><code> .overflow-auto </code></h3>
+    <p>Adds scrollbars only when needed, depending on whether content overflows</p>
     <div class="panel">
 
-        <div class="demo-area u-overflow-auto">
+        <div class="demo-area overflow-auto">
 
             <div class="big-content">
 
@@ -228,11 +238,11 @@
 
     </div>
 
-    <h3><code> .u-overflow-x-scroll </code> + <code> .u-overflow-y-hidden </code></h3>
-
+    <h3><code> .overflow-x-scroll </code> + <code> .overflow-y-hidden </code></h3>
+    <p>Allows horizontal scrolling but clips vertical overflow</p>
     <div class="panel">
 
-        <div class="demo-area u-overflow-x-scroll u-overflow-y-hidden">
+        <div class="demo-area overflow-x-scroll overflow-y-hidden">
 
             <div class="big-content">
 
@@ -244,11 +254,11 @@
 
     </div>
 
-    <h3><code> .u-overflow-y-scroll </code> + <code> .u-overflow-x-hidden </code></h3>
-
+    <h3><code> .overflow-y-scroll </code> + <code> .overflow-x-hidden </code></h3>
+    <p>Allows vertical scrolling but clips horizontal overflow</p>
     <div class="panel">
 
-        <div class="demo-area u-overflow-y-scroll u-overflow-x-hidden">
+        <div class="demo-area overflow-y-scroll overflow-x-hidden">
 
             <div class="big-content">
 
@@ -260,11 +270,11 @@
 
     </div>
 
-    <h3><code> .u-overflow-visible </code></h3>
-
+    <h3><code> .overflow-visible </code></h3>
+    <p>Allows overflowing content tot paint outside the container (not clipped)</p>
     <div class="panel">
 
-        <div class="demo-area u-overflow-visible">
+        <div class="demo-area overflow-visible">
 
             <div class="big-content">
 
@@ -276,15 +286,17 @@
 
     </div>
 
+    <div style="height: 120px;"></div>
+
     <!-- SCROLL BEHAVIOR -->
 
     <h2 id="top"> Scroll behavior (auto vs smooth) </h2>
-
-    <div class="panel jump-links u-scroll-smooth">
+    <p>Anchor jumps inside this panel should scroll smoothly to the target sections</p>
+    <div class="panel jump-links scroll-smooth">
 
         <p>
 
-            This whole panel has <code> .u-scroll-smooth </code>.
+            This whole panel has <code> .scroll-smooth </code>.
 
             Clicking the anchor links should scroll smoothly (unless reduced-motion is enabled).
 
@@ -315,20 +327,24 @@
         </div>
 
     </div>
-
-    <div class="panel jump-links u-scroll-auto" style="margin-top:30px;">
+    <p>Anchor jumps inside this panel should jump instantly (no smooth animation)</p>
+    <div class="panel jump-links scroll-auto" style="margin-top:30px;">
 
         <p>
 
-            This panel uses <code> .u-scroll-auto </code>.
+            This panel uses <code> .scroll-auto </code>.
 
             Clicking links should jump instantly.
 
         </p>
 
-        <a href="#section1"> Go to Section 1 </a>
-        <a href="#section2"> Go to Section 2 </a>
-        <a href="#bottom"> Go to Bottom </a>
+        <a href="#section1-auto"> Go to Section 1 </a>
+        <a href="#section2-auto"> Go to Section 2 </a>
+        <a href="#bottom-auto"> Go to Bottom </a>
+
+        <div class="spacer" id="section1-auto"><strong>Section 1</strong></div>
+        <div class="spacer" id="section2-auto"><strong>Section 2</strong></div>
+        <div class="spacer" id="bottom-auto"><strong>Bottom</strong></div>
         
     </div>
 

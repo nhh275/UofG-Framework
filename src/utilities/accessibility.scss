@@ -1,5 +1,5 @@
-/*visually-hidden mean that the element is hidden visually but still accessible to screen readers
-Focusable elements are those that can receive keyboard focus using tab etc (e.g., links, buttons, form controls).*/
+/* Visually-hidden mean that the element is hidden visually but still accessible to screen readers
+   Focusable elements are those that can receive keyboard focus using tab etc (e.g., links, buttons, form controls) */
 
 .visually-hidden {
   position: absolute;
@@ -8,7 +8,7 @@ Focusable elements are those that can receive keyboard focus using tab etc (e.g.
   padding: 0 !important;
   margin: -1px !important;
   overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
+  clip-path: rect(0, 0, 0, 0) !important;
   white-space: nowrap !important;
   border: 0 !important;
 }
@@ -24,10 +24,12 @@ Focusable elements are those that can receive keyboard focus using tab etc (e.g.
 
 
 .screen-reader-only {
+  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
   @extend .visually-hidden;
 }
 
 .screen-reader-only-focusable {
+  /* stylelint-disable-next-line scss/at-extend-no-missing-placeholder */
   @extend .visually-hidden;
 
   &:focus,
@@ -37,7 +39,7 @@ Focusable elements are those that can receive keyboard focus using tab etc (e.g.
     height: auto !important;
     margin: 0 !important;
     overflow: visible !important;
-    clip: auto !important;
+    clip-path: auto !important;
     white-space: normal !important;
   }
 }

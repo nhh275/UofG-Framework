@@ -2,53 +2,45 @@
 @use "sass:map";
 
 $breakpoints: (
-    extra-small: 0,
-    small: 768px,
-    medium: 1024px,
-    large: 1400px,
-    extra-large: 1900px
+    xs: 0,
+    sm: 768px,
+    md: 1024px,
+    lg: 1400px,
+    xl: 1900px
 );
-
 $grid-columns: 12;
 $grid-gutter: $space6;
 $grid-margin: $space6;
 
 /* CSS Varables for testing */
-
 :root {
-
-    --bp-xs: #{map.get($breakpoints, extra-small)};
-    --bp-sm: #{map.get($breakpoints, small)};
-    --bp-md: #{map.get($breakpoints, medium)};
-    --bp-lg: #{map.get($breakpoints, large)};
-    --bp-xl: #{map.get($breakpoints, extra-large)};
+    --bp-xs: #{map.get($breakpoints, xl)};
+    --bp-sm: #{map.get($breakpoints, sm)};
+    --bp-md: #{map.get($breakpoints, md)};
+    --bp-lg: #{map.get($breakpoints, lg)};
+    --bp-xl: #{map.get($breakpoints, xl)};
 
     /* Grid system */
-
     --grid-columns: #{$grid-columns};
     --grid-gutter: #{$grid-gutter};
     --grid-margin: #{$grid-margin};
-
 }
 
-/* 
-Media query helpers
-This makes breakpoint testable 
-*/
-
-@media (min-width: #{map.get($breakpoints, small)}) {
+/* stylelint-disable-next-line media-query-no-invalid */
+@media (width >= #{map.get($breakpoints, sm)}) {
     .bp-test {
         color: red;
     }
 }
 
-@media (min-width: #{map.get($breakpoints, medium)}) {
+/* stylelint-disable-next-line media-query-no-invalid */
+@media (width >= #{map.get($breakpoints, md)}) {
     .bp-test-md {
         color: blue;
     }
 }
-
-@media (min-width: #{map.get($breakpoints, large)}) {
+/* stylelint-disable-next-line media-query-no-invalid */
+@media (width >= #{map.get($breakpoints, lg)}) {
     .bp-test-lg {
         color: green;
     }

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Table – Component Test</title>
+
+    <link rel="stylesheet" href="../../distribution/main.css" />
+
+    <style>
+        /* Test-page helpers only */
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 24px;
+            background: #fff;
+            color: #111;
+            line-height: 1.5;
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            gap: 24px;
+        }
+
+        header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+        }
+
+        h1 {
+            margin: 0 0 6px;
+            font-size: 20px;
+        }
+
+        p {
+            margin: 0;
+            color: #555;
+            max-width: 90ch;
+        }
+
+        .note {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #555;
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+
+        .card {
+            border: 1px dashed #bbb;
+            border-radius: 12px;
+            padding: 16px;
+            background: #fff;
+            display: grid;
+            gap: 12px;
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .kbd {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1>Table – Component test</h1>
+            <p>
+                This page tests base table styles for
+                <span class="kbd">.table</span> and <span class="kbd">.zh-table</span>,
+                including headers, rows, numeric alignment, borders, and footer styles.
+            </p>
+
+            <div class="note">
+                <strong>How to test:</strong><br>
+                • Verify borders between rows and columns.<br>
+                • Confirm header cells use heavier font weight.<br>
+                • Check numeric columns align right and use tabular numbers.<br>
+                • Ensure the final row removes its bottom border.<br>
+                • Confirm footer styling (top border + right-aligned totals).
+            </div>
+        </header>
+
+        <!-- Basic table -->
+        <section class="card">
+            <h2>Standard table (.zh-table)</h2>
+            <p>
+                Baseline table rendering test: confirms header styling, row/cell padding, borders, and numeric column formatting.
+            </p>
+            <table class="zh-table">
+                <tr class="table-row">
+                    <th class="table-col">Course</th>
+                    <th class="table-col zh-table-col-num">Credits</th>
+                    <th class="table-col zh-table-col-num">Cost (£)</th>
+                </tr>
+
+                <tr class="table-row">
+                    <td class="table-cell">Introduction to Computing</td>
+                    <td class="table-cell zh-table-cell-num">20</td>
+                    <td class="table-cell zh-table-cell-num">1,200</td>
+                </tr>
+
+                <tr class="table-row">
+                    <td class="table-cell">Data Structures</td>
+                    <td class="table-cell zh-table-cell-num">10</td>
+                    <td class="table-cell zh-table-cell-num">850</td>
+                </tr>
+
+                <tr class="table-row">
+                    <td class="table-cell">Algorithms</td>
+                    <td class="table-cell zh-table-cell-num">20</td>
+                    <td class="table-cell zh-table-cell-num">1,500</td>
+                </tr>
+            </table>
+
+            <div class="note" style="margin:0;">
+                Expected: header cells have top + bottom borders and font-weight 600.
+                Numeric columns are right-aligned using tabular numerals.
+            </div>
+        </section>
+
+        <!-- Footer table -->
+        <section class="card">
+            <h2>Table with footer</h2>
+            <p>
+                Footer styling test: verifies the visual separation and emphasis of totals using a footer row class.
+            </p>
+            <table class="zh-table">
+                <tr class="table-row">
+                    <th class="table-col">Item</th>
+                    <th class="table-col zh-table-col-num">Quantity</th>
+                    <th class="table-col zh-table-col-num">Price (£)</th>
+                </tr>
+
+                <tr class="table-row">
+                    <td class="table-cell">Books</td>
+                    <td class="table-cell zh-table-cell-num">3</td>
+                    <td class="table-cell zh-table-cell-num">120</td>
+                </tr>
+
+                <tr class="table-row">
+                    <td class="table-cell">Software licence</td>
+                    <td class="table-cell zh-table-cell-num">1</td>
+                    <td class="table-cell zh-table-cell-num">300</td>
+                </tr>
+
+                <tr class="table-footer">
+                    <td class="table-cell" colspan="2">Total</td>
+                    <td class="table-cell zh-table-cell-num">420</td>
+                </tr>
+            </table>
+
+            <div class="note" style="margin:0;">
+                Expected: footer has a stronger top border, bold text,
+                and right-aligned totals. No bottom border on footer cells.
+            </div>
+        </section>
+
+        <!-- Edge case -->
+        <section class="card">
+            <h2>Edge case: long content + wrapping</h2>
+            <p>
+                Stress test for long text in cells: confirms wrapping doesn’t break borders, spacing, or vertical alignment, and numeric
+                alignment stays correct.
+            </p>
+            <table class="zh-table">
+                <tr class="table-row">
+                    <th class="table-col">Description</th>
+                    <th class="table-col zh-table-col-num">Value</th>
+                </tr>
+
+                <tr class="table-row">
+                    <td class="table-cell">
+                        Extremely long text value to ensure wrapping works correctly and does not break row borders or
+                        vertical alignment within the table cell.
+                    </td>
+                    <td class="table-cell zh-table-cell-num">123456.78</td>
+                </tr>
+
+                <tr class="table-row">
+                    <td class="table-cell">Short label</td>
+                    <td class="table-cell zh-table-cell-num">9</td>
+                </tr>
+            </table>
+
+            <div class="note" style="margin:0;">
+                Expected: text wraps naturally, numeric column remains aligned right,
+                and row borders remain intact.
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

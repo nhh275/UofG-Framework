@@ -12,42 +12,15 @@ The variables used can be found at [this link](https://design.gla.ac.uk/822fb39f
 
 ## Setting up tests
 
-Here is the general step by step process to run the tests yourself
+1. Make sure you are running the latest compiled version of the main.scss file.
+2. Find and launch the index.html file found in the tests folder.
 
-    1. In the project root folder (where .gitnore is), open cmd in this folder
-    2. Type and run - npm install
-    3. Type and run - npx playwright install
-    4. Now you should be able to run the tests by using - npm test
+## StyleLint tests
 
-## Extra tests that are avialable
+1. In the project root folder, open cmd
+2. Type and install - npm install -D stylelint stylelint-config-standard-scss stylelint-scss postcss-scss
+3. Run npm run lint:scss
 
-Launch a browser/UI mode for debugging
-
-
-- Type and run - npx playwright test --ui
-
-Run tests in specific browsers
-
-
-1. Chromium - npx playwright test --project=chromium
-2. Firefox - npx playwright test --project=firefox
-3. Safari - npx playwright test --project=webkit
-
-##Test Reports
-
-If you would like a report at the end of the tests then simply run
-
-    - npx playwright show-report
-
-#Troubleshooting with tests
-
-If playwright cannot find browsers run
-
-    - npx playwright install
-
-If scss fails to compile correctly run 
-
-    - npx sass src/reset/reset.scss distribution/reset.css
 
 ## Visuals
 Screenshots TBD

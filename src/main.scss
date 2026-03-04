@@ -1,6 +1,6 @@
 /* Reset comes first */
 
-@use './reset/reset.scss';
+@use './reset/reset';
 
 /* Tokens */
 
@@ -8,11 +8,13 @@
 @use './foundational-tokens/space-sheet';
 @use './foundational-tokens/breakpoint-sheet';
 @use './foundational-tokens/text-sheet';
-@use './foundational-tokens/shadow-sheet.scss';
+@use './foundational-tokens/shadow-sheet';
+@use './foundational-tokens/alignment-sheet';
+@use './foundational-tokens/layout-sheet';
 
 /* Raw fonts css file import */
 
-@use './utilities/grid.scss';
+@use './utilities/grid';
 @use './utilities/accessibility';
 @use './utilities/alignments';
 @use './utilities/border';
@@ -39,5 +41,7 @@
 @use './components/radio-buttons';
 @use './components/tables';
 @use './components/tabs';
+@use  './components/text-blocks';
 @use './components/text-input';
 @use './components/tiles';
+@use './components/breadcrumbs.scss';

@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Download links – Component Test</title>
+
+    <link rel="stylesheet" href="../../distribution/main.css" />
+
+    <style>
+        /* Test-page helpers only */
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 24px;
+            background: #fff;
+            color: #111;
+            line-height: 1.5;
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            gap: 18px;
+        }
+
+        header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+        }
+
+        h1 {
+            margin: 0 0 6px;
+            font-size: 20px;
+        }
+
+        p {
+            margin: 0;
+            color: #555;
+            max-width: 90ch;
+        }
+
+        .note {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #555;
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+
+        .card {
+            border: 1px dashed #bbb;
+            border-radius: 12px;
+            padding: 14px;
+            background: #fff;
+            display: grid;
+            gap: 12px;
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .stack {
+            display: grid;
+            gap: 12px;
+        }
+
+        .kbd {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+            font-size: 12px;
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        @media (min-width: 960px) {
+            .grid2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Token fallbacks if opened standalone without full token set */
+        :root {
+            --space1: 0.25rem;
+            --space2: 0.5rem;
+            --space4: 1rem;
+            --space5: 1.25rem;
+            --lgrey1: #F5F5F5;
+            --lgrey3: #CCCCCC;
+            --uni-blue: #003865;
+            --uni-blue10: #E6EBF0;
+            --dgrey3: #323232;
+            --mgrey3: #757575;
+            --rust: #9A3A06;
+            --highlight: #FFDD00;
+        }
+
+        /* Make the test links not navigate away */
+        a[onclick] {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1>Download links – Component test</h1>
+            <p>
+                This page tests <span class="kbd">.zh-download-link</span> structure, the left colour bar, ellipsis
+                behavior,
+                meta layout, right-side icon area, hover/focus states, and visited-link styling (<span
+                    class="kbd">:visited</span> inherits).
+            </p>
+            <div class="note">
+                <strong>How to test:</strong><br>
+                • Hover: background should change to <span class="kbd">--uni-blue10</span>.<br>
+                • Focus: use <span class="kbd">Tab</span> to see highlight outline (also verify <span
+                    class="kbd">:focus-visible</span>).<br>
+                • Title truncation: long titles should ellipsis (nowrap + overflow hidden + text-overflow).<br>
+                • Layout: left bar sits flush to edge; right area has a left border and stays aligned.<br>
+                • Visited: after clicking, the link should not turn purple/blue—should stay <span class="kbd">color:
+                    inherit</span>.
+            </div>
+        </header>
+
+        <div class="grid2">
+            <section class="card">
+                <h2>Default examples</h2>
+                <p>
+                    Baseline rendering test for standard download links, including spacing, typography hierarchy, and alignment of the left
+                    bar and right icon column.
+                </p>
+                <div class="stack">
+
+                    <a class="zh-download-link" href="#download-1" onclick="return false;">
+                        <span class="zh-download-link__bar" aria-hidden="true"></span>
+
+                        <span class="zh-download-link__content">
+                            <span class="zh-download-link__title">Prospectus (PDF)</span>
+                            <span class="zh-download-link__meta">
+                                <span>PDF</span><span aria-hidden="true">•</span><span>2.4 MB</span><span
+                                    aria-hidden="true">•</span><span>Updated Jan 2026</span>
+                            </span>
+                        </span>
+
+                        <span class="zh-download-link__right">
+                            <span class="zh-download-link__icon" aria-hidden="true">⬇</span>
+                        </span>
+                    </a>
+
+                    <a class="zh-download-link" href="#download-2" onclick="return false;">
+                        <span class="zh-download-link__bar" aria-hidden="true"></span>
+
+                        <span class="zh-download-link__content">
+                            <span class="zh-download-link__title">Course handbook (DOCX)</span>
+                            <span class="zh-download-link__meta">
+                                <span>DOCX</span><span aria-hidden="true">•</span><span>840 KB</span>
+                            </span>
+                        </span>
+
+                        <span class="zh-download-link__right">
+                            <span class="zh-download-link__icon" aria-hidden="true">⬇</span>
+                        </span>
+                    </a>
+
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>Edge cases: truncation + responsive shrink</h2>
+                <p>
+                    Stress test for long titles and narrow viewports to confirm truncation (ellipsis) and layout stability.
+                </p>
+                <div class="stack">
+
+                    <a class="zh-download-link" href="#download-3" onclick="return false;">
+                        <span class="zh-download-link__bar" aria-hidden="true"></span>
+
+                        <span class="zh-download-link__content">
+                            <span class="zh-download-link__title">
+                                Extremely long document title to force truncation and verify ellipsis appears at around
+                                fifty characters wide
+                            </span>
+                            <span class="zh-download-link__meta">
+                                <span>PDF</span><span aria-hidden="true">•</span><span>12.7 MB</span><span
+                                    aria-hidden="true">•</span><span>Long metadata value</span>
+                            </span>
+                        </span>
+
+                        <span class="zh-download-link__right">
+                            <span class="zh-download-link__icon" aria-hidden="true">⬇</span>
+                        </span>
+                    </a>
+
+                    <div class="note" style="margin:0;">
+                        Expected: the title stays on one line and truncates with an ellipsis (<span
+                            class="kbd">white-space:nowrap</span>).
+                        Try shrinking the viewport: the content area should shrink without breaking the right icon
+                        column (uses <span class="kbd">min-width:0</span>).
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+        <section class="card">
+            <h2>Keyboard focus order (Tab test)</h2>
+            <p>
+                Accessibility test: verifies keyboard navigation and focus styling for links.
+            </p>
+            <p class="note" style="margin:0;">
+                Press <span class="kbd">Tab</span> to focus each link. Expected: yellow outline (space1) appears with no
+                offset.
+            </p>
+            <div class="stack" style="margin-top:12px;">
+
+                <a class="zh-download-link" href="#download-4" onclick="return false;">
+                    <span class="zh-download-link__bar" aria-hidden="true"></span>
+
+                    <span class="zh-download-link__content">
+                        <span class="zh-download-link__title">Tab to focus me</span>
+                        <span class="zh-download-link__meta">
+                            <span>PDF</span><span aria-hidden="true">•</span><span>1.1 MB</span>
+                        </span>
+                    </span>
+
+                    <span class="zh-download-link__right">
+                        <span class="zh-download-link__icon" aria-hidden="true">⬇</span>
+                    </span>
+                </a>
+
+                <a class="zh-download-link" href="#download-5" onclick="return false;">
+                    <span class="zh-download-link__bar" aria-hidden="true"></span>
+
+                    <span class="zh-download-link__content">
+                        <span class="zh-download-link__title">Second focus target</span>
+                        <span class="zh-download-link__meta">
+                            <span>ZIP</span><span aria-hidden="true">•</span><span>98 MB</span>
+                        </span>
+                    </span>
+
+                    <span class="zh-download-link__right">
+                        <span class="zh-download-link__icon" aria-hidden="true">⬇</span>
+                    </span>
+                </a>
+
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Visited style check</h2>
+            <p>
+                Style-consistency test: ensures visited links do not change to default browser purple/blue.
+            </p>
+            <p class="note" style="margin:0;">
+                Click the link below once. Expected: it should not turn purple/blue afterwards because
+                <span class="kbd">.zh-download-link:visited { color: inherit; }</span>
+            </p>
+            <div class="stack" style="margin-top:12px;">
+                <a class="zh-download-link" href="#download-visited">
+                    <span class="zh-download-link__bar" aria-hidden="true"></span>
+
+                    <span class="zh-download-link__content">
+                        <span class="zh-download-link__title">Visited check link (click me)</span>
+                        <span class="zh-download-link__meta">
+                            <span>PDF</span><span aria-hidden="true">•</span><span>0.6 MB</span>
+                        </span>
+                    </span>
+
+                    <span class="zh-download-link__right">
+                        <span class="zh-download-link__icon" aria-hidden="true">⬇</span>
+                    </span>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Allow harness to read simple metrics
+        window.__HARNESS_METRICS__ = () => ({
+            viewport: window.innerWidth,
+            note: "Hover and Tab through .zh-download-link items to test hover/focus/ellipsis/visited."
+        });
+    </script>
+</body>
+
+</html>

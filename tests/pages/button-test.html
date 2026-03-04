@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Buttons – Component Test</title>
+
+    <link rel="stylesheet" href="../../distribution/main.css" />
+
+    <style>
+        /* Test-page helpers only */
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 24px;
+            background: #fff;
+            color: #111;
+            line-height: 1.5;
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            gap: 18px;
+        }
+
+        header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+        }
+
+        h1 {
+            margin: 0 0 6px;
+            font-size: 20px;
+        }
+
+        p {
+            margin: 0;
+            color: #555;
+            max-width: 90ch;
+        }
+
+        .note {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #555;
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+
+        .card {
+            border: 1px dashed #bbb;
+            border-radius: 12px;
+            padding: 14px;
+            background: #fff;
+            display: grid;
+            gap: 12px;
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .kbd {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+            font-size: 12px;
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        @media (min-width: 960px) {
+            .grid2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Test helper to show focus without mouse */
+        .focusTip {
+            color: #666;
+            font-size: 13px;
+        }
+
+        /* Ensure buttons have visible border */
+        .btn-primary,
+        .btn-secondary {
+            border-width: 1px;
+            border-style: solid;
+            border-color: currentColor;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1>Buttons – Component test</h1>
+            <p>
+                This page tests <span class="kbd">.btn</span> base styles and variants:
+                <span class="kbd">.btn-primary</span>, <span class="kbd">.btn-secondary</span>, <span
+                    class="kbd">.btn-outline</span>,
+                including hover, focus, and disabled states.
+            </p>
+            <div class="note">
+                <strong>How to test:</strong><br>
+                • Hover each enabled button to verify hover colors.<br>
+                • Use <span class="kbd">Tab</span> to focus buttons and verify the highlight outline appears on
+                focus.<br>
+                • Confirm disabled buttons show the correct colors and a not-allowed cursor, and are not clickable.
+            </div>
+        </header>
+
+        <div class="grid2">
+            <section class="card">
+                <h2>Primary buttons</h2>
+                <p>
+                    Tests the primary button variant styling and interaction states.
+                </p>
+                <div class="row">
+                    <button class="btn btn-primary" type="button">Primary</button>
+                    <button class="btn btn-primary" type="button" autofocus>Primary (autofocus)</button>
+                    <button class="btn btn-primary" type="button" disabled>Primary (disabled)</button>
+                </div>
+                <p class="focusTip">
+                    Expected: hover swaps background/text; focus shows outline using <span
+                        class="kbd">--highlight</span>.
+                </p>
+            </section>
+
+            <section class="card">
+                <h2>Secondary buttons</h2>
+                <p>
+                    Tests the secondary button variant and verifies it uses its own hover/background rules distinct from primary.
+                </p>
+                <div class="row">
+                    <button class="btn btn-secondary" type="button">Secondary</button>
+                    <button class="btn btn-secondary" type="button">Secondary (try Tab focus)</button>
+                    <button class="btn btn-secondary" type="button" disabled>Secondary (disabled)</button>
+                </div>
+                <p class="focusTip">
+                    Expected: hover background becomes <span class="kbd">--lgrey1</span>; focus shows highlight outline.
+                </p>
+            </section>
+        </div>
+
+        <div class="grid2">
+            <section class="card">
+                <h2>Outline buttons</h2>
+                <p>
+                    Tests the outline-only button variant where the border is the primary affordance.
+                </p>
+                <div class="row">
+                    <button class="btn btn-outline" type="button">Outline</button>
+                    <button class="btn btn-outline" type="button">Outline (try hover/focus)</button>
+                    <button class="btn btn-outline" type="button" disabled>Outline (disabled)</button>
+                </div>
+                <p class="focusTip">
+                    Expected: outline style is visible; hover changes text color; focus shows highlight outline.
+                </p>
+            </section>
+
+            <section class="card">
+                <h2>Buttons inside common contexts</h2>
+                <p>
+                    Layout/context test: checks buttons align correctly next to inline text and that spacing tokens produce consistent
+                    sizing in real UI rows.
+                </p>
+                <p class="note" style="margin:0;">
+                    This checks spacing, alignment, and baseline behavior when buttons sit next to text/links.
+                </p>
+                <div class="row">
+                    <span>Inline text</span>
+                    <button class="btn btn-primary" type="button">CTA</button>
+                    <button class="btn btn-secondary" type="button">Secondary</button>
+                    <a class="btn btn-outline" href="#" onclick="return false;">Link styled as button</a>
+                </div>
+                <p class="focusTip">
+                    Expected: padding from <span class="kbd">--space2</span>/<span class="kbd">--space5</span> looks
+                    consistent;
+                    cursor is pointer on enabled controls.
+                </p>
+            </section>
+        </div>
+
+        <section class="card">
+            <h2>Interaction logging (optional clarity)</h2>
+            <p>
+                Functional test: confirms enabled buttons fire click events and disabled buttons do not.
+            </p>
+            <p class="note" style="margin:0;">
+                Click enabled buttons to confirm they fire events. Disabled buttons should not.
+            </p>
+            <div class="row">
+                <button class="btn btn-primary" type="button" data-log="Primary clicked">Click me</button>
+                <button class="btn btn-secondary" type="button" data-log="Secondary clicked">Click me</button>
+                <button class="btn btn-outline" type="button" data-log="Outline clicked">Click me</button>
+                <button class="btn btn-primary" type="button" disabled data-log="Should not fire">Disabled</button>
+            </div>
+            <pre id="log" class="note" style="margin:0; white-space:pre-wrap;"></pre>
+        </section>
+    </div>
+
+    <script>
+        const log = document.getElementById("log");
+        function write(msg) {
+            log.textContent = (log.textContent ? log.textContent + "\n" : "") + msg;
+        }
+
+        document.querySelectorAll("[data-log]").forEach(el => {
+            el.addEventListener("click", () => write(el.dataset.log));
+        });
+
+        write("Tip: Use Tab to test focus outline and hover with your mouse.");
+    </script>
+</body>
+
+</html>
