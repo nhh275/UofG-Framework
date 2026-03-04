@@ -32,7 +32,6 @@ $space-scale: (
   13: $space13,
   14: $space14
 );
-
 /* Z-index (simple scale) */
 $z: (
   0: 0,
@@ -44,7 +43,6 @@ $z: (
 
 /* CSS Variables for testing */
 :root {
-
     --space1: #{$space1};
     --space2: #{$space2};
     --space3: #{$space3};
@@ -57,5 +55,4 @@ $z: (
     --space10: #{$space10};
     --space11: #{$space11};
     --space12: #{$space12};
-
 }
