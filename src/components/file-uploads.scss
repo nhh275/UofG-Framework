@@ -1,0 +1,58 @@
+$btn-border-radius: 0; // sharp edges
+
+.zh-file-upload {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space2, 8px);
+  width: 100%;
+  padding-top: var(--space4, 16px);  // space at the top
+  padding-left: var(--space4, 16px);
+
+  &__label {
+    font-weight: 700;
+    color: var(--dgrey3);
+    margin-bottom: var(--space1, 4px);
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__control {
+    display: flex;
+    align-items: center;
+    gap: var(--space3, 12px);
+  }
+
+  &__button {
+    display: inline-block;
+    padding: var(--space2, 8px) var(--space5, 16px);
+    border-radius: $btn-border-radius; // sharp edges
+    border: 2px solid var(--mgrey2, #999);
+    background-color: var(--lgrey1, #f5f5f5);
+    color: black;
+    cursor: pointer;
+    text-align: center;
+    transition: border-color 0.2s ease;
+
+    &:hover {
+      border-color: var(--mgrey2, #999);
+      background-color: var(--lgrey3, #f5f5f5);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--highlight, #fd0); // yellow border
+    }
+
+    &:active {
+      border-color: var(--highlight, #fd0);
+    }
+  }
+
+  &__filename {
+    font-size: 0.9rem;
+    color: var(--dgrey3);
+    white-space: nowrap;
+  }
+}
