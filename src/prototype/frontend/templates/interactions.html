@@ -1,0 +1,185 @@
+{% load static %}
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title> Interaction Utilities</title>
+
+    <link rel="stylesheet" href="{% static 'styleUtilities.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+
+    <style>
+
+        h2 {
+
+            margin-top: 40px;
+        }
+
+        .box {
+
+            border: 2px solid #ccc;
+            padding: 16px;
+            margin: 12px 0;
+            border-radius: 12px;
+
+        }
+
+        .demo-area {
+
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+
+        }
+
+        .card {
+
+            border: 2px dashed #999;
+            padding: 16px;
+            border-radius: 12px;
+            background: #fafafa;
+
+        }
+
+        .btn {
+
+            display: inline-block;
+            padding: 10px 14px;
+            border: 2px solid #000;
+            border-radius: 10px;
+            background: white;
+            font-weight: bold;
+            cursor: pointer;
+
+        }
+
+        a {
+
+            font-weight: bold;
+
+        }
+
+        code {
+
+            background: #eee;
+            padding: 2px 6px;
+            border-radius: 6px;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1> Interaction Utility Classes Test </h1>
+
+    <!-- POINTER EVENTS -->
+
+    <h2> pointer-events </h2>
+
+    <p> Try clicking the button + link inside each panel. </p>
+
+    <div class="demo-area">
+
+        <div class="card pe-none">
+
+            <h3><code> .pe-none </code></h3>
+
+            <p> You should NOT be able to click anything inside this box. </p>
+
+            <button class="btn" onclick="alert('Clicked!')"> Button </button>
+
+            <br><br>
+
+            <a href="https://example.com" target="_blank"> Example link </a>
+
+        </div>
+
+        <div class="card pe-auto">
+
+            <h3><code> .pe-auto </code></h3>
+
+            <p> You SHOULD be able to click inside this box. </p>
+
+            <button class="btn" onclick="alert('Clicked!')"> Button </button>
+
+            <br><br>
+
+            <a href="https://example.com" target="_blank"> Example link </a>
+
+        </div>
+
+    </div>
+
+    <!-- USER SELECT -->
+
+    <h2> user-select </h2>
+
+    <p> Try selecting the text in each paragraph. </p>
+
+    <div class="demo-area">
+
+        <div class="card">
+
+            <h3><code> .us-none </code></h3>
+
+            <p class="us-none"> You should NOT be able to highlight/select this text. </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3><code> .us-text </code></h3>
+
+            <p class="us-text"> You SHOULD be able to select this text normally. </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3><code> .us-all </code></h3>
+
+            <p class="us-all"> Click once — it should select ALL this text. </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3><code> .us-auto </code></h3>
+
+            <p class="us-auto"> Default selection behaviour (browser decides). </p>
+
+        </div>
+
+    </div>
+
+    <!-- CURSOR -->
+
+    <h2> cursor </h2>
+
+    <p> Hover over each box and watch your mouse pointer change. </p>
+
+    <div class="demo-area">
+
+        <div class="card cursor-auto"><code> .cursor-auto </code></div>
+        <div class="card cursor-default"><code> .cursor-default </code></div>
+        <div class="card cursor-pointer"><code> .cursor-pointer </code></div>
+        <div class="card cursor-wait"><code> .cursor-wait </code></div>
+        <div class="card cursor-text"><code> .cursor-text </code></div>
+        <div class="card cursor-move"><code> .cursor-move </code></div>
+        <div class="card cursor-not-allowed"><code> .cursor-not-allowed </code></div>
+
+    </div>
+
+</body>
+<hr>
+<a href="/">Back to Home</a>
+</html>

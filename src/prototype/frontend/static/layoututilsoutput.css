@@ -1,0 +1,434 @@
+/* CSS Variables for testing */
+:root {
+  --space1: 0.25rem;
+  --space2: 0.5rem;
+  --space3: 0.75rem;
+  --space4: 1rem;
+  --space5: 1.25rem;
+  --space6: 1.5rem;
+  --space7: 2em;
+  --space8: 2.5rem;
+  --space9: 3rem;
+  --space10: 3.5rem;
+  --space11: 4rem;
+  --space12: 6rem;
+}
+
+/* Display */
+.u-d-block {
+  display: block;
+}
+
+.u-d-inline {
+  display: inline;
+}
+
+.u-d-inline-block {
+  display: inline-block;
+}
+
+.u-d-flex {
+  display: flex;
+}
+
+.u-d-inline-flex {
+  display: inline-flex;
+}
+
+.u-d-grid {
+  display: grid;
+}
+
+.u-d-inline-grid {
+  display: inline-grid;
+}
+
+.u-d-none {
+  display: none;
+}
+
+/* Visibility helpers */
+.u-hidden {
+  display: none !important;
+}
+
+/* Position */
+.u-position-static {
+  position: static;
+}
+
+.u-position-relative {
+  position: relative;
+}
+
+.u-position-absolute {
+  position: absolute;
+}
+
+.u-position-fixed {
+  position: fixed;
+}
+
+.u-position-sticky {
+  position: sticky;
+}
+
+/* Offset (top/right/bottom/left), works when positioned */
+.u-top-0 {
+  top: 0;
+}
+
+.u-right-0 {
+  right: 0;
+}
+
+.u-bottom-0 {
+  bottom: 0;
+}
+
+.u-left-0 {
+  left: 0;
+}
+
+/* Logical offsets (recommended for RTL safety) */
+.u-start-0 {
+  inset-inline-start: 0;
+}
+
+.u-end-0 {
+  inset-inline-end: 0;
+}
+
+.u-top-1 {
+  top: 0.25rem;
+}
+
+.u-right-1 {
+  right: 0.25rem;
+}
+
+.u-bottom-1 {
+  bottom: 0.25rem;
+}
+
+.u-left-1 {
+  left: 0.25rem;
+}
+
+/* Logical offsets (recommended for RTL safety) */
+.u-start-1 {
+  inset-inline-start: 0.25rem;
+}
+
+.u-end-1 {
+  inset-inline-end: 0.25rem;
+}
+
+.u-top-2 {
+  top: 0.5rem;
+}
+
+.u-right-2 {
+  right: 0.5rem;
+}
+
+.u-bottom-2 {
+  bottom: 0.5rem;
+}
+
+.u-left-2 {
+  left: 0.5rem;
+}
+
+/* Logical offsets (recommended for RTL safety) */
+.u-start-2 {
+  inset-inline-start: 0.5rem;
+}
+
+.u-end-2 {
+  inset-inline-end: 0.5rem;
+}
+
+.u-top-3 {
+  top: 0.75rem;
+}
+
+.u-right-3 {
+  right: 0.75rem;
+}
+
+.u-bottom-3 {
+  bottom: 0.75rem;
+}
+
+.u-left-3 {
+  left: 0.75rem;
+}
+
+/* Logical offsets (recommended for RTL safety) */
+.u-start-3 {
+  inset-inline-start: 0.75rem;
+}
+
+.u-end-3 {
+  inset-inline-end: 0.75rem;
+}
+
+.u-top-4 {
+  top: 1rem;
+}
+
+.u-right-4 {
+  right: 1rem;
+}
+
+.u-bottom-4 {
+  bottom: 1rem;
+}
+
+.u-left-4 {
+  left: 1rem;
+}
+
+/* Logical offsets (recommended for RTL safety) */
+.u-start-4 {
+  inset-inline-start: 1rem;
+}
+
+.u-end-4 {
+  inset-inline-end: 1rem;
+}
+
+.u-top-5 {
+  top: 1.25rem;
+}
+
+.u-right-5 {
+  right: 1.25rem;
+}
+
+.u-bottom-5 {
+  bottom: 1.25rem;
+}
+
+.u-left-5 {
+  left: 1.25rem;
+}
+
+/* Logical offsets (recommended for RTL safety) */
+.u-start-5 {
+  inset-inline-start: 1.25rem;
+}
+
+.u-end-5 {
+  inset-inline-end: 1.25rem;
+}
+
+.u-top-6 {
+  top: 1.5rem;
+}
+
+.u-right-6 {
+  right: 1.5rem;
+}
+
+.u-bottom-6 {
+  bottom: 1.5rem;
+}
+
+.u-left-6 {
+  left: 1.5rem;
+}
+
+/* Logical offsets (recommended for RTL safety) */
+.u-start-6 {
+  inset-inline-start: 1.5rem;
+}
+
+.u-end-6 {
+  inset-inline-end: 1.5rem;
+}
+
+.u-top-7 {
+  top: 2em;
+}
+
+.u-right-7 {
+  right: 2em;
+}
+
+.u-bottom-7 {
+  bottom: 2em;
+}
+
+.u-left-7 {
+  left: 2em;
+}
+
+/* Logical offsets (recommended for RTL safety) */
+.u-start-7 {
+  inset-inline-start: 2em;
+}
+
+.u-end-7 {
+  inset-inline-end: 2em;
+}
+
+.u-top-8 {
+  top: 2.5rem;
+}
+
+.u-right-8 {
+  right: 2.5rem;
+}
+
+.u-bottom-8 {
+  bottom: 2.5rem;
+}
+
+.u-left-8 {
+  left: 2.5rem;
+}
+
+/* Logical offsets (recommended for RTL safety) */
+.u-start-8 {
+  inset-inline-start: 2.5rem;
+}
+
+.u-end-8 {
+  inset-inline-end: 2.5rem;
+}
+
+.u-top-9 {
+  top: 3rem;
+}
+
+.u-right-9 {
+  right: 3rem;
+}
+
+.u-bottom-9 {
+  bottom: 3rem;
+}
+
+.u-left-9 {
+  left: 3rem;
+}
+
+/* Logical offsets (recommended for RTL safety) */
+.u-start-9 {
+  inset-inline-start: 3rem;
+}
+
+.u-end-9 {
+  inset-inline-end: 3rem;
+}
+
+.u-top-10 {
+  top: 3.5rem;
+}
+
+.u-right-10 {
+  right: 3.5rem;
+}
+
+.u-bottom-10 {
+  bottom: 3.5rem;
+}
+
+.u-left-10 {
+  left: 3.5rem;
+}
+
+/* Logical offsets (recommended for RTL safety) */
+.u-start-10 {
+  inset-inline-start: 3.5rem;
+}
+
+.u-end-10 {
+  inset-inline-end: 3.5rem;
+}
+
+.u-top-11 {
+  top: 4rem;
+}
+
+.u-right-11 {
+  right: 4rem;
+}
+
+.u-bottom-11 {
+  bottom: 4rem;
+}
+
+.u-left-11 {
+  left: 4rem;
+}
+
+/* Logical offsets (recommended for RTL safety) */
+.u-start-11 {
+  inset-inline-start: 4rem;
+}
+
+.u-end-11 {
+  inset-inline-end: 4rem;
+}
+
+.u-top-12 {
+  top: 6rem;
+}
+
+.u-right-12 {
+  right: 6rem;
+}
+
+.u-bottom-12 {
+  bottom: 6rem;
+}
+
+.u-left-12 {
+  left: 6rem;
+}
+
+/* Logical offsets (recommended for RTL safety) */
+.u-start-12 {
+  inset-inline-start: 6rem;
+}
+
+.u-end-12 {
+  inset-inline-end: 6rem;
+}
+
+/* Float */
+.u-float-start {
+  float: left;
+}
+
+.u-float-end {
+  float: right;
+}
+
+.u-float-none {
+  float: none;
+}
+
+/* Z-index (simple scale) */
+.u-z-0 {
+  z-index: 0;
+}
+
+.u-z-1 {
+  z-index: 1;
+}
+
+.u-z-10 {
+  z-index: 10;
+}
+
+.u-z-100 {
+  z-index: 100;
+}
+
+.u-z-1000 {
+  z-index: 1000;
+}

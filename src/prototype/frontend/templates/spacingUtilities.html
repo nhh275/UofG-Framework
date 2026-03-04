@@ -1,0 +1,255 @@
+{% load static %}
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title> Spacing Utilities </title>
+
+    <link rel="stylesheet" href="{% static 'styleUtilities.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+
+    <style>
+
+
+        h2 {
+
+            margin-top: 50px;
+
+        }
+
+        h3 {
+
+            margin-top: 30px;
+
+        }
+
+        code {
+
+            background: #eee;
+            padding: 2px 6px;
+            border-radius: 6px;
+
+        }
+
+        .frame {
+
+            border: 3px dashed #999;
+            border-radius: 12px;
+            padding: 12px;
+            background: #fafafa;
+            margin-top: 12px;
+
+        }
+
+        .content {
+
+            border: 3px solid #333;
+            border-radius: 10px;
+            background: white;
+
+        }
+
+        .chip {
+
+            display: inline-block;
+            border: 2px solid #333;
+            border-radius: 999px;
+            padding: 4px 10px;
+            background: #fff;
+            margin-right: 8px;
+            margin-bottom: 8px;
+
+        }
+
+        .fixed-width {
+
+            width: 320px;
+
+            /* helps show mx-auto centering */
+
+        }
+
+        .stack>* {
+
+            border: 2px solid #333;
+            padding: 10px;
+            background: #fff;
+            border-radius: 10px;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1> Margin / Padding Utility Test </h1>
+
+    <!-- PADDING -->
+
+    <h2> Padding utilities (.u-p-*, .u-px-*, .u-py-*) </h2>
+
+    <h3><code> .u-p-4 </code> (padding all sides) </h3>
+
+    <div class="frame">
+
+        <div class="content u-p-4">
+
+            This box has <code> .u-p-4 </code> (padding all around).
+
+        </div>
+
+    </div>
+
+    <h3><code> .u-px-6 </code> (left + right only) </h3>
+
+    <div class="frame">
+
+        <div class="content u-px-6">
+
+            This box has <code> .u-px-6 </code> (horizontal padding).
+
+        </div>
+
+    </div>
+
+    <h3><code> .u-py-6 </code> (top + bottom only) </h3>
+
+    <div class="frame">
+
+        <div class="content u-py-6">
+
+            This box has <code> .u-py-6 </code> (vertical padding).
+
+        </div>
+
+    </div>
+
+    <h3> Side-specific padding: <code> .u-pt-6 </code> / <code> .u-pr-6 </code> / <code> .u-pb-6 </code> / <code> .u-pl-6 </code></h3>
+
+    <div class="frame">
+
+        <div class="content u-pt-6"> Top padding only ( <code> .u-pt-6 </code>)</div>
+        <div class="content u-pr-6" style="margin-top:10px;"> Right padding only ( <code> .u-pr-6 </code> ) </div>
+        <div class="content u-pb-6" style="margin-top:10px;"> Bottom padding only ( <code> .u-pb-6 </code> ) </div>
+        <div class="content u-pl-6" style="margin-top:10px;"> Left padding only ( <code> .u-pl-6 </code> ) </div>
+
+    </div>
+
+    <!-- MARGIN -->
+
+    <h2> Margin utilities (.u-m-*, .u-mx-*, .u-my-*) </h2>
+
+    <h3><code> .u-m-4 </code> (margin all sides) </h3>
+
+    <div class="frame">
+
+        <div class="content u-m-4">
+
+            I have <code> .u-m-4 </code> . You should see space outside me on all sides.
+
+        </div>
+
+    </div>
+
+    <h3><code> .u-mx-6 </code> (left + right only) </h3>
+
+    <div class="frame">
+
+        <div class="content u-mx-6">
+
+            I have <code> .u-mx-6 </code> (space left and right).
+
+        </div>
+
+    </div>
+
+    <h3><code> .u-my-6 </code> (top + bottom only) </h3>
+
+    <div class="frame">
+
+        <div class="content u-my-6">
+
+            I have <code> .u-my-6 </code> (space above and below).
+
+        </div>
+
+    </div>
+
+    <h3> Side-specific margin: <code> .u-mt-6 </code> / <code> .u-mr-6 </code> / <code> .u-mb-6 </code> / <code> .u-ml-6 </code></h3>
+
+    <div class="frame">
+
+        <div class="content u-mt-6"> Top margin only ( <code> .u-mt-6 </code> ) </div>
+        <div class="content u-mr-6" style="margin-top:10px;"> Right margin only ( <code> .u-mr-6 </code> ) </div>
+        <div class="content u-mb-6" style="margin-top:10px;"> Bottom margin only ( <code> .u-mb-6 </code> ) </div>
+        <div class="content u-ml-6" style="margin-top:10px;"> Left margin only ( <code> .u-ml-6 </code> ) </div>
+
+    </div>
+
+    <!-- RESET TO 0 -->
+
+    <h2> Reset tests (0 utilities) </h2>
+
+    <p> This shows that <code> .u-m-0 </code> / <code> .u-p-0 </code> remove spacing. </p>
+
+    <div class="frame">
+
+        <div class="content u-p-6 u-m-6">
+
+            I start with padding + margin ( <code> .u-p-6 .u-m-6 </code> )
+
+        </div>
+
+        <div class="content u-p-6 u-m-6 u-p-0 u-m-0">
+
+            I override to zero ( <code> .u-p-0 .u-m-0 </code>)
+
+        </div>
+
+    </div>
+
+    <!-- AUTO SPACING -->
+
+    <h2> Auto spacing (centering helpers) </h2>
+
+    <h3><code> .u-mx-auto </code> (centers a fixed-width element) </h3>
+
+    <div class="frame">
+
+        <div class="content fixed-width u-mx-auto u-p-4">
+
+            I should be centered using <code> .u-mx-auto </code>.
+
+        </div>
+
+    </div>
+
+    <h3><code> .u-ml-auto </code> (push item to the right in flex) </h3>
+
+    <div class="frame" style="display:flex; gap:10px; align-items:center;">
+
+        <div class="chip"> Left </div>
+        <div class="chip u-ml-auto"> Right (ml-auto) </div>
+
+    </div>
+
+    <h3><code> .u-my-auto </code> (vertical centering in a fixed-height flex container) </h3>
+
+    <div class="frame" style="height: 180px; display:flex; flex-direction:column;">
+
+        <div class="chip"> Top </div>
+        <div class="chip u-my-auto"> Centered vertically (my-auto) </div>
+        <div class="chip"> Bottom </div>
+
+    </div>
+
+</body>
+<hr>
+<a href="/">Back to Home</a>
+</html>

@@ -1,0 +1,92 @@
+{% load static %}
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title> Accessibility Utilities Demo </title>
+
+    <link rel="stylesheet" href="{% static 'styleUtilities.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+
+    <style>
+        h2 {
+            margin-top: 50px;
+        }
+
+        h3 {
+            margin-top: 30px;
+        }
+
+        .demo {
+            border: 2px dashed #999;
+            padding: 10px;
+            margin-top: 10px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #fafafa;
+        }
+
+        button {
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .focus-box {
+            border: 2px solid #ccc;
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1> Accessibility Utilities Demo </h1>
+
+    <!-- 1) VISUALLY HIDDEN -->
+    <h2> visually-hidden / screen-reader-only </h2>
+
+    <p>Text that is hidden visually but still readable by screen readers:</p>
+    <div class="demo">
+        <span class="visually-hidden">This text is invisible but accessible to screen readers</span>
+        <span>Visible text next to hidden text</span>
+    </div>
+
+    <!-- 2) SCREEN-READER-ONLY FOCUSABLE -->
+    <h2> screen-reader-only-focusable </h2>
+
+    <p>Hidden link becomes visible when focused:</p>
+    <div class="demo">
+        <a href="#" class="screen-reader-only-focusable">Skip to main content</a>
+        <span>Other visible content</span>
+    </div>
+
+    <!-- 3) FOCUS-VISIBLE -->
+    <h2> focus-visible </h2>
+
+    <p>Buttons showing visible outline when focused via keyboard:</p>
+    <div class="demo">
+        <button class="focus-visible">Button 1</button>
+        <button class="focus-visible">Button 2</button>
+        <button class="focus-visible">Button 3</button>
+    </div>
+
+    <!-- 4) LIVE DEMO BOX -->
+    <h2> Interactive focus demo </h2>
+    <p>Tab through the boxes to see the focus outline applied only when using keyboard:</p>
+    <div class="demo focus-box" tabindex="0">Box 1</div>
+    <div class="demo focus-box" tabindex="0">Box 2</div>
+    <div class="demo focus-box" tabindex="0">Box 3</div>
+
+</body>
+<hr>
+<a href="/">Back to Home</a>
+</html>

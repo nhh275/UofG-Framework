@@ -1,0 +1,69 @@
+{% load static %}
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Dropdown Component Test</title>
+
+    <!-- Component styles -->
+    <link rel="stylesheet" href="{% static 'styleUtilities.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+
+    <style>
+        h2 { margin-top: 50px; }
+
+        .frame {
+            border: 3px dashed #999;
+            border-radius: 12px;
+            padding: 12px;
+            background: #fafafa;
+            margin-top: 12px;
+            max-width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Dropdown Component Test</h1>
+
+    <h2>Favourite CompSci Student</h2>
+
+    <div class="frame">
+
+        <div class="uofg-dropdown">
+            <label class="uofg-dropdown__label" for="food">
+                Goated CompSci Student
+            </label>
+
+            <div class="uofg-dropdown__hint">
+                Pick one option
+            </div>
+
+            <div class="uofg-dropdown__error">
+                You must select an option
+            </div>
+
+            <div class="uofg-dropdown__control">
+                <select class="uofg-dropdown__select" id="food">
+                    <option value="" disabled selected>Pick an option</option>
+                    <option>Ethan</option>
+                    <option>Razvan</option>
+                    <option>Kieran</option>
+                    <option>Nelson</option>
+                    <option>Miro</option>
+                    <option>Euan</option>
+                </select>
+            </div>
+        </div>
+
+    </div>
+
+    <hr>
+    <a href="/">Back to Home</a>
+
+</body>
+</html>

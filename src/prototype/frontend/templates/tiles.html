@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tile Testing</title>
+
+    <link rel="stylesheet" href="{% static 'styleUtilities.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h2 {
+            margin-top: 30px;
+            color: #003d7a;
+        }
+        .section {
+            background-color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Tiles</h1>
+
+<div class="section">
+    <div class="tiles-container">
+
+        <div class="tile">
+            <img src="{% static 'logo.jpg' %}" alt="Tile Image" class="tile_img">
+            <div class="tile_text">
+                <h3>Tile Title</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    <br>Nullam mattis nibh at gravida maximus.
+                </p>
+            </div>
+        </div>
+
+        <div class="tile">
+            <img src="{% static 'shirt.jpg' %}" alt="Tile Image" class="tile_img">
+            <div class="tile_text">
+                <h3>Tile Title</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    <br>Donec cursus mi et tortor accumsan.
+                </p>
+            </div>
+        </div>
+
+        <div class="tile">
+            <img src="{% static 'photo.jpg' %}" alt="Tile Image" class="tile_img">
+            <div class="tile_text">
+                <h3>Tile Title</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    <br>Vestibulum eget velit venenatis.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<hr>
+<a href="/">Back to Home</a>
+
+</body>
+</html>

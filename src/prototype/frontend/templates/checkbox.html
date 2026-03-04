@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Checkbox Component Demo</title>
+
+  <!-- Compiled design system -->
+    <link rel="stylesheet" href="{% static 'styleUtilities.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background-color: #fff;
+    }
+
+    .demo-section {
+      margin-bottom: 60px;
+      max-width: 600px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= NORMAL EXAMPLE ================= -->
+  <section class="demo-section">
+    <div class="zh-checkbox">
+      <h3 class="zh-checkbox__heading">Marketing Preferences</h3>
+      <p class="zh-checkbox__description">Choose whether you want to receive marketing updates.</p>
+
+      <label class="zh-checkbox__row">
+        <input type="checkbox" class="zh-checkbox__input" />
+        <span class="zh-checkbox-label">I'd like to receive marketing emails</span>
+      </label>
+    </div>
+  </section>
+
+  <!-- ================= CHECKED STATE ================= -->
+  <section class="demo-section">
+    <div class="zh-checkbox">
+      <h3 class="zh-checkbox__heading">Newsletter Signup</h3>
+      <p class="zh-checkbox__description">Stay updated with monthly newsletters.</p>
+
+      <label class="zh-checkbox__row">
+        <input type="checkbox" class="zh-checkbox__input" checked />
+        <span class="zh-checkbox-label">Subscribe to newsletter</span>
+      </label>
+    </div>
+  </section>
+
+  <!-- ================= ERROR STATE ================= -->
+  <section class="demo-section">
+    <div class="zh-checkbox">
+      <h3 class="zh-checkbox__heading">Terms and Conditions</h3>
+      <p class="zh-checkbox__description">You must accept before continuing.</p>
+      <p class="zh-checkbox__error">You must accept the terms and conditions</p>
+
+      <label class="zh-checkbox__row">
+        <input type="checkbox" class="zh-checkbox__input" />
+        <span class="zh-checkbox-label">I agree to the terms and conditions</span>
+      </label>
+    </div>
+  </section>
+
+  <!-- ================= DISABLED STATE ================= -->
+  <section class="demo-section">
+    <div class="zh-checkbox">
+      <h3 class="zh-checkbox__heading">Premium Features</h3>
+      <p class="zh-checkbox__description">Only available for paid accounts.</p>
+
+      <label class="zh-checkbox__row">
+        <input type="checkbox" class="zh-checkbox__input" disabled />
+        <span class="zh-checkbox-label">Enable premium access</span>
+      </label>
+    </div>
+  </section>
+
+  <!-- ================= MULTIPLE CHECKBOX GROUP ================= -->
+  <section class="demo-section">
+    <div class="zh-checkbox">
+      <h3 class="zh-checkbox__heading">Notification Preferences</h3>
+      <p class="zh-checkbox__description">Select all that apply.</p>
+
+      <label class="zh-checkbox__row">
+        <input type="checkbox" class="zh-checkbox__input" />
+        <span class="zh-checkbox-label">Email notifications</span>
+      </label>
+
+      <label class="zh-checkbox__row">
+        <input type="checkbox" class="zh-checkbox__input" />
+        <span class="zh-checkbox-label">SMS notifications</span>
+      </label>
+
+      <label class="zh-checkbox__row">
+        <input type="checkbox" class="zh-checkbox__input" />
+        <span class="zh-checkbox-label">Push notifications</span>
+      </label>
+    </div>
+  </section>
+
+</body>
+
+
+
+
+<div class="zh-checkbox">
+  <!-- Heading -->
+  <h3 class="zh-checkbox__heading">Select your preferences</h3>
+  
+  <!-- Optional description -->
+  <p class="zh-checkbox__description">You can select multiple options from below.</p>
+  
+  <!-- Error message (optional, only show if there is an error) -->
+  <p class="zh-checkbox__error">Please select at least one option.</p>
+  
+  <!-- Checkbox row 1 -->
+  <div class="zh-checkbox__row">
+    <input type="checkbox" id="option1" class="zh-checkbox__input">
+    <label for="option1" class="zh-checkbox-label">Option 1</label>
+  </div>
+
+  <!-- Checkbox row 2 -->
+  <div class="zh-checkbox__row">
+    <input type="checkbox" id="option2" class="zh-checkbox__input" checked>
+    <label for="option2" class="zh-checkbox-label">Option 2</label>
+  </div>
+
+  <!-- Checkbox row 3 (disabled) -->
+  <div class="zh-checkbox__row">
+    <input type="checkbox" id="option3" class="zh-checkbox__input" disabled>
+    <label for="option3" class="zh-checkbox-label">Option 3 (Disabled)</label>
+  </div>
+</div>
+
+</html>

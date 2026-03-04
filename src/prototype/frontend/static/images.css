@@ -1,0 +1,77 @@
+/* Primary Brand Colours */
+/* University blue is a staple of the university's overall brand. This should always be treated as the primary brand colour. */
+/* A secondary colour should complement the primary colour of a brand and be used as an accent or background colour. */
+/* Tints */
+/* Tint colours are lighter shades of the primary and secondary colours. They should be used sparingly to create depth and variation. */
+/* Neutral Colours */
+/* Vanilla colours are neutral, foundational elements you can build on for versatile user experiences across platforms. */
+/* UI Colours */
+/* UI colours should be used for alerts based on user actions such as filling a field or submitting a form. */
+/* These are not brand colours, they are for communication only. */
+/* Colour Map */
+/* CSS Variables for testing */
+:root {
+  /* Primary */
+  --uni-blue: #003865;
+  --rust: #9A3A06;
+  /* Tints */
+  --uni-blue80: #435F81;
+  --uni-blue60: #6D87A0;
+  --uni-blue40: #9DAEBF;
+  --uni-blue20: #CED7DF;
+  --uni-blue10: #E6EBF0;
+  --rust80: #A56648;
+  --rust60: #BA8B6F;
+  --rust40: #D1B29E;
+  --rust20: #E8D9CE;
+  /* Neutrals */
+  --dgrey1: #666666;
+  --dgrey2: #4D4D4D;
+  --dgrey3: #323232;
+  --lgrey1: #F5F5F5;
+  --lgrey2: #E6E6E6;
+  --lgrey3: #CCCCCC;
+  --mgrey1: #B3B3B3;
+  --mgrey2: #999999;
+  --mgrey3: #757575;
+  /* UI Colours */
+  --error: #D4351C;
+  --success: #8BC34A;
+  --highlight: #FFDD00;
+}
+
+.image {
+  margin: 0;
+  max-width: 100%;
+}
+
+.image__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image__caption {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--dgrey3);
+}
+
+.image-16x9 {
+  aspect-ratio: 16/9;
+}
+
+.image-1x1 {
+  aspect-ratio: 1/1;
+}
+
+.image-2x3 {
+  aspect-ratio: 2/3;
+}
+
+.image-5x3 {
+  aspect-ratio: 5/3;
+}
+
+/*# sourceMappingURL=images.css.map */

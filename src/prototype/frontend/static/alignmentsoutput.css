@@ -1,0 +1,74 @@
+.align-baseline {
+  vertical-align: baseline;
+}
+
+.align-top {
+  vertical-align: top;
+}
+
+.align-middle {
+  vertical-align: middle;
+}
+
+.align-bottom {
+  vertical-align: bottom;
+}
+
+.align-text-top {
+  vertical-align: text-top;
+}
+
+.align-text-bottom {
+  vertical-align: text-bottom;
+}
+
+/*<span class="align-middle">Aligned middle</span>*/
+.justify-start {
+  justify-content: flex-start;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.items-between {
+  align-items: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.items-around {
+  align-items: space-around;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
+}
+
+.items-evenly {
+  align-items: space-evenly;
+}
+
+/* !!!These assume display: flex is already applied (or you create a .d-flex utility)*/

@@ -1,0 +1,89 @@
+/* filepath: buttons.css */
+:root {
+    --space1: 4px;
+    --space2: 8px;
+    --space4: 16px;
+    --space5: 20px;
+    --uni-blue: #003d7a;
+    --uni-blue20: rgba(0, 61, 122, 0.2);
+    --uni-blue40: rgba(0, 61, 122, 0.4);
+    --uni-blue80: rgba(0, 61, 122, 0.8);
+    --lgrey1: #ffffff;
+    --lgrey2: #e8e8e8;
+    --lgrey3: #d0d0d0;
+    --highlight: #ffd700;
+}
+
+.btn {
+    border-radius: var(--space1);
+    text-align: center;
+    cursor: pointer;
+    padding: var(--space2) var(--space5);
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background-color: var(--uni-blue);
+    color: var(--lgrey1);
+}
+
+.btn-primary:hover {
+    background-color: var(--lgrey1);
+    color: var(--uni-blue);
+}
+
+.btn-primary:focus {
+    outline: var(--space1) solid var(--highlight);
+}
+
+.btn-primary:disabled {
+    background-color: var(--uni-blue40);
+    color: var(--lgrey3);
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background-color: var(--uni-blue20);
+    color: var(--uni-blue);
+}
+
+.btn-secondary:hover {
+    background-color: var(--lgrey1);
+    color: var(--uni-blue);
+}
+
+.btn-secondary:focus {
+    color: var(--uni-blue);
+    outline: var(--space1) solid var(--highlight);
+}
+
+.btn-secondary:disabled {
+    background-color: var(--uni-blue20);
+    color: var(--lgrey2);
+    cursor: not-allowed;
+}
+
+.btn-outline {
+    background-color: var(--lgrey1);
+    color: var(--uni-blue80);
+    outline: solid var(--uni-blue);
+    border: none;
+}
+
+.btn-outline:hover {
+    background-color: var(--lgrey1);
+    color: var(--uni-blue);
+}
+
+.btn-outline:focus {
+    color: var(--uni-blue);
+    outline: var(--space1) solid var(--highlight);
+}
+
+.btn-outline:disabled {
+    border-color: var(--uni-blue20);
+    color: var(--lgrey3);
+    cursor: not-allowed;
+}

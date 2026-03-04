@@ -1,0 +1,76 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Border Utilities Demo</title>
+    <link rel="stylesheet" href="{% static 'styleUtilities.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <style>
+        .demo {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .item {
+            padding: 20px;
+            text-align: center;
+            min-width: 80px;
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Border & Rounded Utilities</h1>
+
+    <h2>Border Styles</h2>
+    <div class="demo">
+        <div class="item border">.border</div>
+        <div class="item border-0">.border-0</div>
+        <div class="item border-top">.border-top</div>
+        <div class="item border-end">.border-end</div>
+        <div class="item border-bottom">.border-bottom</div>
+        <div class="item border-start">.border-start</div>
+    </div>
+
+    <h2>Border Widths</h2>
+    <div class="demo">
+        <div class="item border border-1">.border-1</div>
+        <div class="item border border-2">.border-2</div>
+        <div class="item border border-3">.border-3</div>
+        <div class="item border border-4">.border-4</div>
+        <div class="item border border-5">.border-5</div>
+    </div>
+
+    <h2>Rounded Corners</h2>
+    <div class="demo">
+        <div class="item border rounded">.rounded</div>
+        <div class="item border rounded-sm">.rounded-sm</div>
+        <div class="item border rounded-lg">.rounded-lg</div>
+        <div class="item border rounded-xl">.rounded-xl</div>
+        <div class="item border rounded-0">.rounded-0</div>
+    </div>
+
+    <h2>Specific Rounded Corners</h2>
+    <div class="demo">
+        <div class="item border rounded-top">.rounded-top</div>
+        <div class="item border rounded-bottom">.rounded-bottom</div>
+        <div class="item border rounded-start">.rounded-start</div>
+        <div class="item border rounded-end">.rounded-end</div>
+    </div>
+
+    <h2>Circle & Pill Shapes</h2>
+    <div class="demo" style="gap:20px; flex-wrap: wrap;">
+        <div class="item border rounded-circle" style="width:60px; height:60px;">Circle</div>
+        <div class="item border rounded-pill" style="width:120px;">Pill</div>
+    </div>
+
+</body>
+<hr>
+<a href="/">Back to Home</a>
+</html>

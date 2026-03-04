@@ -1,0 +1,65 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shadow Utilities</title>
+    <link rel="stylesheet" href="{% static 'styleUtilities.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <style>
+        .demo {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .item {
+            padding: 20px;
+            text-align: center;
+            min-width: 80px;
+            background: #fff;
+        }
+
+        button.item {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Shadow Utilities Demo</h1>
+
+    <h2>Static Shadows</h2>
+    <div class="demo">
+        <div class="item shadow-none">.shadow-none</div>
+        <div class="item shadow-sm">.shadow-sm</div>
+        <div class="item shadow-md">.shadow-md</div>
+        <div class="item shadow-lg">.shadow-lg</div>
+        <div class="item shadow-xl">.shadow-xl</div>
+    </div>
+
+    <h2>Hover Shadows</h2>
+    <div class="demo">
+        <div class="item hover-shadow-none">.hover-shadow-none</div>
+        <div class="item hover-shadow-sm">.hover-shadow-sm</div>
+        <div class="item hover-shadow-md">.hover-shadow-md</div>
+        <div class="item hover-shadow-lg">.hover-shadow-lg</div>
+        <div class="item hover-shadow-xl">.hover-shadow-xl</div>
+    </div>
+
+    <h2>Focus-Visible Shadows (Tab to focus)</h2>
+    <div class="demo">
+        <button class="item focus-shadow-none">.focus-shadow-none</button>
+        <button class="item focus-shadow-sm">.focus-shadow-sm</button>
+        <button class="item focus-shadow-md">.focus-shadow-md</button>
+        <button class="item focus-shadow-lg">.focus-shadow-lg</button>
+        <button class="item focus-shadow-xl">.focus-shadow-xl</button>
+    </div>
+
+</body>
+<hr>
+<a href="/">Back to Home</a>
+</html>

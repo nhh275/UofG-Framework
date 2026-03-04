@@ -1,0 +1,171 @@
+{% load static %}
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Image Component Test Page</title>
+
+    <link rel="stylesheet" href="{% static 'styleUtilities.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        h2 {
+            margin-top: 50px;
+        }
+
+        .demo-section {
+            border: 2px dashed #ccc;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+            background: #fafafa;
+            max-width: 600px;
+        }
+
+        code {
+            background: #eee;
+            padding: 2px 6px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Image Component Demonstration</h1>
+
+
+<!-- BASIC IMAGE -->
+<h2>Basic Responsive Image</h2>
+
+<div class="demo-section">
+
+    <figure class="image">
+        <img 
+            class="image__img"
+            src="{% static 'images/sample-landscape.jpg' %}" 
+            alt="Sample landscape"
+        />
+
+        <figcaption class="image__caption">
+            Basic responsive image using <code>.image</code>
+        </figcaption>
+    </figure>
+
+</div>
+
+
+
+<!-- 16:9 RATIO -->
+<h2>16:9 Aspect Ratio</h2>
+
+<div class="demo-section">
+
+    <figure class="image image-16x9">
+        <img 
+            class="image__img"
+            src="{% static 'images/sample-landscape.jpg' %}" 
+            alt="16 by 9 ratio example"
+        />
+
+        <figcaption class="image__caption">
+            Uses <code>.image-16x9</code>
+        </figcaption>
+    </figure>
+
+</div>
+
+
+
+<!-- 1:1 RATIO -->
+<h2>1:1 Square Image</h2>
+
+<div class="demo-section">
+
+    <figure class="image image-1x1">
+        <img 
+            class="image__img"
+            src="{% static 'images/sample-portrait.jpg' %}" 
+            alt="Square ratio example"
+        />
+
+        <figcaption class="image__caption">
+            Uses <code>.image-1x1</code>
+        </figcaption>
+    </figure>
+
+</div>
+
+
+
+<!-- 2:3 PORTRAIT -->
+<h2>2:3 Portrait Ratio</h2>
+
+<div class="demo-section">
+
+    <figure class="image image-2x3">
+        <img 
+            class="image__img"
+            src="{% static 'images/sample-portrait.jpg' %}" 
+            alt="2 by 3 portrait example"
+        />
+
+        <figcaption class="image__caption">
+            Uses <code>.image-2x3</code>
+        </figcaption>
+    </figure>
+
+</div>
+
+
+
+<!-- 5:3 WIDE -->
+<h2>5:3 Wide Image</h2>
+
+<div class="demo-section">
+
+    <figure class="image image-5x3">
+        <img 
+            class="image__img"
+            src="{% static 'images/sample-landscape.jpg' %}" 
+            alt="5 by 3 wide example"
+        />
+
+        <figcaption class="image__caption">
+            Uses <code>.image-5x3</code>
+        </figcaption>
+    </figure>
+
+</div>
+
+
+
+<!-- STACK TEST -->
+<h2>Stacked Image Layout Test</h2>
+
+<div class="demo-section">
+
+    <figure class="image image-1x1">
+        <img class="image__img" src="{% static 'images/sample-portrait.jpg' %}" alt="">
+    </figure>
+
+    <figure class="image image-16x9" style="margin-top: 15px;">
+        <img class="image__img" src="{% static 'images/sample-landscape.jpg' %}" alt="">
+    </figure>
+
+</div>
+
+
+<hr>
+<a href="/">Back to Home</a>
+
+</body>
+</html>

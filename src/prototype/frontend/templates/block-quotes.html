@@ -1,0 +1,168 @@
+{% load static %}
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Blockquote Component Test Page</title>
+
+    <link rel="stylesheet" href="{% static 'styleUtilities.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        h2 {
+            margin-top: 50px;
+        }
+
+        code {
+            background: #eee;
+            padding: 2px 6px;
+            border-radius: 6px;
+        }
+
+        .demo-section {
+            border: 2px dashed #ccc;
+            padding: 25px;
+            margin-top: 20px;
+            border-radius: 12px;
+            background: #fafafa;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<h1>Blockquote Component Demonstration</h1>
+
+<!-- BASIC QUOTE -->
+<h2>Basic Quote</h2>
+
+<div class="demo-section">
+
+    <blockquote class="zh-blockquote">
+        <div class="zh-blockquote__inner">
+
+            <span class="zh-blockquote__icon"></span>
+
+            <p class="zh-blockquote__quote">
+                Education is the most powerful weapon which you can use to change the world.
+            </p>
+
+        </div>
+    </blockquote>
+
+</div>
+
+
+
+<!-- QUOTE WITH ATTRIBUTION -->
+<h2>Quote With Attribution</h2>
+
+<div class="demo-section">
+
+    <blockquote class="zh-blockquote">
+        <div class="zh-blockquote__inner">
+
+            <span class="zh-blockquote__icon"></span>
+
+            <div>
+
+                <p class="zh-blockquote__quote">
+                    Success is not final, failure is not fatal: it is the courage to continue that counts.
+                </p>
+
+                <div class="zh-blockquote__attribution">
+
+                    <div class="zh-blockquote__byline">
+                        <p class="zh-blockquote__name">Winston Churchill</p>
+                        <p class="zh-blockquote__role">Former Prime Minister of the UK</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </blockquote>
+
+</div>
+
+
+
+<!-- QUOTE WITH AVATAR -->
+<h2>Quote With Avatar</h2>
+
+<div class="demo-section">
+
+    <blockquote class="zh-blockquote">
+        <div class="zh-blockquote__inner">
+
+            <span class="zh-blockquote__icon"></span>
+
+            <div>
+
+                <p class="zh-blockquote__quote">
+                    The beautiful thing about learning is that nobody can take it away from you.
+                </p>
+
+                <div class="zh-blockquote__attribution">
+
+                    <div class="zh-blockquote__avatar">
+                        <img src="{% static 'images/avatar-sample.jpg' %}" alt="Speaker avatar">
+                    </div>
+
+                    <div class="zh-blockquote__byline">
+                        <p class="zh-blockquote__name">B.B. King</p>
+                        <p class="zh-blockquote__role">Musician</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </blockquote>
+
+</div>
+
+
+
+<!-- MULTIPLE QUOTES TEST -->
+<h2>Multiple Blockquotes Stack Test</h2>
+
+<div class="demo-section">
+
+    <blockquote class="zh-blockquote">
+        <div class="zh-blockquote__inner">
+            <span class="zh-blockquote__icon"></span>
+            <p class="zh-blockquote__quote">
+                Knowledge speaks, but wisdom listens.
+            </p>
+        </div>
+    </blockquote>
+
+    <blockquote class="zh-blockquote">
+        <div class="zh-blockquote__inner">
+            <span class="zh-blockquote__icon"></span>
+            <p class="zh-blockquote__quote">
+                An investment in knowledge pays the best interest.
+            </p>
+        </div>
+    </blockquote>
+
+</div>
+
+
+<hr>
+<a href="/">Back to Home</a>
+
+</body>
+</html>
