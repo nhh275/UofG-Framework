@@ -5,8 +5,5 @@ stylelint:
     stage: lint
     image: node:20
     script: 
-        - npm ci
+        - npm install
         - npm run lint:scss
-    only: 
-        - merge_requests
-        - main
