@@ -47,6 +47,8 @@ button, input, select, textarea {
     padding: 0;
     border: none;
     background: none;
+
+    /* stylelint-disable-next-line property-no-vendor-prefix */
     -webkit-appearance: none;
     border-radius: 0;
     touch-action: manipulation;
@@ -69,7 +71,11 @@ textarea {
 html {
     font-size: 16px; 
     line-height: 1.5; 
+
+    /* stylelint-disable-next-line property-no-vendor-prefix */
     -webkit-text-size-adjust: 100%;
+
+    /* stylelint-disable-next-line property-no-vendor-prefix */
     -webkit-tap-highlight-color: transparent;
 }
     
@@ -77,13 +83,13 @@ body {
     font-family: var(--uofg-font-sans, sans-serif); 
     color: var(--uofg-text, #000); 
     background: var(--uofg-bg, #fff); 
-    text-rendering: optimizeLegibility; /* potential change to auto? */
+    text-rendering: optimizelegibility; /* potential change to auto? */
 }
 
 /* Focus Reset - Accessibility feature - When navigating page using tab border of 
     hovering button remains consistent across browsers */
 :focus-visible {
-    outline: 4px solid var(--uofg-focus, #FFDD00);
+    outline: 4px solid var(--uofg-focus, #FD0);
     outline-offset: 4px;
 }
 
