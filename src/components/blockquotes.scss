@@ -2,7 +2,6 @@
   /* match body text width  */
   max-width: 1100px;
   margin: var(--space10) 0;
-
   background: transparent;
   border: 0;
   padding: 0;
@@ -34,7 +33,6 @@
   font-family: var(--uofg-font-serif, "Garamond", serif);
   font-weight: 400;
   color: var(--dgrey3);
-
   font-size: clamp(1.75rem, 3vw, 3rem);
   line-height: 1.15;
 }

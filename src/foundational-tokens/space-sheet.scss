@@ -13,8 +13,6 @@ $space11: 4rem;
 $space12: 6rem;
 $space13: 8rem;
 $space14: 10rem;
-
-/* Space mapping */
 $space-scale: (
   0: 0,
   1: $space1,
@@ -32,8 +30,6 @@ $space-scale: (
   13: $space13,
   14: $space14
 );
-
-/* Z-index (simple scale) */
 $z: (
   0: 0,
   1: 1,
@@ -42,9 +38,7 @@ $z: (
   1000: 1000
 );
 
-/* CSS Variables for testing */
 :root {
-
     --space1: #{$space1};
     --space2: #{$space2};
     --space3: #{$space3};
@@ -57,5 +51,4 @@ $z: (
     --space10: #{$space10};
     --space11: #{$space11};
     --space12: #{$space12};
-
 }

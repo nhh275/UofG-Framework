@@ -17,9 +17,7 @@
 }
 
 .col {
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: 0%;
+    flex: 1 0 0;
     padding-left: math.div($grid-gutter, 2);
     padding-right: math.div($grid-gutter, 2);
 }
@@ -44,9 +42,6 @@
 
 /* Auto width columns */
 .col-auto {
-    flex-grow: 0;
-    flex-shrink: 0;
-    flex-basis: auto;
     width: auto;
 }
 

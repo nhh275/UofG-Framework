@@ -60,7 +60,7 @@
 .zh-checkbox__input:focus {
   outline: none;
   border-color: var(--highlight);
-  box-shadow: 0 0 0 2px rgba(255, 221, 0, 0.4);
+  box-shadow: 0 0 0 2px rgb(255 221 0 / 40%);
 }
 
 .zh-checkbox__input:checked {

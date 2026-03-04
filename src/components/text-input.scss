@@ -8,17 +8,13 @@ $control-border-width: 2px;
 $control-border: $control-border-width solid var(--lgrey3);
 $control-border-hover: $control-border-width solid var(--mgrey1);
 $control-border-error: $control-border-width solid var(--error);
-
 $control-bg: var(--lgrey1);
 $control-text: var(--dgrey3);
-
 $label-color: var(--dgrey3);
 $hint-color: var(--mgrey3);
 $error-color: var(--error);
-
 $focus-outline: var(--space1) solid var(--highlight);
 $focus-outline-offset: 0;
-
 $required-color: var(--uni-blue); /* blue asterisk */
 
 .zh-form-field {
@@ -64,11 +60,9 @@ $required-color: var(--uni-blue); /* blue asterisk */
     font-family: fonts.$primary-font;
     color: $control-text;
     background: $control-bg;
-
     border: $control-border;
     border-radius: 0;
     padding: $control-padding-y $control-padding-x;
-
     width: 100%;
     max-width: 100%;
 

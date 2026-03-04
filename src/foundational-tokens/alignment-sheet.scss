@@ -6,7 +6,6 @@ $vertical-align: (
   text-top: text-top,
   text-bottom: text-bottom
 );
-
 $content-align: (
   start: flex-start,
   center: center,
@@ -15,7 +14,6 @@ $content-align: (
   around: space-around,
   evenly: space-evenly
 );
-
 $justify: (
   start: flex-start,
   end: flex-end,
@@ -24,7 +22,6 @@ $justify: (
   around: space-around,
   evenly: space-evenly
 );
-
 $align-items: (
   start: flex-start,
   end: flex-end,
@@ -32,8 +29,6 @@ $align-items: (
   baseline: baseline,
   stretch: stretch
 );
-
-/* Align self */
 $align-self: (
   auto: auto,
   start: flex-start,

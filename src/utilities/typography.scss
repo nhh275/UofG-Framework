@@ -20,7 +20,7 @@
 
 /* Responsive text alignments */
 @each $bp, $width in $breakpoints {
-    @media (min-width: $width) {
+    @media (width >= $width) {
         .text-#{$bp}-start {
             text-align: start;
         }
@@ -50,7 +50,6 @@
 
 .text-break {
     overflow-wrap: break-word;
-    word-break: break-word;
 }
 
 
@@ -96,7 +95,7 @@
 
 /* Responsive Text Sizes */
 @each $bp, $width in $breakpoints {
-    @media (min-width: $width) {
+    @media (width >= $width) {
         @each $key, $size in $font-sizes {
             .fs-#{$bp}-#{$key} {
                 font-size: $size;
@@ -136,7 +135,7 @@
 
 /* Responsive Line Height */
 @each $bp, $width in $breakpoints {
-    @media (min-width: $width) {
+    @media (width >= $width) {
         @each $key, $value in $line-heights {
             .lh-#{$bp}-#{$key} {
                 line-height: $value;
@@ -154,7 +153,7 @@
 
 /* Responsive Letter Spacing */
 @each $bp, $width in $breakpoints {
-  @media (min-width: $width) {
+  @media (width >= $width) {
     @each $name, $value in $letter-spacing {
       .tracking-#{$bp}-#{$name} {
         letter-spacing: $value;

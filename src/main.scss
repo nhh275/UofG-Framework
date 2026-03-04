@@ -1,6 +1,6 @@
 /* Reset comes first */
 
-@use './reset/reset.scss';
+@use './reset/reset';
 
 /* Tokens */
 
@@ -14,7 +14,7 @@
 
 /* Raw fonts css file import */
 
-@use './utilities/grid.scss';
+@use './utilities/grid';
 @use './utilities/accessibility';
 @use './utilities/alignments';
 @use './utilities/border';
