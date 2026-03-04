@@ -43,7 +43,9 @@
   width: 20px;
   height: 20px;
   cursor: pointer;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
   -webkit-appearance: none;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
   -moz-appearance: none;
   appearance: none;
   border: 2px solid var(--dgrey3);
@@ -60,7 +62,7 @@
 .zh-checkbox__input:focus {
   outline: none;
   border-color: var(--highlight);
-  box-shadow: 0 0 0 2px rgba(255, 221, 0, 0.4);
+  box-shadow: 0 0 0 2px rgb(255 221 0 / 0.4);
 }
 
 .zh-checkbox__input:checked {
