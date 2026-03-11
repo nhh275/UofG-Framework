@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Calendar Test</title>
+
+  <link rel="stylesheet" href="../../distribution/main.css" />
+
+  <style>
+    /* Test-page helpers only */
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      margin: 24px;
+      background: #fff;
+      color: #111;
+      line-height: 1.5;
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      gap: 18px;
+    }
+
+    header {
+      border-bottom: 1px solid #eee;
+      padding-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: 20px;
+    }
+
+    p {
+      margin: 0;
+      color: #555;
+      max-width: 90ch;
+    }
+
+    .note {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #555;
+      background: #fafafa;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 10px 12px;
+    }
+
+    .card {
+      border: 1px dashed #bbb;
+      border-radius: 12px;
+      padding: 16px;
+      background: #fff;
+      display: grid;
+      gap: 14px;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .kbd {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 12px;
+    }
+
+    .demo-wrap {
+      max-width: 420px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Calendar – Component test</h1>
+      <p>
+        This page tests the calendar component rendered by
+        <span class="kbd">calendars.js</span>, including month pagination,
+        weekday row, month label, day grid, today highlight, and event markers.
+      </p>
+
+      <div class="note">
+        <strong>How to test:</strong><br>
+        • Click month buttons to switch months.<br>
+        • Hover day cells to confirm date underline appears.<br>
+        • Use <span class="kbd">Tab</span> to focus month buttons and day buttons and check focus styling.<br>
+        • Confirm event markers render for the days listed in <span class="kbd">data-events</span>.<br>
+        • Confirm the current day is highlighted only when the rendered month matches the real current month.
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>Default calendar</h2>
+      <p>
+        Baseline component test using the external JavaScript file to render the internal calendar structure.
+      </p>
+
+      <div class="demo-wrap">
+        <div class="zh-calendar" data-calendar data-events="4, 12, 17, 26"></div>
+      </div>
+
+      <div class="note" style="margin:0;">
+        Expected: the calendar renders month buttons from Jan–Dec, weekday labels,
+        a month name, and a table of day buttons. Event dots should appear on days
+        4, 12, 17, and 26 in whichever month is currently shown.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Edge checks</h2>
+      <p>
+        Use this checklist while interacting with the rendered calendar.
+      </p>
+
+      <div class="note" style="margin:0;">
+        <strong>Expected:</strong><br>
+        • Weekend labels (Sat/Sun) should appear lighter than weekdays.<br>
+        • Empty cells at the start/end of shorter months should remain visually blank.<br>
+        • The active month button should use the <span class="kbd">is-active</span> styling.<br>
+        • The calendar should remain contained within the demo width and not overflow horizontally.
+      </div>
+    </section>
+  </div>
+
+  <script src="../../distribution/calendars.js"></script>
+
+  <script>
+    /* Expose metrics for harness */
+    window.__HARNESS_METRICS__ = () => {
+      const month = document.querySelector(".zh-calendar__month")?.textContent || "";
+      const active = document.querySelector(".zh-calendar__pagination .is-active")?.textContent || "";
+      const markers = document.querySelectorAll(".zh-calendar__marker").length;
+
+      return {
+        viewport: window.innerWidth,
+        month,
+        activeMonthButton: active,
+        visibleEventMarkers: markers
+      };
+    };
+  </script>
+</body>
+
+</html>

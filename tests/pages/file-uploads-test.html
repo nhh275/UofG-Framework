@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>File Upload – Component Test</title>
+
+    <link rel="stylesheet" href="../../distribution/main.css" />
+
+    <style>
+        /* Test-page helpers only */
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 24px;
+            background: #fff;
+            color: #111;
+            line-height: 1.5;
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            gap: 18px;
+        }
+
+        header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+        }
+
+        h1 {
+            margin: 0 0 6px;
+            font-size: 20px;
+        }
+
+        p {
+            margin: 0;
+            color: #555;
+            max-width: 90ch;
+        }
+
+        .note {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #555;
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            align-items: start;
+        }
+
+        @media (min-width: 960px) {
+            .grid2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            border: 1px dashed #bbb;
+            border-radius: 12px;
+            padding: 16px;
+            background: #fff;
+            display: grid;
+            gap: 14px;
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .kbd {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+            font-size: 12px;
+        }
+
+        /* Test-only helpers */
+        .stack {
+            display: grid;
+            gap: 18px;
+        }
+
+        .zh-file-upload__button {
+            font: inherit;
+            /* helps if button is a label */
+        }
+
+        .is-disabled .zh-file-upload__button {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+
+        .is-disabled .zh-file-upload__filename {
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1>File Upload – Component test</h1>
+            <p>
+                This page tests <span class="kbd">.zh-file-upload</span>, label spacing, hidden input behavior,
+                button hover/focus/active states, and filename display.
+            </p>
+            <div class="note">
+                <strong>How to test:</strong><br>
+                • Click the upload button to choose a file.<br>
+                • After selection, the filename text should update.<br>
+                • Hover the button: background and border styling should change.<br>
+                • Tab to the button and press Enter/Space: focus styling should appear and the file picker should
+                open.<br>
+                • Long filenames should stay on one line because <span class="kbd">white-space: nowrap</span> is
+                applied.
+            </div>
+        </header>
+
+        <div class="grid2">
+            <section class="card">
+                <h2>Default file upload</h2>
+                <p>
+                    Baseline test for label, button, control layout, and filename update after choosing a file.
+                </p>
+
+                <div class="zh-file-upload" id="upload-default">
+                    <label class="zh-file-upload__label" for="file-default">Upload supporting document</label>
+
+                    <input class="zh-file-upload__input" id="file-default" type="file"
+                        aria-describedby="file-default-name" />
+
+                    <div class="zh-file-upload__control">
+                        <label class="zh-file-upload__button" for="file-default" tabindex="0">Choose file</label>
+                        <span class="zh-file-upload__filename" id="file-default-name">No file selected</span>
+                    </div>
+                </div>
+
+                <div class="note" style="margin:0;">
+                    Expected: label appears above the control, button is visible, native file input is hidden,
+                    and filename text updates after a file is chosen.
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>Long filename / stress test</h2>
+                <p>
+                    Tests how the filename display behaves with a very long selected filename.
+                </p>
+
+                <div class="zh-file-upload" id="upload-long">
+                    <label class="zh-file-upload__label" for="file-long">Upload dissertation draft</label>
+
+                    <input class="zh-file-upload__input" id="file-long" type="file" aria-describedby="file-long-name" />
+
+                    <div class="zh-file-upload__control">
+                        <label class="zh-file-upload__button" for="file-long" tabindex="0">Choose file</label>
+                        <span class="zh-file-upload__filename" id="file-long-name">
+                            dissertation-final-version-reviewed-with-comments.docx
+                        </span>
+                    </div>
+                </div>
+
+                <div class="note" style="margin:0;">
+                    Expected: filename stays on one line. If it overflows, that reflects the current component behavior
+                    and is useful to document.
+                </div>
+            </section>
+        </div>
+
+        <section class="card">
+            <h2>Disabled-state demonstration</h2>
+            <p>
+                Your CSS does not currently include a disabled modifier for this component, so this section demonstrates
+                a test-only disabled appearance.
+            </p>
+
+            <div class="zh-file-upload is-disabled" id="upload-disabled" aria-disabled="true">
+                <label class="zh-file-upload__label" for="file-disabled">Upload transcript</label>
+
+                <input class="zh-file-upload__input" id="file-disabled" type="file" disabled
+                    aria-describedby="file-disabled-name" />
+
+                <div class="zh-file-upload__control">
+                    <label class="zh-file-upload__button" for="file-disabled" tabindex="-1" aria-hidden="true">Choose
+                        file</label>
+                    <span class="zh-file-upload__filename" id="file-disabled-name">Disabled</span>
+                </div>
+            </div>
+
+            <div class="note" style="margin:0;">
+                Expected: this does not open the file picker. Styling here is test-page-only because the component CSS
+                does not define a disabled state.
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function wireFileUpload(inputId, filenameId) {
+            const input = document.getElementById(inputId);
+            const filename = document.getElementById(filenameId);
+
+            if (!input || !filename) return;
+
+            input.addEventListener("change", () => {
+                if (input.files && input.files.length > 0) {
+                    filename.textContent = input.files[0].name;
+                } else {
+                    filename.textContent = "No file selected";
+                }
+            });
+        }
+
+        wireFileUpload("file-default", "file-default-name");
+        wireFileUpload("file-long", "file-long-name");
+
+        // Keyboard support for label-as-button
+        document.querySelectorAll(".zh-file-upload__button[for]").forEach((label) => {
+            label.addEventListener("keydown", (e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    const targetId = label.getAttribute("for");
+                    const input = document.getElementById(targetId);
+                    if (input && !input.disabled) input.click();
+                }
+            });
+        });
+
+        /* Expose metrics for harness */
+        window.__HARNESS_METRICS__ = () => ({
+            viewport: window.innerWidth,
+            note: "Choose a file to test filename updates; Tab to the button to test focus behavior."
+        });
+    </script>
+</body>
+
+</html>
