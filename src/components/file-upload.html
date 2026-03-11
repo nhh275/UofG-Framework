@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>File Upload Example</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+  <div class="zh-file-upload">
+    <!-- File upload label -->
+    <label class="zh-file-upload__label" for="fileUpload">
+      Upload a file
+    </label>
+
+    <!-- File input and controls -->
+    <div class="zh-file-upload__control">
+      <!-- Hidden file input -->
+      <input 
+        type="file" 
+        id="fileUpload" 
+        class="zh-file-upload__input"
+      />
+
+      <!-- Focusable label acting as button -->
+      <label for="fileUpload" class="zh-file-upload__button" tabindex="0">
+        Choose File
+      </label>
+
+      <!-- Filename placeholder -->
+      <span class="zh-file-upload__filename">
+        No file chosen
+      </span>
+    </div>
+  </div>
+
+  <!-- Link to JS file -->
+  <script src="file-uploads.js"></script>
+</body>
+</html>

@@ -5252,13 +5252,14 @@ Focusable elements are those that can receive keyboard focus using tab etc (e.g.
 
 /* Footer styles */
 .zh-table .table-footer {
+  border-top: 1px solid var(--dgray3);
   font-weight: 600;
-  border-top: 2px solid var(--dgrey3);
+  color: var(--dgray3);
 }
 
-.zh-table tbody tr.table-footer td.table-cell {
+.zh-table .table-footer .table-cell {
   border-bottom: 0;
-  border-top: 2px solid var(--dgrey3);
+  border-top: 2px solid var(--dgray3);
   text-align: right;
 }
 
