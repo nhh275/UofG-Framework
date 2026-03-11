@@ -1,0 +1,54 @@
+.zh-profile-card {
+    display: inline-block;
+    width: auto;
+    padding-left: var(--space12);
+
+    &__picture {
+        line-height: 1;
+        transform: translateY(-0.1em);
+        margin-bottom: var(--space3);
+
+        img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+        }
+    }
+
+    &__name {
+        font-weight: 500;
+        font-size: 1.75rem;
+        margin: 0;
+    }
+
+    &__title {
+        margin: var(--space1) 0;
+        color: var(--mgrey3);
+        font-size: 1.2rem;
+    }
+
+    &__email {
+        display: block;
+        margin-top: var(--space5);
+        text-decoration: underline;
+        font-size: 1.2rem;
+        color: var(--uni-blue);
+    }
+
+    &__location {
+        margin: var(--space1) 0;
+        font-size: 1.2rem;
+        color: var(--mgrey3);
+    }
+
+    &__profile {
+        display: inline-block;
+        margin-top: var(--space1);
+        font-weight: 600;
+        font-size: 1.2rem;
+        color: var(--uni-blue);
+        text-decoration: underline;
+    }
+}
