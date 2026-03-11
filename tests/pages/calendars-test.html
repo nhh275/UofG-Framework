@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Calendar – Component Test</title>
+
+    <link rel="stylesheet" href="../../distribution/main.css" />
+
+    <style>
+        /* Test-page helpers only */
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 24px;
+            background: #fff;
+            color: #111;
+            line-height: 1.5;
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            gap: 18px;
+        }
+
+        header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+        }
+
+        h1 {
+            margin: 0 0 6px;
+            font-size: 20px;
+        }
+
+        p {
+            margin: 0;
+            color: #555;
+            max-width: 90ch;
+        }
+
+        .note {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #555;
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            align-items: start;
+        }
+
+        @media (min-width: 960px) {
+            .grid2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            border: 1px dashed #bbb;
+            border-radius: 12px;
+            padding: 16px;
+            background: #fff;
+            display: grid;
+            gap: 14px;
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .kbd {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+            font-size: 12px;
+        }
+
+        .stack {
+            display: grid;
+            gap: 18px;
+        }
+
+        .demo-wrap {
+            border: 1px dashed #e5e5e5;
+            border-radius: 12px;
+            padding: 12px;
+        }
+
+        /* Optional fallbacks if opened standalone */
+        :root {
+            --space1: 0.25rem;
+            --space2: 0.5rem;
+            --space3: 0.75rem;
+            --space4: 1rem;
+            --space5: 1.25rem;
+            --space6: 1.5rem;
+            --space7: 2em;
+            --space8: 2.5rem;
+            --space9: 3rem;
+            --space10: 3.5rem;
+            --space11: 4rem;
+            --space12: 6rem;
+            --uni-blue: #003865;
+            --dgrey2: #4D4D4D;
+            --dgrey3: #323232;
+            --lgrey1: #F5F5F5;
+            --lgrey2: #E6E6E6;
+            --mgrey2: #999;
+            --mgrey3: #757575;
+            --highlight: #FD0;
+        }
+
+        /* Test helper only */
+        .legend {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            font-size: 13px;
+            color: #555;
+        }
+
+        .legend__item {
+            display: inline-flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .legend__dot {
+            width: 0.4rem;
+            height: 0.4rem;
+            border-radius: 999px;
+            background: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1>Calendar – Component test</h1>
+            <p>
+                This page tests <span class="kbd">.zh-calendar</span>, month pagination, weekday row, month title,
+                day grid, weekend styling, today styling, hover/focus-visible states, and event markers.
+            </p>
+            <div class="note">
+                <strong>How to test:</strong><br>
+                • Click month buttons to switch between sample months.<br>
+                • Hover day cells: the date number should underline.<br>
+                • Use <span class="kbd">Tab</span> to focus month buttons and day buttons to verify focus-visible
+                outlines.<br>
+                • Confirm weekend labels/dates are lighter, today is a blue circle, and empty cells stay visually
+                blank.<br>
+                • Event markers should appear as small grey dots under selected dates.
+            </div>
+        </header>
+
+        <div class="grid2">
+            <section class="card">
+                <h2>Interactive calendar</h2>
+                <p>
+                    Baseline component test covering month switching, focus states, today highlight, weekends, and event
+                    markers.
+                </p>
+
+                <div class="demo-wrap">
+                    <div class="zh-calendar" id="calendar-demo">
+                        <div class="zh-calendar__pagination" aria-label="Choose month">
+                            <button type="button" class="is-active" data-month="2025-03">Mar 2025</button>
+                            <button type="button" data-month="2025-04">Apr 2025</button>
+                            <button type="button" data-month="2025-05">May 2025</button>
+                        </div>
+
+                        <div class="zh-calendar__month" id="calendar-month">March 2025</div>
+
+                        <div class="zh-calendar__weekdays" aria-hidden="true">
+                            <span>Mon</span>
+                            <span>Tue</span>
+                            <span>Wed</span>
+                            <span>Thu</span>
+                            <span>Fri</span>
+                            <span>Sat</span>
+                            <span>Sun</span>
+                        </div>
+
+                        <table class="zh-calendar__table" aria-label="Calendar month view">
+                            <tbody id="calendar-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="legend">
+                    <span class="legend__item"><span class="legend__dot"></span> Event marker</span>
+                    <span class="legend__item">Blue circle = today</span>
+                    <span class="legend__item">Lighter text = weekend</span>
+                </div>
+
+                <div class="note" style="margin:0;">
+                    Expected: the table uses fixed layout, day buttons fill the cell width, and month buttons show an
+                    active state in blue.
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>Edge checks</h2>
+                <div class="stack">
+                    <div class="note" style="margin:0;">
+                        <strong>Weekend styling:</strong><br>
+                        Saturday and Sunday weekday labels should be lighter, and weekend dates in the table should also
+                        appear lighter unless marked as today.
+                    </div>
+
+                    <div class="note" style="margin:0;">
+                        <strong>Empty cells:</strong><br>
+                        Leading/trailing cells in shorter months should remain visually blank because
+                        <span class="kbd">.zh-calendar__cell--empty</span> makes text transparent.
+                    </div>
+
+                    <div class="note" style="margin:0;">
+                        <strong>Today styling:</strong><br>
+                        The current test month includes a fixed “today” date so the blue circular highlight can be
+                        verified reliably.
+                    </div>
+
+                    <div class="note" style="margin:0;">
+                        <strong>Accessibility:</strong><br>
+                        Day cells are buttons so they can receive keyboard focus. Use <span class="kbd">Tab</span> to
+                        confirm the 4px yellow focus outline appears.
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        const MONTHS = {
+            "2025-03": {
+                label: "March 2025",
+                year: 2025,
+                monthIndex: 2,      // March
+                today: 17,
+                events: [4, 12, 17, 26]
+            },
+            "2025-04": {
+                label: "April 2025",
+                year: 2025,
+                monthIndex: 3,      // April
+                today: null,
+                events: [3, 10, 18, 29]
+            },
+            "2025-05": {
+                label: "May 2025",
+                year: 2025,
+                monthIndex: 4,      // May
+                today: null,
+                events: [1, 8, 15, 22, 30]
+            }
+        };
+
+        const monthLabel = document.getElementById("calendar-month");
+        const tbody = document.getElementById("calendar-body");
+        const monthButtons = document.querySelectorAll("#calendar-demo .zh-calendar__pagination button");
+
+        // Monday-first index
+        function getMondayFirst(day) {
+            return day === 0 ? 6 : day - 1;
+        }
+
+        function renderMonth(key) {
+            const cfg = MONTHS[key];
+            monthLabel.textContent = cfg.label;
+
+            monthButtons.forEach(btn => {
+                btn.classList.toggle("is-active", btn.dataset.month === key);
+            });
+
+            const first = new Date(cfg.year, cfg.monthIndex, 1);
+            const last = new Date(cfg.year, cfg.monthIndex + 1, 0);
+            const daysInMonth = last.getDate();
+            const leading = getMondayFirst(first.getDay());
+
+            const rows = [];
+            let currentDay = 1;
+
+            for (let week = 0; week < 6; week++) {
+                let rowHtml = "<tr>";
+
+                for (let dayIndex = 0; dayIndex < 7; dayIndex++) {
+                    const cellIndex = week * 7 + dayIndex;
+
+                    if (cellIndex < leading || currentDay > daysInMonth) {
+                        rowHtml += `
+              <td class="zh-calendar__cell zh-calendar__cell--empty">
+                <div class="zh-calendar__day" aria-hidden="true">
+                  <span class="zh-calendar__date">0</span>
+                </div>
+              </td>
+            `;
+                    } else {
+                        const isToday = cfg.today === currentDay;
+                        const hasEvent = cfg.events.includes(currentDay);
+
+                        rowHtml += `
+              <td class="zh-calendar__cell${isToday ? " zh-calendar__cell--today" : ""}">
+                <button class="zh-calendar__day" type="button" aria-label="${cfg.label} ${currentDay}">
+                  <span class="zh-calendar__date">${currentDay}</span>
+                  ${hasEvent ? '<span class="zh-calendar__marker" aria-hidden="true"></span>' : '<span aria-hidden="true" style="width:0.4rem;height:0.4rem;"></span>'}
+                </button>
+              </td>
+            `;
+                        currentDay++;
+                    }
+                }
+
+                rowHtml += "</tr>";
+                rows.push(rowHtml);
+
+                if (currentDay > daysInMonth) break;
+            }
+
+            tbody.innerHTML = rows.join("");
+        }
+
+        monthButtons.forEach(btn => {
+            btn.addEventListener("click", () => renderMonth(btn.dataset.month));
+        });
+
+        renderMonth("2025-03");
+
+        // Expose metrics for harness
+        window.__HARNESS_METRICS__ = () => ({
+            viewport: window.innerWidth,
+            month: monthLabel.textContent,
+            note: "Tab to month buttons/day buttons for focus-visible; hover dates for underline."
+        });
+    </script>
+</body>
+
+</html>
