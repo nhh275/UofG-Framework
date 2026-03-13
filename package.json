@@ -8,8 +8,6 @@
   },
   "scripts": {
     "lint:scss": "stylelint \"src/**/*.scss\" \"components/**/*.scss\"",
-    "build:js": "esbuild src/js/framework.js --bundle --minify --outfile=distribution/framework.js",
-    "build:js-dev": "esbuild src/js/framework.js --bundle --outfile=distribution/framework.js"
-
+    "build:js": "esbuild src/js/framework.js --bundle --outfile=distribution/framework.js"
   }
 }
