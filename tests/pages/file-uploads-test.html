@@ -204,37 +204,10 @@
         </section>
     </div>
 
+
+    <script src="../../src/js/framework.js"></script>
+    
     <script>
-        function wireFileUpload(inputId, filenameId) {
-            const input = document.getElementById(inputId);
-            const filename = document.getElementById(filenameId);
-
-            if (!input || !filename) return;
-
-            input.addEventListener("change", () => {
-                if (input.files && input.files.length > 0) {
-                    filename.textContent = input.files[0].name;
-                } else {
-                    filename.textContent = "No file selected";
-                }
-            });
-        }
-
-        wireFileUpload("file-default", "file-default-name");
-        wireFileUpload("file-long", "file-long-name");
-
-        // Keyboard support for label-as-button
-        document.querySelectorAll(".zh-file-upload__button[for]").forEach((label) => {
-            label.addEventListener("keydown", (e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    const targetId = label.getAttribute("for");
-                    const input = document.getElementById(targetId);
-                    if (input && !input.disabled) input.click();
-                }
-            });
-        });
-
         /* Expose metrics for harness */
         window.__HARNESS_METRICS__ = () => ({
             viewport: window.innerWidth,
