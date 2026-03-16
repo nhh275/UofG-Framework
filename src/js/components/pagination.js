@@ -1,12 +1,6 @@
-/*
- * Pagination functionality
- * Handles click events on pagination links and navigates between pages
- * Manages visibility of Previous/Next buttons and shows ellipsis for skipped pages
- */
-
 document.addEventListener('DOMContentLoaded', function () {
     const paginationContainer = document.querySelector('.pagination');
-    
+
     if (!paginationContainer) {
         console.warn('Pagination container not found');
         return;
@@ -15,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const paginationLinks = paginationContainer.querySelectorAll('a');
     const prevLink = document.getElementById('prev-link');
     const nextLink = document.getElementById('next-link');
-    
+
     const pageLinks = Array.from(paginationLinks).filter(link => {
         const text = link.textContent.trim();
         return text !== 'Previous' && text !== 'Next';
@@ -23,90 +17,94 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const totalPages = pageLinks.length;
 
-    /* Gets the current active page number and returns current page number */
-    function getActivePage() {
-        const activeLink = paginationContainer.querySelector('a.active');
-        if (!activeLink) {
+    /* Store each link's real page number once so it is never lost */
+    pageLinks.forEach((link, index) => {
+        link.dataset.targetPage = String(index + 1);
+    });
+
+    /* Get current page by matching the current URL against the page links */
+    function getCurrentPageFromUrl() {
+        const currentPath = window.location.pathname.split('/').pop();
+
+        const matchedLink = pageLinks.find(link => {
+            const linkPath = new URL(link.href, window.location.href).pathname.split('/').pop();
+            return linkPath === currentPath;
+        });
+
+        if (!matchedLink) {
             return 1;
         }
-        // Prefer a stored pageNum, fall back to text content
-        const value = activeLink.dataset.pageNum || activeLink.textContent.trim();
-        const num = parseInt(value, 10);
+
+        const num = parseInt(matchedLink.dataset.targetPage, 10);
         return isNaN(num) ? 1 : num;
     }
 
-    /* Navigates to the specified page in pageNum */
+    /* Navigates to the specified page */
     function navigateToPage(pageNum) {
-        if (pageNum >= 1 && pageNum <= totalPages) {
-            let fileName;
-            if (pageNum === 1) {
-                fileName = 'index.html';
-            } else {
-                fileName = `page${pageNum}.html`;
-            }
-            window.location.href = fileName;
+        const targetLink = pageLinks.find(link => {
+            return parseInt(link.dataset.targetPage, 10) === pageNum;
+        });
+
+        if (targetLink && targetLink.href) {
+            window.location.href = targetLink.href;
         }
     }
 
     /* Updates button visibility based on current page */
-    function updateButtonVisibility() {
-        const currentPage = getActivePage();
-        
-        // Hide Previous button on first page
+    function updateButtonVisibility(currentPage) {
         if (prevLink) {
-            prevLink.parentElement.style.display = currentPage === 1 ? 'none' : 'li';
+            prevLink.parentElement.style.display = currentPage === 1 ? 'none' : '';
         }
-        
-        // Hide Next button on last page
+
         if (nextLink) {
-            nextLink.parentElement.style.display = currentPage === totalPages ? 'none' : 'li';
+            nextLink.parentElement.style.display = currentPage === totalPages ? 'none' : '';
         }
     }
 
-    /* Updates page visibility with ellipsis for large page counts - 6 pages at a time shown */
-    function updatePageVisibility() {
-        const currentPage = getActivePage();
+    /* Updates page visibility with ellipsis for large page counts */
+    function updatePageVisibility(currentPage) {
         const pagesPerGroup = 6;
-        
-        // If 6 or fewer pages, show all
+
         if (totalPages <= pagesPerGroup) {
             pageLinks.forEach((link, index) => {
-                link.parentElement.style.display = 'li';
-                link.textContent = index + 1;
+                link.parentElement.style.display = '';
+                link.textContent = String(index + 1);
+                link.dataset.pageNum = String(index + 1);
                 link.style.cursor = 'pointer';
                 link.style.pointerEvents = 'auto';
                 link.style.opacity = '';
-                link.dataset.pageNum = index + 1;
+                link.classList.remove('active');
+
+                if (index + 1 === currentPage) {
+                    link.classList.add('active');
+                }
             });
             return;
         }
 
-        /* calculates which group the current page belongs to */
         const currentGroup = Math.floor((currentPage - 1) / pagesPerGroup);
         const groupStart = currentGroup * pagesPerGroup + 1;
         const groupEnd = Math.min(groupStart + pagesPerGroup - 1, totalPages);
 
-        /* Build list of visible items */
         const visibleItems = [];
-        
-        /* Add the pages in the current group */
+
         for (let i = groupStart; i <= groupEnd; i++) {
             visibleItems.push(i);
         }
-        
-        /* Add ellipsis after if group doesn't end at last page */
+
         if (groupEnd < totalPages) {
             visibleItems.push('...');
         }
 
-        /* Assign visible items to page link elements */
         pageLinks.forEach((link, index) => {
+            link.classList.remove('active');
+
             if (index < visibleItems.length) {
                 const item = visibleItems[index];
-                link.parentElement.style.display = 'li';
-                link.textContent = item;
-                link.dataset.pageNum = item;
-                
+                link.parentElement.style.display = '';
+                link.textContent = String(item);
+                link.dataset.pageNum = String(item);
+
                 if (item === '...') {
                     link.style.cursor = 'default';
                     link.style.pointerEvents = 'none';
@@ -115,22 +113,20 @@ document.addEventListener('DOMContentLoaded', function () {
                     link.style.cursor = 'pointer';
                     link.style.pointerEvents = 'auto';
                     link.style.opacity = '';
+
+                    if (item === currentPage) {
+                        link.classList.add('active');
+                    }
                 }
             } else {
                 link.parentElement.style.display = 'none';
             }
         });
-        
-        /* ensure correct active class remains visible */
-        pageLinks.forEach(link => link.classList.remove('active'));
-        const activeLink = pageLinks.find(l => parseInt(l.dataset.pageNum) === currentPage);
-        if (activeLink) {
-            activeLink.classList.add('active');
-        }
-    } 
+    }
 
-    updateButtonVisibility(); /* used to intiialise the visibility */
-    updatePageVisibility();
+    const currentPage = getCurrentPageFromUrl();
+    updatePageVisibility(currentPage);
+    updateButtonVisibility(currentPage);
 
     /* Add click event listeners to all pagination links */
     paginationLinks.forEach(link => {
@@ -138,26 +134,22 @@ document.addEventListener('DOMContentLoaded', function () {
             e.preventDefault();
 
             const linkText = this.textContent.trim();
-            
-            // Skip ellipsis clicks
+
             if (linkText === '...') {
                 return;
             }
 
             let targetPageNum = null;
+            const currentPage = getCurrentPageFromUrl();
 
             if (linkText === 'Previous') {
-                const currentPage = getActivePage();
                 targetPageNum = currentPage - 1;
             } else if (linkText === 'Next') {
-                const currentPage = getActivePage();
                 targetPageNum = currentPage + 1;
             } else {
-                /* Use data attribute or parse text */
-                targetPageNum = parseInt(this.dataset.pageNum || linkText);
+                targetPageNum = parseInt(this.dataset.pageNum || linkText, 10);
             }
 
-            /* Navigate to the page if valid */
             if (targetPageNum && targetPageNum >= 1 && targetPageNum <= totalPages) {
                 navigateToPage(targetPageNum);
             }
@@ -166,17 +158,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* Public API for programmatic pagination */
     window.pagination = {
-        /* Navigate to a specific page designated by pageNum */
         goToPage: function (pageNum) {
             navigateToPage(pageNum);
         },
 
-        /* Get the current active page number, returns it */
         getCurrentPage: function () {
-            return getActivePage();
+            return getCurrentPageFromUrl();
         },
 
-        /* Get the total number of pages and returns it */
         getTotalPages: function () {
             return totalPages;
         }

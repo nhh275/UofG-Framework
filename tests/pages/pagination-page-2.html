@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pagination Test - Page 2</title>
+
+    <link rel="stylesheet" href="../../distribution/main.css" />
+
+    <style>
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 24px;
+            background: #fff;
+            color: #111;
+            line-height: 1.5;
+        }
+
+        .wrap {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            gap: 18px;
+        }
+
+        .card {
+            border: 1px dashed #bbb;
+            border-radius: 12px;
+            padding: 16px;
+            background: #fff;
+        }
+
+        .note {
+            font-size: 14px;
+            color: #555;
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+
+        .kbd {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 12px;
+        }
+
+        :root {
+            --space2: 0.5rem;
+            --uni-blue: #003865;
+            --dgrey3: #323232;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1>Pagination Page 2 Test</h1>
+            <p>
+                This page tests the pagination component with live navigation across multiple HTML files.
+            </p>
+        </header>
+
+        <section class="card">
+            <h2>Current page: 2</h2>
+            <p>
+                Use the pagination below to test active state, Previous/Next visibility,
+                generated ellipsis, and navigation between pages.
+            </p>
+        </section>
+
+        <section class="card">
+            <ul class="pagination" aria-label="Pagination">
+                <li><a id="prev-link" href="pagination-test-home.html">Previous</a></li>
+                <li><a href="pagination-test-home.html">1</a></li>
+                <li><a href="pagination-page-2.html" class="active" aria-current="page">2</a></li>
+                <li><a href="pagination-page-3.html">3</a></li>
+                <li><a href="pagination-page-4.html">4</a></li>
+                <li><a href="pagination-page-5.html">5</a></li>
+                <li><a href="pagination-page-6.html">6</a></li>
+                <li><a href="pagination-page-7.html">7</a></li>
+                <li><a href="pagination-page-8.html">8</a></li>
+                <li><a id="next-link" href="pagination-page-3.html">Next</a></li>
+            </ul>
+        </section>
+
+        <section class="note">
+            <strong>Expected on this page:</strong><br>
+            Active page 2 should show the underline.<br>
+            The list should be centered.<br>
+            Because there are more than 6 pages, the script should group visible pages and create an ellipsis.
+        </section>
+    </div>
+
+    <script src="../../distribution/framework.js"></script>
+    <script>
+        window.__HARNESS_METRICS__ = () => ({
+            currentPage: 1,
+            viewport: window.innerWidth,
+            totalPagesExpected: 8,
+            note: "Tests previous hidden, active underline, centered layout, and grouped pagination."
+        });
+    </script>
+</body>
+
+</html>
