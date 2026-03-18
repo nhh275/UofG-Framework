@@ -1,0 +1,19 @@
+* {
+    font-size: max(16px, var(--fsize, 1rem));
+}
+
+body, 
+.text-editor {
+    max-width: 80ch; // keeps lines ≤80 characters
+}
+
+ul {
+    padding-left: 0;      // Removes the default left padding
+    margin-left: 0;       // Removes any default left margin
+    list-style-position: outside; // Default, keeps bullets outside
+
+    li {
+        // Optional: Add a small left margin if bullets touch text
+        margin-left: 1.2em; // Adjust this value as needed
+    }
+}

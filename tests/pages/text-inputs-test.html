@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Form field + Typography – Component Test</title>
+
+    <link rel="stylesheet" href="../../distribution/main.css" />
+
+    <style>
+        /* Test-page helpers only */
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 24px;
+            background: #fff;
+            color: #111;
+            line-height: 1.5;
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            gap: 18px;
+        }
+
+        header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+        }
+
+        h1 {
+            margin: 0 0 6px;
+            font-size: 20px;
+        }
+
+        p {
+            margin: 0;
+            color: #555;
+            max-width: 90ch;
+        }
+
+        .note {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #555;
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            align-items: start;
+        }
+
+        @media (min-width: 960px) {
+            .grid2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            border: 1px dashed #bbb;
+            border-radius: 12px;
+            padding: 16px;
+            background: #fff;
+            display: grid;
+            gap: 14px;
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .kbd {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+            font-size: 12px;
+        }
+
+        .stack {
+            display: grid;
+            gap: 18px;
+        }
+
+        /* Demo layout helpers */
+        .row {
+            display: grid;
+            gap: 10px;
+        }
+
+        .swatches {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+        }
+
+        .sample {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 10px 12px;
+            background: #fff;
+            display: grid;
+            gap: 6px;
+        }
+
+        .meta {
+            color: #666;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1>Form field + Typography – Component test</h1>
+            <p>
+                This page tests: spacing tokens, colour tokens (for required/error/focus), primary/secondary typography
+                classes,
+                and the <span class="kbd">.zh-form-field</span> input + textarea styles
+                (default/hover/focus/error/disabled).
+            </p>
+            <div class="note">
+                <strong>How to test:</strong><br>
+                • Hover inputs → border becomes <span class="kbd">--mgrey1</span>.<br>
+                • Focus (Tab/click) → outline uses <span class="kbd">--highlight</span>, border becomes <span
+                    class="kbd">--dgrey3</span>.<br>
+                • Error modifier → border becomes <span class="kbd">--error</span> and remains error-coloured on
+                focus.<br>
+                • Disabled → greyed background and not-allowed cursor.<br>
+                • Required asterisk → should be blue (<span class="kbd">--uni-blue</span>).
+            </div>
+        </header>
+
+        <div class="grid2">
+            <!-- Typography tests -->
+            <section class="card">
+                <h2>Typography tokens (primary / secondary)</h2>
+                <p>
+                    Typography scale test: confirms font-family selection, weight classes, size modifiers, line-height, and any
+                    letter-spacing rules across primary and secondary type systems.
+                </p>
+                <div class="note" style="margin:0;">
+                    Note: if "Swiss721 BT" isn’t installed locally, you’ll see the fallback. This still validates
+                    sizes/weights/line-heights/letter-spacing.
+                </div>
+
+                <div class="stack">
+                    <div class="sample">
+                        <div class="primary bold plusFour">Primary Bold +Four</div>
+                        <div class="meta">.primary.bold.plusFour</div>
+                    </div>
+
+                    <div class="sample">
+                        <div class="primary roman base">Primary Roman Base – The quick brown fox jumps over the lazy
+                            dog.</div>
+                        <div class="meta">.primary.roman.base</div>
+                    </div>
+
+                    <div class="sample">
+                        <div class="primary light minusOne">Primary Light -1 – Smaller copy style.</div>
+                        <div class="meta">.primary.light.minusOne</div>
+                    </div>
+
+                    <div class="sample">
+                        <div class="primary medium plusSix">Primary Medium +Six</div>
+                        <div class="meta">.primary.medium.plusSix (tests negative letter-spacing)</div>
+                    </div>
+
+                    <div class="sample">
+                        <div class="secondary regular">Secondary Regular – Garamond serif sample.</div>
+                        <div class="meta">.secondary.regular</div>
+                    </div>
+
+                    <div class="sample">
+                        <div class="secondary semiBold">Secondary SemiBold – Garamond serif sample.</div>
+                        <div class="meta">.secondary.semiBold</div>
+                    </div>
+
+                    <div class="sample">
+                        <div class="secondary bold">Secondary Bold – Garamond serif sample.</div>
+                        <div class="meta">.secondary.bold</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Form field tests -->
+            <section class="card">
+                <h2>Form field component (.zh-form-field)</h2>
+                <p>
+                    Form control styling test: validates label/hint/error layout plus input/textarea appearance and interaction states.
+                </p>
+                <div class="stack">
+                    <!-- Default -->
+                     <p>
+                        Baseline form field rendering: label, required marker, hint spacing, and default input styling.
+                     </p>
+                    <div class="zh-form-field">
+                        <label class="zh-form-field__label" for="ff-name">
+                            Full name <span class="zh-form-field__required" aria-hidden="true">*</span>
+                        </label>
+                        <p class="zh-form-field__hint" id="ff-name-hint">This is hint text (muted grey).</p>
+
+                        <input class="zh-form-field__control" id="ff-name" name="name" type="text"
+                            placeholder="e.g. Alex Example" aria-describedby="ff-name-hint" />
+                    </div>
+
+                    <!-- Error -->
+                     <p>
+                        Error styling and accessibility test: verifies error message display, error border, and ARIA wiring.
+                     </p>
+                    <div class="zh-form-field zh-form-field--error" id="email-field">
+                        <label class="zh-form-field__label" for="email">
+                            Email <span class="zh-form-field__required">*</span>
+                        </label>
+                    
+                        <p class="zh-form-field__error" id="email-error">
+                            Enter a valid email address
+                        </p>
+                    
+                        <input class="zh-form-field__control" id="email" type="email" placeholder="name@example.com" aria-invalid="true"
+                            aria-describedby="email-error" />
+                    </div>
+
+                    <!-- Disabled -->
+                     <p>
+                        Disabled styling test: ensures the control looks and behaves disabled.
+                     </p>
+                    <div class="zh-form-field">
+                        <label class="zh-form-field__label" for="ff-disabled">
+                            Disabled field
+                        </label>
+
+                        <p class="zh-form-field__hint" id="ff-disabled-hint">Should be greyed out with not-allowed
+                            cursor.</p>
+
+                        <input class="zh-form-field__control" id="ff-disabled" type="text" placeholder="Disabled"
+                            disabled aria-describedby="ff-disabled-hint" />
+                    </div>
+
+                    <!-- Textarea variant -->
+                     <p>
+                        Textarea variant test: validates multi-line control styling and resizing behavior.
+                     </p>
+                    <div class="zh-form-field zh-text-area">
+                        <label class="zh-form-field__label" for="ff-message">
+                            Message
+                        </label>
+
+                        <p class="zh-form-field__hint" id="ff-message-hint">Textarea should be resizable vertically and
+                            use line-height 1.5.</p>
+
+                        <textarea class="zh-form-field__control" id="ff-message" name="message" rows="4"
+                            placeholder="Write a short message…" aria-describedby="ff-message-hint"></textarea>
+                    </div>
+                </div>
+
+                <div class="note" style="margin:0;">
+                    Tip: use <span class="kbd">Tab</span> to verify focus outline behavior. Compare default vs error
+                    focus:
+                    error should keep the error border colour on focus.
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        /* Expose metrics for harness */
+        window.__HARNESS_METRICS__ = () => ({
+            viewport: window.innerWidth,
+            note: "Hover/focus inputs to test border/outline. Compare default vs error modifier."
+        });
+    </script>
+
+    <script>
+        /* Email error script */
+        const field = document.getElementById("email-field");
+        const input = field.querySelector(".zh-form-field__control");
+
+        input.addEventListener("input", () => {
+            if (input.checkValidity()) {
+                field.classList.remove("zh-form-field--error");
+                input.setAttribute("aria-invalid", "false");
+            } else {
+                field.classList.add("zh-form-field--error");
+                input.setAttribute("aria-invalid", "true");
+            }
+        });
+    </script>
+</body>
+
+</html>

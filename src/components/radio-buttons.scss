@@ -2,7 +2,7 @@
 .radio {
   flex-direction: column;
   gap: var(--space3);
-  display: inline-grid;              /* a shrinkwrap container used to align option widths*/
+  display: inline-grid; /* a shrinkwrap container used to align option widths */
   grid-template-columns: max-content;
   justify-items: stretch;
 
@@ -49,7 +49,7 @@
   &:has(input:disabled) {
     color: var(--lgrey3);
     cursor: not-allowed;
-
+    
     .radio-control {
       border-color: var(--lgrey3);
 
@@ -68,16 +68,13 @@
 .radio-control {
   width: var(--space4);
   height: var(--space4);
-
   border: 2px solid var(--dgrey3);
   border-radius: 50%;
   box-sizing: border-box;
   flex-shrink: 0;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   transition: border-color 0.15s, box-shadow 0.15s;
 
   /* inner dot is hidden until it is checked */
@@ -87,7 +84,6 @@
     height: 7px;
     border-radius: 50%;
     background-color: var(--uni-blue);
-
     transform: scale(0);
     transition: transform 0.15s ease, background-color 0.15s ease;
   }

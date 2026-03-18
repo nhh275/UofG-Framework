@@ -1,0 +1,9 @@
+stages:
+    - lint
+
+stylelint:
+    stage: lint
+    image: node:20
+    script: 
+        - npm install
+        - npm run lint:scss

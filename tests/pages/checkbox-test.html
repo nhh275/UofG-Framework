@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Checkbox – Component Test</title>
+
+    <link rel="stylesheet" href="../../distribution/main.css" />
+
+    <style>
+        /* Test-page helpers only */
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 24px;
+            background: #fff;
+            color: #111;
+            line-height: 1.5;
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            gap: 18px;
+        }
+
+        header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+        }
+
+        h1 {
+            margin: 0 0 6px;
+            font-size: 20px;
+        }
+
+        p {
+            margin: 0;
+            color: #555;
+            max-width: 90ch;
+        }
+
+        .note {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #555;
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            align-items: start;
+        }
+
+        @media (min-width: 960px) {
+            .grid2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            border: 1px dashed #bbb;
+            border-radius: 12px;
+            padding: 14px;
+            background: #fff;
+            display: grid;
+            gap: 10px;
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .kbd {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+            font-size: 12px;
+        }
+
+        .row {
+            display: grid;
+            gap: 10px;
+        }
+
+        .inline {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        pre {
+            margin: 0;
+            white-space: pre-wrap;
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 10px 12px;
+            font-size: 12px;
+            color: #333;
+        }
+
+        /* Token fallbacks if opened standalone without full token set */
+        :root {
+            --space2: 0.5rem;
+            --space3: 0.75rem;
+            --lgrey1: #F5F5F5;
+            --dgrey3: #323232;
+            --mgrey3: #757575;
+            --uni-blue: #003865;
+            --highlight: #FFDD00;
+            --error: #D4351C;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1>Checkbox – Component test</h1>
+            <p>
+                This page tests <span class="kbd">.zh-checkbox</span> layout, heading/description, error styling,
+                checkbox states (default/hover/focus/checked/disabled), label styling, and the checked tick.
+            </p>
+            <div class="note">
+                <strong>How to test:</strong><br>
+                • Hover checkbox: border should change to <span class="kbd">--uni-blue</span>.<br>
+                • Click checkbox: background becomes <span class="kbd">--uni-blue</span> and white tick appears.<br>
+                • Use <span class="kbd">Tab</span> to focus checkbox: border becomes <span
+                    class="kbd">--highlight</span> + subtle glow.<br>
+                • Disabled checkbox: not-allowed cursor, muted border, tick becomes muted when checked.
+            </div>
+        </header>
+
+        <div class="grid2">
+            <!-- Normal group -->
+            <section class="card">
+                <h2>Default group (no error)</h2>
+                <p>
+                    Baseline rendering test for normal checkbox groups, including heading, description, row spacing, and label alignment.
+                </p>
+                <div class="zh-checkbox">
+                    <h3 class="zh-checkbox__heading">Communication preferences</h3>
+                    <p class="zh-checkbox__description">Choose what you want to receive. Labels should align vertically
+                        with the checkbox.</p>
+
+                    <div class="zh-checkbox__row">
+                        <input class="zh-checkbox__input" type="checkbox" id="cb-email" />
+                        <label class="zh-checkbox-label" for="cb-email">Email updates</label>
+                    </div>
+
+                    <div class="zh-checkbox__row">
+                        <input class="zh-checkbox__input" type="checkbox" id="cb-sms" checked />
+                        <label class="zh-checkbox-label" for="cb-sms">SMS alerts (pre-checked)</label>
+                    </div>
+
+                    <div class="zh-checkbox__row">
+                        <input class="zh-checkbox__input" type="checkbox" id="cb-post" />
+                        <label class="zh-checkbox-label" for="cb-post">Post (long label wrapping test) — this label is
+                            intentionally long to ensure wrapping behaves acceptably next to the fixed-size
+                            checkbox.</label>
+                    </div>
+                </div>
+
+                <div class="note" style="margin:0;">
+                    Expected: checkbox stays 20×20, label text aligns center vertically, and long label wraps without
+                    shifting checkbox size.
+                </div>
+            </section>
+
+            <!-- Error + disabled variants -->
+            <section class="card">
+                <h2>Error + disabled states</h2>
+                Validates error message styling and the disabled checkbox behaviors (unchecked and checked disabled).
+                <div class="zh-checkbox">
+                    <h3 class="zh-checkbox__heading">Terms and conditions</h3>
+                    <p class="zh-checkbox__description">Error message should appear above the row and be red/bold.</p>
+
+                    <p class="zh-checkbox__error">You must accept the terms to continue</p>
+
+                    <div class="zh-checkbox__row">
+                        <input class="zh-checkbox__input" type="checkbox" id="cb-terms" />
+                        <label class="zh-checkbox-label" for="cb-terms">I agree to the terms</label>
+                    </div>
+
+                    <div class="zh-checkbox__row">
+                        <input class="zh-checkbox__input" type="checkbox" id="cb-disabled" disabled />
+                        <label class="zh-checkbox-label" for="cb-disabled">Disabled (unchecked)</label>
+                    </div>
+
+                    <div class="zh-checkbox__row">
+                        <input class="zh-checkbox__input" type="checkbox" id="cb-disabled-checked" disabled checked />
+                        <label class="zh-checkbox-label" for="cb-disabled-checked">Disabled (checked)</label>
+                    </div>
+                </div>
+
+                <div class="note" style="margin:0;">
+                    Expected: disabled label becomes muted via <span class="kbd">.zh-checkbox__input:disabled +
+                        .zh-checkbox-label</span>.
+                    Disabled checked tick should change to muted colour.
+                </div>
+            </section>
+        </div>
+
+        <!-- Interaction log (helps confirm disabled doesn't fire) -->
+        <section class="card">
+            <h2>Interaction logging (optional clarity)</h2>
+            <p>
+                Functional test that confirms change events fire for enabled checkboxes and do not fire for disabled inputs.
+            </p>
+            <p class="note" style="margin:0;">
+                This confirms checked state toggles and disabled inputs do not fire change events.
+            </p>
+
+            <div class="zh-checkbox" style="max-width: 520px;">
+                <h3 class="zh-checkbox__heading">Event test</h3>
+                <p class="zh-checkbox__description">Toggle these checkboxes and watch the log.</p>
+
+                <div class="zh-checkbox__row">
+                    <input class="zh-checkbox__input" type="checkbox" id="cb-log-1" />
+                    <label class="zh-checkbox-label" for="cb-log-1">Log me</label>
+                </div>
+
+                <div class="zh-checkbox__row">
+                    <input class="zh-checkbox__input" type="checkbox" id="cb-log-2" checked />
+                    <label class="zh-checkbox-label" for="cb-log-2">Log me (pre-checked)</label>
+                </div>
+
+                <div class="zh-checkbox__row">
+                    <input class="zh-checkbox__input" type="checkbox" id="cb-log-3" disabled />
+                    <label class="zh-checkbox-label" for="cb-log-3">Disabled (should not log)</label>
+                </div>
+            </div>
+
+            <pre id="log">Tip: Use Tab to focus the checkbox square (not just the label).</pre>
+        </section>
+    </div>
+
+    <script>
+        const log = document.getElementById("log");
+        const stamp = () => new Date().toLocaleTimeString();
+
+        function write(msg) {
+            log.textContent += `\n[${stamp()}] ${msg}`;
+        }
+
+        ["cb-log-1", "cb-log-2", "cb-log-3"].forEach(id => {
+            const el = document.getElementById(id);
+            el.addEventListener("change", () => write(`${id} changed → ${el.checked}`));
+        });
+    </script>
+</body>
+
+</html>

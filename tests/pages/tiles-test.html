@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tiles – Component Test</title>
+
+    <link rel="stylesheet" href="../../distribution/main.css" />
+
+    <style>
+        /* Test-page helpers only */
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 24px;
+            background: #fff;
+            color: #111;
+            line-height: 1.5;
+        }
+
+        .wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            gap: 24px;
+        }
+
+        header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+        }
+
+        h1 {
+            margin: 0 0 6px;
+            font-size: 20px;
+        }
+
+        p {
+            margin: 0;
+            color: #555;
+            max-width: 90ch;
+        }
+
+        .note {
+            font-size: 13px;
+            color: #555;
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+
+        .card {
+            border: 1px dashed #bbb;
+            border-radius: 12px;
+            padding: 16px;
+            display: grid;
+            gap: 16px;
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* Fallback tokens if opened standalone */
+        :root {
+            --space2: 0.5rem;
+            --space4: 1rem;
+            --space5: 1.25rem;
+            --lgrey1: #F5F5F5;
+            --rust: #9A3A06;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1>Tiles – Component test</h1>
+            <p>
+                This page tests the <code>.tiles-container</code> grid layout, tile spacing,
+                top/bottom borders, image aspect ratio, and text flow inside tiles.
+            </p>
+
+            <div class="note">
+                <strong>How to test:</strong><br>
+                • Resize the viewport: tiles should auto-fit and wrap based on <code>minmax(260px, 1fr)</code>.<br>
+                • Check vertical spacing: each tile starts lower via <code>margin-top</code>.<br>
+                • Confirm top and bottom borders use the <code>--rust</code> colour.<br>
+                • Images maintain a 16:9 ratio and never overflow their container.
+            </div>
+        </header>
+
+        <section class="card">
+            <h2>Tile grid</h2>
+
+            <div class="tiles-container">
+                <!-- Tile 1 -->
+                <article class="tile">
+                    <div class="tile_img">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='900'%3E%3Crect width='1600' height='900' fill='%23CED7DF'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='48' fill='%23323232'%3E16x9 Image%3C/text%3E%3C/svg%3E"
+                            alt="Placeholder image" style="width:100%;height:100%;object-fit:cover;" />
+                    </div>
+                    <div class="tile_text">
+                        <h3>Tile title one</h3>
+                        <p>
+                            This tile tests the basic layout: image on top, text underneath,
+                            with consistent spacing between elements.
+                        </p><br>
+                        <p>
+                            Core layout test for the .tiles-container and .tile components.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Tile 2 -->
+                <article class="tile">
+                    <div class="tile_img">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='1200'%3E%3Crect width='1200' height='1200' fill='%23E6E6E6'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='48' fill='%234D4D4D'%3ESquare Source%3C/text%3E%3C/svg%3E"
+                            alt="Square placeholder image" style="width:100%;height:100%;object-fit:cover;" />
+                    </div>
+                    <div class="tile_text">
+                        <h3>Tile with longer content</h3>
+                        <p>
+                            This tile contains a longer block of text to ensure vertical spacing
+                            and stretching behave correctly without breaking the grid alignment.
+                        </p>
+                        <p>
+                            Additional paragraph to exaggerate height differences between tiles.
+                        </p><br>
+                        <p>
+                            Variable-height tile test to ensure grid stability with uneven content lengths.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Tile 3 -->
+                <article class="tile">
+                    <div class="tile_img">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2000' height='800'%3E%3Crect width='2000' height='800' fill='%239DAEBF'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='48' fill='%23003865'%3EWide Source%3C/text%3E%3C/svg%3E"
+                            alt="Wide placeholder image" style="width:100%;height:100%;object-fit:cover;" />
+                    </div>
+                    <div class="tile_text">
+                        <h3>Third tile</h3>
+                        <p>
+                            Wide source image is cropped to 16:9 using the container’s
+                            <code>aspect-ratio</code>.
+                        </p><br>
+                        <p>
+                            Image cropping test using a very wide source image.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Edge case: narrow viewport</h2>
+            <div class="note" style="margin:0;">
+                Shrink the browser width below ~520px. Expected: tiles stack vertically
+                and maintain spacing without overflow or horizontal scroll.
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

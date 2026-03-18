@@ -23,70 +23,70 @@ $secondary-font: "Garamond", serif;
   &.base {
     font-size: 1rem;
     line-height: 1.3125rem;
-    letter-spacing: 0px;
+    letter-spacing: 0;
   }
 
-  &.minusOne {
+  &.minus-one {
     font-size: 0.875rem;
     line-height: 1.125rem;
-    letter-spacing: 0px;
+    letter-spacing: 0;
   }
 
-  &.minusTwo {
+  &.minus-two {
     font-size: 0.75rem;
     line-height: 1rem;
-    letter-spacing: 0px;
+    letter-spacing: 0;
   }
 
-  &.plusOne {
+  &.plus-one {
     font-size: 1.1875rem;
     line-height: 1.5rem;
-    letter-spacing: 0px;
+    letter-spacing: 0;
   }
 
-  &.plusTwo {
+  &.plus-two {
     font-size: 1.3125rem;
     line-height: 1.625rem;
-    letter-spacing: 0px;
+    letter-spacing: 0;
   }
 
-  &.plusThree {
+  &.plus-three {
     font-size: 1.5rem;
     line-height: 2rem;
-    letter-spacing: 0px;
+    letter-spacing: 0;
   }
 
-  &.plusFour {
+  &.plus-four {
     font-size: 2rem;
     line-height: 2.25rem;
-    letter-spacing: 0px;
+    letter-spacing: 0;
   }
 
-  &.plusFive {
+  &.plus-five {
     font-size: 2.25rem;
     line-height: 2.75rem;
-    letter-spacing: 0px;
+    letter-spacing: 0;
   }
 
-  &.plusSix {
+  &.plus-six {
     font-size: 3rem;
     line-height: 3.375rem;
     letter-spacing: -0.7px;
   }
 
-  &.plusSeven {
+  &.plus-seven {
     font-size: 3.375rem;
     line-height: 4rem;
     letter-spacing: -0.8px;
   }
 
-  &.plusEight {
+  &.plus-eight {
     font-size: 3.75rem;
     line-height: 4.5rem;
     letter-spacing: -0.9px;
   }
 
-  &.plusNine {
+  &.plus-nine {
     font-size: 6rem;
     line-height: 6.125rem;
     letter-spacing: -1.4px;
@@ -100,7 +100,7 @@ $secondary-font: "Garamond", serif;
     font-weight: normal;
   }
 
-  &.semiBold {
+  &.semi-bold {
     font-weight: 600;
   }
 

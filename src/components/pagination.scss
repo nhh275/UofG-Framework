@@ -1,0 +1,35 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+
+    li {
+        a {
+            display: block;
+            padding: var(--space2) var(--space2);
+            text-decoration: none;
+            color: var(--uni-blue);
+            outline: none;
+
+            &.active {
+                position: relative;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    height: 1.5px;
+                    background-color: var(--dgrey3);
+                }
+            }
+        }
+    }
+
+    /* ellipsis styling for skipped pages below */
+    li a[style*="pointer-events: none"] {
+        cursor: default !important;
+        opacity: 0.5 !important;
+    }
+}

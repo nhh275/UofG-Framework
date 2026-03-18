@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dropdown – Component Test</title>
+
+    <link rel="stylesheet" href="../../distribution/main.css" />
+
+    <style>
+        /* Test-page helpers only */
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 24px;
+            background: #fff;
+            color: #111;
+            line-height: 1.5;
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            gap: 18px;
+        }
+
+        .dropdown__control{
+            display: inline-block;
+            width: fit-content;
+        }
+        .dropdown__select{
+            width: 100%;
+        }
+
+        header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+        }
+
+        h1 {
+            margin: 0 0 6px;
+            font-size: 20px;
+        }
+
+        p {
+            margin: 0;
+            color: #555;
+            max-width: 90ch;
+        }
+
+        .note {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #555;
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+
+        .card {
+            border: 1px dashed #bbb;
+            border-radius: 12px;
+            padding: 14px;
+            background: #fff;
+            display: grid;
+            gap: 12px;
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            align-items: start;
+        }
+
+        @media (min-width: 960px) {
+            .grid2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .stack {
+            display: grid;
+            gap: 16px;
+        }
+
+        .kbd {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+            font-size: 12px;
+        }
+
+        /* Token fallbacks if opened standalone without full token set */
+        :root {
+            --mgrey1: #B3B3B3;
+            --mgrey2: #999999;
+            --mgrey3: #757575;
+            --dgrey3: #323232;
+            --lgrey1: #F5F5F5;
+            --lgrey2: #E6E6E6;
+            --lgrey3: #CCCCCC;
+            --error: #D4351C;
+            --highlight: #FFDD00;
+
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+        }
+
+        /* Make select width testable */
+        .demoNarrow {
+            max-width: 240px;
+        }
+
+        .demoWide {
+            max-width: 560px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1>Dropdown – Component test</h1>
+            <p>
+                This page tests <span class="kbd">.dropdown</span> default, error, and disabled states; label/hint/error
+                spacing;
+                select hover/focus/active; and the arrow pseudo-element on <span
+                    class="kbd">.dropdown__control::after</span>.
+            </p>
+            <div class="note">
+                <strong>How to test:</strong><br>
+                • Hover the select: border + background should change.<br>
+                • Click/focus (Tab): outline should appear with offset.<br>
+                • Active (mouse down): border becomes highlight.<br>
+                • Error state: error text shows and select border + arrow become red.<br>
+                • Disabled: select is not interactive and arrow becomes muted (via <span
+                    class="kbd">.dropdown--disabled</span>).<br>
+                • Spacing: stacked dropdowns should get margin via <span class="kbd">.dropdown + .dropdown</span>.
+            </div>
+        </header>
+
+        <div class="grid2">
+            <section class="card">
+                <h2>Default dropdowns (stack spacing + widths)</h2>
+                <p>
+                    Baseline layout test for normal dropdowns, including label/hint spacing, placeholder error element (hidden), and
+                    responsive width behavior for narrow vs wide containers.
+                </p>
+                <div class="stack">
+
+                    <div class="dropdown demoNarrow">
+                        <label class="dropdown__label" for="dd-1">Programme</label>
+                        <span class="dropdown__hint">Select one option.</span>
+                        <p class="dropdown__error" id="dd-1-error">This should be hidden in default state.</p>
+
+                        <div class="dropdown__control">
+                            <select class="dropdown__select" id="dd-1" aria-describedby="dd-1-hint">
+                                <option value="">Choose…</option>
+                                <option>Arts</option>
+                                <option>Science</option>
+                                <option>Engineering</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="dropdown demoWide">
+                        <label class="dropdown__label" for="dd-2">A longer label to test wrapping</label>
+                        <span class="dropdown__hint" id="dd-2-hint">
+                            Hint text should be muted (<span class="kbd">--mgrey3</span>) and spaced below the label.
+                        </span>
+                        <p class="dropdown__error" id="dd-2-error">Hidden error placeholder.</p>
+
+                        <div class="dropdown__control">
+                            <select class="dropdown__select" id="dd-2" aria-describedby="dd-2-hint">
+                                <option>Short option</option>
+                                <option>Much longer option text to test min-width: max-content</option>
+                                <option>Another option</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>Error + disabled states</h2>
+                <p>
+                    State test verifying the error modifier and disabled modifier apply correct styling to text, border, and arrow.
+                </p>
+                <div class="stack">
+
+                    <div class="dropdown dropdown--error demoWide">
+                        <label class="dropdown__label" for="dd-3">Dropdown with error</label>
+                        <span class="dropdown__hint" id="dd-3-hint">Hint is shown above the error.</span>
+                        <p class="dropdown__error" id="dd-3-error">Error: you must select an option</p>
+
+                        <div class="dropdown__control">
+                            <select class="dropdown__select" id="dd-3" aria-describedby="dd-3-hint dd-3-error"
+                                aria-invalid="true">
+                                <option value="">Choose…</option>
+                                <option>Option A</option>
+                                <option>Option B</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="dropdown dropdown--disabled demoWide">
+                        <label class="dropdown__label" for="dd-4">Disabled dropdown</label>
+                        <span class="dropdown__hint" id="dd-4-hint">Arrow should be muted (dropdown--disabled).</span>
+                        <p class="dropdown__error" id="dd-4-error">Hidden error placeholder.</p>
+
+                        <div class="dropdown__control">
+                            <select class="dropdown__select" id="dd-4" aria-describedby="dd-4-hint" disabled>
+                                <option>Disabled option</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+        <section class="card">
+            <h2>Interaction notes</h2>
+            <p>
+                Visual QA checklist for the custom arrow and spacing mechanics.
+            </p>
+            <div class="note" style="margin:0;">
+                <strong>Expected:</strong><br>
+                • The arrow is drawn by <span class="kbd">.dropdown__control::after</span> and should stay vertically
+                centered.<br>
+                • The select uses <span class="kbd">appearance: none</span> so native arrows should be removed.<br>
+                • If the arrow overlaps text, check padding right: <span class="kbd">var(--space-5)</span> is meant to
+                create room.
+            </div>
+        </section>
+    </div>
+
+    <script>
+        /* Expose metrics for harness */
+        window.__HARNESS_METRICS__ = () => ({
+            viewport: window.innerWidth,
+            note: "Hover/focus/active to test dropdown states. Resize to see min-width:max-content behavior."
+        });
+    </script>
+</body>
+
+</html>

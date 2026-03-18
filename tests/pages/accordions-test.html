@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Accordion – Component Test</title>
+
+    <link rel="stylesheet" href="../../distribution/main.css" />
+
+    <style>
+        /* Test-page helpers only */
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 24px;
+            background: #fff;
+            color: #111;
+            line-height: 1.5;
+        }
+
+        .wrap {
+            max-width: 960px;
+            margin: 0 auto;
+            display: grid;
+            gap: 18px;
+        }
+
+        header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+        }
+
+        h1 {
+            margin: 0 0 6px;
+            font-size: 20px;
+        }
+
+        p {
+            margin: 0;
+            color: #555;
+            max-width: 80ch;
+        }
+
+        .note {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #555;
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            align-items: start;
+        }
+
+        .card {
+            border: 1px dashed #bbb;
+            border-radius: 12px;
+            padding: 14px;
+            background: #fff;
+            display: grid;
+            gap: 10px;
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .kbd {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+            font-size: 12px;
+        }
+
+        .spacer {
+            height: 8px;
+        }
+
+        /* show a small helper tag inside header */
+        .meta {
+            font-size: 12px;
+            color: #4d4d4d;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1>Accordion – Component test</h1>
+            <p>
+                This page validates accordion structure, spacing, borders, focus outlines, toggle icon rotation,
+                and open/close behavior using the <span class="kbd">.accordion-toggle:checked</span> CSS selector.
+            </p>
+            <div class="note">
+                <strong>How to test:</strong><br>
+                • Click the accordion headers to open/close.<br>
+                • Use <span class="kbd">Tab</span> to verify focus outlines (header <span
+                    class="kbd">:focus-within</span>,
+                buttons <span class="kbd">:focus</span>, and input-driven <span class="kbd">:focus +
+                    .accordion-header</span>).<br>
+                • Check that stacked accordions get spacing via <span class="kbd">.accordion + .accordion</span>.
+            </div>
+        </header>
+
+        <div class="grid2">
+            <section class="card">
+                <h2>Accordion: default (all collapsed)</h2>
+                <p>
+                    This section confirms that accordion items start closed by default and only reveal
+                    the .accordion-collapse content when the corresponding .accordion-toggle is checked.
+                </p>
+                <div class="accordion" aria-label="Accordion default">
+                    <!-- Item 1 -->
+                    <div class="accordion-item">
+                        <input class="accordion-toggle" type="checkbox" id="acc-a-1" />
+                        
+                        <label class="accordion-header" for="acc-a-1" id="acc-a-1-label">
+                            <span class="accordion-button">
+                                Standard title
+                                <span class="meta">Short subtitle / metadata</span>
+                            </span>
+                            <span class="toggle-button" aria-hidden="true"></span>
+                        </label>
+                        
+                        <div class="accordion-collapse" role="region" aria-labelledby="acc-a-1-label">
+                            <div class="accordion-body">
+                                <p>
+                                    Body content: verify padding, background, and border-top. This should appear only
+                                    when checked. <br><br>
+
+                                    This is a Basic rendering test: header layout, subtitle/metadata placement,
+                                    toggle icon visibility, and body padding/border when
+                                    opened.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="accordion-item">
+                        <input class="accordion-toggle" type="checkbox" id="acc-a-2" />
+                
+                        <label class="accordion-header" for="acc-a-2" id="acc-a-2-label">
+                            <span class="accordion-button">
+                                Long title wrapping test — this should wrap onto multiple lines without breaking layout or overlap
+                            </span>
+                            <span class="toggle-button" aria-hidden="true"></span>
+                        </label>
+                
+                        <div class="accordion-collapse" role="region" aria-labelledby="acc-a-2-label">
+                            <div class="accordion-body">
+                                <p>Mixed content test:</p>
+                                <ul>
+                                    <li>List item one</li>
+                                    <li>List item two with <a href="#" onclick="return false;">a link</a></li>
+                                    <li>List item three</li><br>
+
+                                    <li>This is a stress test for long headings: verifies multi-line wrapping doesn’t overlap the toggle icon and the header remains clickable and aligned.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="accordion-item">
+                        <input class="accordion-toggle" type="checkbox" id="acc-a-3" />
+                    
+                        <label class="accordion-header" for="acc-a-3" id="acc-a-3-label">
+                            <span class="accordion-button">Focus test item (Tab here)</span>
+                            <span class="toggle-button" aria-hidden="true"></span>
+                        </label>
+                    
+                        <div class="accordion-collapse" role="region" aria-labelledby="acc-a-3-label">
+                            <div class="accordion-body">
+                                <p>
+                                    Use <span class="kbd">Tab</span> until focus enters this header.
+                                    Expected: header shows the thick yellow outline from <span class="kbd">:focus-within</span>.
+                                </p>
+                                <div class="spacer"></div>
+                                <button type="button">Extra focusable button</button><br>
+                                <p>
+                                    This is a keyboard accessibility test: tabbing should produce a clear focus indicator on the 
+                                    header (:focus-within) and on inner focusable elements (button/link), without breaking layout.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>Accordion: pre-opened + stacked accordion spacing</h2>
+                <p>
+                    This section confirms that setting checked on the input opens the items on load,
+                    and that multiple accordions stack with the intended spacing.
+                </p>
+                <p class="note" style="margin:0;">
+                    The first item starts open using the <span class="kbd">checked</span> attribute.
+                    This also tests icon rotation and <span class="kbd">.accordion + .accordion</span> margin.
+                </p>
+
+                
+                <!-- Accordion 1 -->
+                <div class="accordion" aria-label="Accordion pre-opened 1">
+                    <div class="accordion-item">
+                        <input class="accordion-toggle" type="checkbox" id="acc-b-1" checked />
+                
+                        <label class="accordion-header" for="acc-b-1" id="acc-b-1-label">
+                            <span class="accordion-button">Starts open (checked)</span>
+                            <span class="toggle-button" aria-hidden="true"></span>
+                        </label>
+                
+                        <div class="accordion-collapse" role="region" aria-labelledby="acc-b-1-label">
+                            <div class="accordion-body">
+                                <p>
+                                    Confirm: <span class="kbd">.accordion-toggle:checked + .accordion-header +
+                                        .accordion-collapse</span>
+                                    displays this section.
+                                </p><br>
+
+                                <p>
+                                    This tests default-open state: verifies :checked correctly displays 
+                                    .accordion-collapse and the toggle icon appears “open” (rotated/changed) without
+                                    requiring a click.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="accordion-item">
+                        <input class="accordion-toggle" type="checkbox" id="acc-b-2" />
+                
+                        <label class="accordion-header" for="acc-b-2" id="acc-b-2-label">
+                            <span class="accordion-button">Collapsed item</span>
+                            <span class="toggle-button" aria-hidden="true"></span>
+                        </label>
+                
+                        <div class="accordion-collapse" role="region" aria-labelledby="acc-b-2-label">
+                            <div class="accordion-body">
+                                <p>More content.</p><br>
+
+                                <p>
+                                    This is a control case: ensures non-checked items still start 
+                                    closed and open/close independently.
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Accordion 2: tests .accordion + .accordion -->
+                <div class="accordion" aria-label="Accordion pre-opened 2">
+                    <div class="accordion-item">
+                        <input class="accordion-toggle" type="checkbox" id="acc-c-1" />
+                
+                        <label class="accordion-header" for="acc-c-1" id="acc-c-1-label">
+                            <span class="accordion-button">Second accordion (spacing above should be 1rem)</span>
+                            <span class="toggle-button" aria-hidden="true"></span>
+                        </label>
+                
+                        <div class="accordion-collapse" role="region" aria-labelledby="acc-c-1-label">
+                            <div class="accordion-body">
+                                <p>
+                                    Verify the margin between the two accordions is applied via
+                                    <span class="kbd">.accordion + .accordion</span>.
+                                </p><br>
+
+                                <p>
+                                    This is a layout spacing test: validates margin between separate accordion components
+                                    via .accordion + .accordion (prevents them visually merging).
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+        <section class="card">
+            <h2>Edge checks (visual)</h2>
+            <p class="note" style="margin:0;">
+                Confirm borders: accordion outer border (2px), item top/bottom borders, header background,
+                body background, and that overflow is hidden with rounded corners.
+            </p>
+        </section>
+
+    </div>
+
+    <script>
+        /* show which items are open (purely for test clarity). */
+        document.querySelectorAll(".accordion-toggle").forEach((cb) => {
+            const update = () => {
+                const header = cb.nextElementSibling;
+                if (!header) return;
+                header.dataset.open = cb.checked ? "true" : "false";
+            };
+            cb.addEventListener("change", update);
+            update();
+        });
+    </script>
+</body>
+
+</html>

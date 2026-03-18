@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Breadcrumb – Component Test</title>
+
+    <!-- Load compiled CSS (tokens + breadcrumb styles) -->
+    <link rel="stylesheet" href="../../distribution/main.css" />
+
+    <style>
+        /* Test-page helpers only */
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 24px;
+            background: #fff;
+            color: #111;
+            line-height: 1.5;
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            gap: 18px;
+        }
+
+        header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+        }
+
+        h1 {
+            margin: 0 0 6px;
+            font-size: 20px;
+        }
+
+        p {
+            margin: 0;
+            color: #555;
+            max-width: 90ch;
+        }
+
+        .note {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #555;
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+
+        .card {
+            border: 1px dashed #bbb;
+            border-radius: 12px;
+            padding: 16px;
+            background: #fff;
+            display: grid;
+            gap: 12px;
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .kbd {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+            font-size: 12px;
+        }
+
+        /* Optional token fallbacks if opened standalone */
+        :root {
+            --space1: 0.25rem;
+            --space2: 0.5rem;
+            --uni-blue: #003865;
+            --lgrey3: #CCCCCC;
+            --highlight: #FFDD00;
+        }
+
+        /* Visual boundary helper */
+        .ruler {
+            border: 1px dashed #e5e5e5;
+            border-radius: 12px;
+            padding: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1>Breadcrumb – Component test</h1>
+            <p>
+                This page tests <span class="kbd">.zh-breadcrumb</span> layout, separators (<span class="kbd">›</span>),
+                link hover/focus states, wrapping, and current-page behavior using
+                <span class="kbd">aria-current="page"</span>.
+            </p>
+            <div class="note">
+                <strong>How to test:</strong><br>
+                • Confirm the separator appears only between items (<span class="kbd">.item + .item::before</span>).<br>
+                • Hover links: underline appears.<br>
+                • Tab to focus links: outline + border-radius appear, underline removed while focused.<br>
+                • Current page item: greyed out and not clickable (pointer-events disabled).
+            </div>
+        </header>
+
+        <section class="card">
+            <h2>Default breadcrumb</h2>
+
+            <div class="ruler">
+                <nav class="zh-breadcrumb" aria-label="Breadcrumb">
+                    <ol class="zh-breadcrumb__list">
+                        <li class="zh-breadcrumb__item">
+                            <a class="zh-breadcrumb__link" href="#" onclick="return false;">Home</a>
+                        </li>
+                        <li class="zh-breadcrumb__item">
+                            <a class="zh-breadcrumb__link" href="#" onclick="return false;">Study</a>
+                        </li>
+                        <li class="zh-breadcrumb__item">
+                            <a class="zh-breadcrumb__link" href="#" onclick="return false;">Undergraduate</a>
+                        </li>
+                        <li class="zh-breadcrumb__item" aria-current="page">
+                            <span class="zh-breadcrumb__current">Computer Science</span>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="note" style="margin:0;">
+                Expected: separators are <span class="kbd">›</span> in muted grey between items.
+                The current page is grey and not interactive.
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Wrapping / long labels</h2>
+            <p class="note" style="margin:0;">
+                Resize the viewport narrower. Expected: items wrap to the next line because the list uses
+                <span class="kbd">display:flex</span> + <span class="kbd">flex-wrap: wrap</span>.
+            </p>
+
+            <div class="ruler">
+                <nav class="zh-breadcrumb" aria-label="Breadcrumb wrapping example">
+                    <ol class="zh-breadcrumb__list">
+                        <li class="zh-breadcrumb__item">
+                            <a class="zh-breadcrumb__link" href="#" onclick="return false;">Home</a>
+                        </li>
+                        <li class="zh-breadcrumb__item">
+                            <a class="zh-breadcrumb__link" href="#" onclick="return false;">This is a very long section
+                                name</a>
+                        </li>
+                        <li class="zh-breadcrumb__item">
+                            <a class="zh-breadcrumb__link" href="#" onclick="return false;">Another long subsection
+                                title</a>
+                        </li>
+                        <li class="zh-breadcrumb__item" aria-current="page">
+                            <span class="zh-breadcrumb__current">Current page with a long name</span>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Current page as a link (tests pointer-events: none)</h2>
+            <p class="note" style="margin:0;">
+                Your CSS disables interaction when <span class="kbd">aria-current="page"</span> is on the item and the
+                current is rendered as <span class="kbd">.zh-breadcrumb__link</span>. This section confirms that
+                behavior.
+            </p>
+
+            <div class="ruler">
+                <nav class="zh-breadcrumb" aria-label="Breadcrumb current as link">
+                    <ol class="zh-breadcrumb__list">
+                        <li class="zh-breadcrumb__item">
+                            <a class="zh-breadcrumb__link" href="#" onclick="return false;">Home</a>
+                        </li>
+                        <li class="zh-breadcrumb__item">
+                            <a class="zh-breadcrumb__link" href="#" onclick="return false;">Section</a>
+                        </li>
+
+                        <!-- current item is intentionally an <a> to verify it becomes non-interactive -->
+                        <li class="zh-breadcrumb__item" aria-current="page">
+                            <a class="zh-breadcrumb__link zh-breadcrumb__current" href="#"
+                                onclick="alert('If you see this alert, pointer-events is NOT working'); return false;">
+                                Current (should NOT be clickable)
+                            </a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Optional: expose metrics for your harness
+        window.__HARNESS_METRICS__ = () => ({
+            viewport: window.innerWidth,
+            note: "Tab to links to test focus outline; hover to test underline; resize to test wrapping."
+        });
+    </script>
+</body>
+
+</html>

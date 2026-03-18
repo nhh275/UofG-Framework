@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Breakout – Component Test</title>
+
+    <link rel="stylesheet" href="../../distribution/main.css" />
+
+    <style>
+        /* Test-page helpers only */
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 24px;
+            background: #fff;
+            color: #111;
+            line-height: 1.5;
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            gap: 18px;
+        }
+
+        header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+        }
+
+        h1 {
+            margin: 0 0 6px;
+            font-size: 20px;
+        }
+
+        p {
+            margin: 0;
+            color: #555;
+            max-width: 90ch;
+        }
+
+        .note {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #555;
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+
+        .card {
+            border: 1px dashed #bbb;
+            border-radius: 12px;
+            padding: 16px;
+            background: #fff;
+            display: grid;
+            gap: 14px;
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .kbd {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+            font-size: 12px;
+        }
+
+        :root {
+            /* Optional fallbacks if opened standalone */
+            --space3: 0.75rem;
+            --space4: 1rem;
+            --space6: 1.5rem;
+            --space8: 2.5rem;
+            --space11: 4rem;
+            --space12: 6rem;
+
+            --lgrey1: #F5F5F5;
+            --mgrey1: #B3B3B3;
+            --mgrey2: #999999;
+            --dgrey3: #323232;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1>Breakout – Component test</h1>
+            <p>
+                This page tests <span class="kbd">.breakout</span>, <span class="kbd">.breakout__content</span>,
+                and the modifier variants <span class="kbd">.breakout--inset</span> and
+                <span class="kbd">.breakout--warning</span>, including pseudo-elements, padding, borders, and spacing.
+            </p>
+            <div class="note">
+                <strong>How to test:</strong><br>
+                • Default breakout: light grey background with left-heavy padding from <span
+                    class="kbd">--space11</span>.<br>
+                • Inset breakout: vertical grey inset bar appears using <span class="kbd">::before</span>.<br>
+                • Warning breakout: top/bottom borders appear and a circular exclamation icon appears using <span
+                    class="kbd">::after</span>.<br>
+                • Check vertical spacing between breakouts comes from <span class="kbd">margin: --space6 0</span>.
+            </div>
+        </header>
+
+        <section class="card">
+            <h2>Default breakout</h2>
+            <p>
+                Baseline test of spacing, background, and content flow without any modifier.
+            </p>
+
+            <div class="breakout">
+                <div class="breakout__content">
+                    <p>
+                        This is a standard breakout block. It should have a light grey background,
+                        generous left padding, and no decorative bar or icon.
+                    </p>
+                </div>
+            </div>
+
+            <div class="note" style="margin:0;">
+                Expected: no pseudo-element visible. Padding should still indent content noticeably from the left.
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Inset breakout</h2>
+            <p>
+                Tests the left inset bar created with <span class="kbd">.breakout--inset::before</span>.
+            </p>
+
+            <div class="breakout breakout--inset">
+                <div class="breakout__content">
+                    <p>
+                        This inset variant should show a vertical bar on the left, positioned inside the container
+                        with top and bottom offsets from <span class="kbd">--space3</span>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="note" style="margin:0;">
+                Expected: a 4px grey vertical bar appears at <span class="kbd">left: --space8</span>.
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Warning breakout</h2>
+            <p>
+                Tests warning styling, including extra left padding, top/bottom borders, and circular exclamation mark.
+            </p>
+
+            <div class="breakout breakout--warning">
+                <div class="breakout__content">
+                    <p>
+                        This warning breakout should display an exclamation icon in a bordered circle,
+                        plus top and bottom borders. The text content should start further right than the default
+                        breakout.
+                    </p>
+                </div>
+            </div>
+
+            <div class="note" style="margin:0;">
+                Expected: warning icon appears via <span class="kbd">::after</span> at
+                <span class="kbd">left: --space8</span>, with extra padding-left from <span
+                    class="kbd">--space12</span>.
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Edge case: longer content</h2>
+            <p>
+                Stress test for wrapping and vertical spacing with a longer block of text.
+            </p>
+
+            <div class="breakout breakout--warning">
+                <div class="breakout__content">
+                    <p>
+                        This is a much longer breakout message intended to test how multiline content wraps inside the
+                        component
+                        while maintaining the warning icon position and the left padding. The icon should remain
+                        visually aligned
+                        near the top of the breakout and the content should not overlap it.
+                    </p>
+                    <p>
+                        A second paragraph verifies that normal flow content still behaves correctly inside the breakout
+                        container.
+                    </p>
+                </div>
+            </div>
+
+            <div class="note" style="margin:0;">
+                Expected: paragraphs wrap naturally, icon stays fixed in its absolute position, and content remains
+                clear of the icon area.
+            </div>
+        </section>
+    </div>
+
+    <script>
+        /* Expose metrics for harness */
+        window.__HARNESS_METRICS__ = () => ({
+            viewport: window.innerWidth,
+            note: "Inspect inset bar and warning icon placement; verify spacing and borders."
+        });
+    </script>
+</body>
+
+</html>

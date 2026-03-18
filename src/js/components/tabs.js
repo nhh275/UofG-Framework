@@ -1,9 +1,9 @@
 (function () {
-  const tabSets = document.querySelectorAll('.uofg-tabs[data-tabs]');
+  const tabSets = document.querySelectorAll('.tabs');
 
   tabSets.forEach(tabsEl => {
-    const tabs = Array.from(tabsEl.querySelectorAll('.uofg-tabs__tab[role="tab"]'));
-    const panels = Array.from(tabsEl.querySelectorAll('.uofg-tabs__panel[role="tabpanel"]'));
+    const tabs = Array.from(tabsEl.querySelectorAll('.tabs__tab[role="tab"]'));
+    const panels = Array.from(tabsEl.querySelectorAll('.tabs__panel[role="tabpanel"]'));
 
     function activateTab(newTab) {
       const panelId = newTab.getAttribute('aria-controls');
@@ -11,13 +11,14 @@
 
       tabs.forEach(tab => {
         const isActive = tab === newTab;
-        tab.classList.toggle('uofg-tabs__tab--active', isActive);
+        tab.classList.toggle('tabs__tab--active', isActive);
         tab.setAttribute('aria-selected', String(isActive));
       });
 
       panels.forEach(panel => {
         const isActive = newPanel && panel === newPanel;
         panel.hidden = !isActive;
+        panel.classList.toggle('is-active', isActive);
       });
     }
 
@@ -26,7 +27,7 @@
     });
 
     const initial =
-      tabs.find(t => t.classList.contains('uofg-tabs__tab--active')) ||
+      tabs.find(t => t.classList.contains('tabs__tab--active')) ||
       tabs.find(t => t.getAttribute('aria-selected') === 'true') ||
       tabs[0];
 

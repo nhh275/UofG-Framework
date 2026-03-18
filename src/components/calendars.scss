@@ -1,0 +1,145 @@
+@use '../foundational-tokens/space-sheet' as space;
+@use '../foundational-tokens/colour-sheet' as colour;
+
+.zh-calendar {
+  width: 100%;
+  max-width: 30rem;
+  background: #fff;
+  color: #000;
+  font-family: var(--uofg-font-sans, sans-serif);
+}
+
+/* Pagination */
+.zh-calendar__pagination {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: space.$space1;
+  padding: space.$space3 0 space.$space2 0;
+}
+
+.zh-calendar__pagination button {
+  background: none;
+  border: 0.5px solid colour.$lgrey2;
+  padding: space.$space1 space.$space1;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: colour.$dgrey2;
+
+  &:hover {
+    background: colour.$lgrey1;
+  }
+
+  &:focus-visible {
+    outline: 4px solid colour.$highlight;
+    outline-offset: 3px;
+  }
+
+  &.is-active {
+    background: colour.$uni-blue;
+    color: #fff;
+    border-color: colour.$uni-blue;
+  }
+}
+
+/* Weekday row */
+.zh-calendar__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  color: colour.$dgrey2;
+  padding: 0;
+  margin: 0;
+}
+
+/* Weekend labels lighter */
+.zh-calendar__weekdays span:nth-child(6),
+.zh-calendar__weekdays span:nth-child(7) {
+  color: colour.$mgrey2;
+}
+
+/* Month label */
+.zh-calendar__month {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: colour.$dgrey2;
+  margin: space.$space2 0 space.$space3 0;
+}
+
+/* Table grid */
+.zh-calendar__table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.zh-calendar__cell {
+  border-top: 2px solid colour.$lgrey2;
+  padding: 0;
+  text-align: center;
+  vertical-align: top;
+}
+
+.zh-calendar__cell--empty {
+  color: transparent;
+}
+
+/* day button */
+.zh-calendar__day {
+  width: 100%;
+  border: 0;
+  background: none;
+  cursor: pointer;
+
+  /* Leave room under date for event marker */
+  padding: space.$space2 0 space.$space4 0;
+  display: grid;
+  place-items: center;
+  gap: 0.45rem;
+
+  &:focus-visible {
+    outline: 4px solid colour.$highlight;
+    outline-offset: -2px;
+  }
+}
+
+/* Date number */
+.zh-calendar__date {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: colour.$dgrey2;
+}
+
+/* Weekend dates lighter */
+.zh-calendar__table tbody tr td:nth-child(6) .zh-calendar__date,
+.zh-calendar__table tbody tr td:nth-child(7) .zh-calendar__date {
+  color: colour.$mgrey2;
+}
+
+/* Today highlight */
+.zh-calendar__cell--today .zh-calendar__date {
+  display: inline-grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  background: colour.$uni-blue;
+  color: #fff;
+}
+
+/* Event marker */
+.zh-calendar__marker {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 999px;
+  background: colour.$mgrey2;
+}
+
+.zh-calendar__day:hover .zh-calendar__date {
+  text-decoration: underline;
+  text-decoration-skip-ink: auto;
+}

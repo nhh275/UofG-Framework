@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blockquote – Component Test</title>
+
+    <link rel="stylesheet" href="../../distribution/main.css" />
+
+    <style>
+        /* Test-page helpers only */
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 24px;
+            background: #fff;
+            color: #111;
+            line-height: 1.5;
+        }
+
+        .wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            gap: 18px;
+        }
+
+        header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+        }
+
+        h1 {
+            margin: 0 0 6px;
+            font-size: 20px;
+        }
+
+        p {
+            margin: 0;
+            color: #555;
+            max-width: 90ch;
+        }
+
+        .note {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #555;
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            align-items: start;
+        }
+
+        @media (min-width: 960px) {
+            .grid2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            border: 1px dashed #bbb;
+            border-radius: 12px;
+            padding: 14px;
+            background: #fff;
+            display: grid;
+            gap: 10px;
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .kbd {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+            font-size: 12px;
+        }
+
+        /* Provide safe fallbacks for tokens if the test page is opened without full tokens loaded */
+        :root {
+            --space1: 0.25rem;
+            --space5: 1.25rem;
+            --space6: 1.5rem;
+            --space7: 2rem;
+            --space10: 3.5rem;
+
+            --rust: #9A3A06;
+            --dgrey3: #323232;
+            --mgrey3: #757575;
+            --lgrey3: #CCCCCC;
+        }
+
+        /* Show a content width guide (to see max-width:1100px behavior) */
+        .widthGuide {
+            border: 1px dashed #ddd;
+            border-radius: 12px;
+            padding: 16px;
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1>Blockquote – Component test</h1>
+            <p>
+                This page tests <span class="kbd">.zh-blockquote</span> layout, icon sizing, responsive clamp
+                typography,
+                optional attribution (with/without avatar), and spacing tokens.
+            </p>
+            <div class="note">
+                <strong>What to check:</strong><br>
+                • The blockquote container respects <span class="kbd">max-width: 1100px</span> and uses transparent
+                background / no borders.<br>
+                • Inner layout uses a 2-column grid: large quote mark icon on the left, quote text on the right.<br>
+                • The quote mark and quote text scale smoothly with <span class="kbd">clamp()</span> as the viewport
+                changes.<br>
+                • Attribution grid aligns avatar + byline neatly, and still looks correct when the avatar is omitted.
+            </div>
+        </header>
+
+        <section class="widthGuide">
+            <p style="margin:0; color:#666;">
+                Width guide container (test helper): the component itself should cap at <span class="kbd">1100px</span>
+                even if this page is wider.
+                Resize the preview to see the clamped text sizes.
+            </p>
+        </section>
+
+        <div class="grid2">
+            <!-- Variant A: With avatar -->
+            <section class="card">
+                <h2>Variant A: quote + attribution with avatar</h2>
+                <p>
+                    Baseline rendering test: verifies the core grid layout (icon column + text column) plus attribution layout with an
+                    avatar.
+                </p>
+                <blockquote class="zh-blockquote">
+                    <div class="zh-blockquote__inner">
+                        <div class="zh-blockquote__icon" aria-hidden="true"></div>
+
+                        <p class="zh-blockquote__quote">
+                            We’re building a component library that’s predictable, accessible, and easy to test—so every
+                            change is
+                            visible before it ships.
+                        </p>
+                    </div>
+
+                    <div class="zh-blockquote__attribution">
+                        <div class="zh-blockquote__avatar" aria-hidden="true">
+                            <img alt="Avatar"
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='176' height='176'%3E%3Cdefs%3E%3CradialGradient id='g' cx='40%25' cy='35%25' r='70%25'%3E%3Cstop offset='0' stop-color='%23E6EBF0'/%3E%3Cstop offset='1' stop-color='%239DAEBF'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='176' height='176' fill='url(%23g)'/%3E%3Ccircle cx='88' cy='72' r='28' fill='%23CED7DF'/%3E%3Cpath d='M38 152c12-28 34-40 50-40s38 12 50 40' fill='%23CED7DF'/%3E%3C/svg%3E" />
+                        </div>
+
+                        <div class="zh-blockquote__byline">
+                            <p class="zh-blockquote__name">Alex Example</p>
+                            <p class="zh-blockquote__role">Design Systems Lead</p>
+                        </div>
+                    </div>
+                </blockquote>
+            </section>
+
+            <!-- Variant B: No avatar -->
+            <section class="card">
+                <h2>Variant B: quote + attribution without avatar</h2>
+                <p>
+                    Tests attribution behavior when the avatar is omitted (layout resilience / graceful degradation).
+                </p>
+                <blockquote class="zh-blockquote">
+                    <div class="zh-blockquote__inner">
+                        <div class="zh-blockquote__icon" aria-hidden="true"></div>
+
+                        <p class="zh-blockquote__quote">
+                            Clamp-based typography helps maintain hierarchy across screen sizes without maintaining lots
+                            of breakpoint
+                            rules.
+                        </p>
+                    </div>
+
+                    <!-- No avatar: ensure layout still looks correct -->
+                    <div class="zh-blockquote__attribution">
+                        <div class="zh-blockquote__byline">
+                            <p class="zh-blockquote__name">Jamie Example</p>
+                            <p class="zh-blockquote__role">Frontend Engineer</p>
+                        </div>
+                    </div>
+                </blockquote>
+
+                <div class="note" style="margin:0;">
+                    Expected: the byline still aligns cleanly. (Because attribution is a grid with <span
+                        class="kbd">auto 1fr</span>,
+                    omitting the avatar will change the grid; this is useful to validate and decide if you want a
+                    “no-avatar” modifier later.)
+                </div>
+            </section>
+        </div>
+
+        <div class="grid2">
+            <!-- Variant C: Long quote (wrap + line-height) -->
+            <section class="card">
+                <h2>Variant C: long quote wrapping</h2>
+                <p>
+                    Stress test for long text: validates wrapping, line-height, and that the icon never collides with the quote text as the
+                    viewport changes.
+                </p>
+                <blockquote class="zh-blockquote">
+                    <div class="zh-blockquote__inner">
+                        <div class="zh-blockquote__icon" aria-hidden="true"></div>
+
+                        <p class="zh-blockquote__quote">
+                            This is a longer quote to validate wrapping, line-height, and the relationship between the
+                            big quote icon
+                            and the text. The quote should remain readable and not collide with the icon as the viewport
+                            changes.
+                        </p>
+                    </div>
+
+                    <div class="zh-blockquote__attribution">
+                        <div class="zh-blockquote__avatar" aria-hidden="true"></div>
+                        <div class="zh-blockquote__byline">
+                            <p class="zh-blockquote__name">Taylor Example</p>
+                            <p class="zh-blockquote__role">Content Designer</p>
+                        </div>
+                    </div>
+                </blockquote>
+            </section>
+
+            <!-- Variant D: Multiple blockquotes stacked (margin token) -->
+            <section class="card">
+                <h2>Variant D: stacked blockquotes (margin spacing)</h2>
+                <p>
+                    Spacing token test: verifies vertical separation between multiple zh-blockquote components (component margin driven by
+                    --space10).
+                </p>
+                <blockquote class="zh-blockquote">
+                    <div class="zh-blockquote__inner">
+                        <div class="zh-blockquote__icon" aria-hidden="true"></div>
+                        <p class="zh-blockquote__quote">First blockquote – check top/bottom margin uses <span
+                                class="kbd">--space10</span>.</p>
+                    </div>
+                </blockquote>
+
+                <blockquote class="zh-blockquote">
+                    <div class="zh-blockquote__inner">
+                        <div class="zh-blockquote__icon" aria-hidden="true"></div>
+                        <p class="zh-blockquote__quote">Second blockquote – margin should create clear separation.</p>
+                    </div>
+                </blockquote>
+
+                <div class="note" style="margin:0;">
+                    Expected: the vertical spacing between blockquotes is consistent and driven by the component’s
+                    margin token.
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <script>
+        // Allow your harness to read simple metrics
+        window.__HARNESS_METRICS__ = () => ({
+            viewport: window.innerWidth,
+            note: "Resize to see clamp() typography scale for icon + quote."
+        });
+    </script>
+</body>
+
+</html>

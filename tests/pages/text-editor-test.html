@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Editor / Global Text Rules – Test</title>
+
+    <link rel="stylesheet" href="../../distribution/main.css" />
+
+    <style>
+        /* Test-page helpers only */
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 24px;
+            background: #fff;
+            color: #111;
+            line-height: 1.5;
+        }
+
+        .wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            gap: 18px;
+        }
+
+        header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+        }
+
+        h1 {
+            margin: 0 0 6px;
+            font-size: 20px;
+        }
+
+        p {
+            margin: 0;
+            color: #555;
+            max-width: 90ch;
+        }
+
+        .note {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #555;
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+
+        .card {
+            border: 1px dashed #bbb;
+            border-radius: 12px;
+            padding: 16px;
+            background: #fff;
+            display: grid;
+            gap: 14px;
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            align-items: start;
+        }
+
+        @media (min-width: 960px) {
+            .grid2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .kbd {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+            font-size: 12px;
+        }
+
+        .demo-wrap {
+            border: 1px dashed #e5e5e5;
+            border-radius: 12px;
+            padding: 12px;
+        }
+
+        .fsize-small {
+            --fsize: 12px;
+        }
+
+        .fsize-normal {
+            --fsize: 1rem;
+        }
+
+        .fsize-large {
+            --fsize: 24px;
+        }
+
+        .measure {
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1>Editor / Global Text Rules – Test</h1>
+            <p>
+                This page tests the global font-size rule, <span class="kbd">max-width: 80ch</span> on
+                <span class="kbd">body</span> and <span class="kbd">.text-editor</span>, and unordered list
+                spacing/marker behavior.
+            </p>
+            <div class="note">
+                <strong>How to test:</strong><br>
+                • Global font size should never fall below 16px because of <span class="kbd">font-size: max(16px,
+                    var(--fsize, 1rem))</span>.<br>
+                • Body and <span class="kbd">.text-editor</span> content should visually cap at ~80 characters wide.<br>
+                • <span class="kbd">ul</span> should have no left padding, and list items should offset using <span
+                    class="kbd">margin-left: 1.2em</span>.
+            </div>
+        </header>
+
+        <div class="grid2">
+            <section class="card">
+                <h2>Global font-size rule</h2>
+                <p>
+                    These samples test whether the global rule prevents text smaller than 16px, even when
+                    <span class="kbd">--fsize</span> is set lower.
+                </p>
+
+                <div class="demo-wrap">
+                    <div class="fsize-small">
+                        <p>This text uses <span class="kbd">--fsize: 12px</span>. Expected: it still renders at 16px
+                            minimum.</p>
+                    </div>
+
+                    <div class="fsize-normal">
+                        <p>This text uses <span class="kbd">--fsize: 1rem</span>. Expected: normal size, at least 16px.
+                        </p>
+                    </div>
+
+                    <div class="fsize-large">
+                        <p>This text uses <span class="kbd">--fsize: 24px</span>. Expected: larger than the minimum and
+                            visibly bigger.</p>
+                    </div>
+                </div>
+
+                <div class="note" style="margin:0;">
+                    Expected: the first sample should not look smaller than normal body text.
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>Body / .text-editor max-width</h2>
+                <p>
+                    This checks whether line length is constrained to approximately <span class="kbd">80ch</span>.
+                </p>
+
+                <div class="demo-wrap">
+                    <div class="text-editor">
+                        <p>
+                            This block is inside <span class="kbd">.text-editor</span>. It should not become excessively
+                            wide even on a large viewport.
+                            The goal is a readable line length, roughly 80 characters across.
+                        </p>
+
+                        <p>
+                            A second paragraph makes it easier to visually judge whether the line length stays
+                            comfortable and consistent.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="note" style="margin:0;">
+                    Expected: both the page body content and this editor block feel line-length constrained rather than
+                    stretching edge to edge.
+                </div>
+            </section>
+        </div>
+
+        <section class="card">
+            <h2>Unordered list spacing</h2>
+            <p>
+                This tests the <span class="kbd">ul</span> and <span class="kbd">ul li</span> rules:
+                zero left padding on the list, markers outside, and item indentation via margin-left.
+            </p>
+
+            <div class="demo-wrap">
+                <ul>
+                    <li>First item — bullet should sit outside and the item should indent using margin-left.</li>
+                    <li>Second item — long enough to wrap onto another line and reveal how the hanging indent behaves in
+                        practice.</li>
+                    <li>Third item — confirm the list doesn’t use default left padding.</li>
+                </ul>
+            </div>
+
+            <div class="note" style="margin:0;">
+                Expected: the list aligns flush to the left edge of the container, while each <span
+                    class="kbd">li</span> offsets itself by <span class="kbd">1.2em</span>.
+            </div>
+        </section>
+    </div>
+
+    <script>
+        window.__HARNESS_METRICS__ = () => ({
+            viewport: window.innerWidth,
+            note: "Check that small --fsize values do not render below 16px and that lists align with outside bullets."
+        });
+    </script>
+</body>
+
+</html>

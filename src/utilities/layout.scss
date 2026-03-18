@@ -3,34 +3,34 @@
 
 /* Display */
 @each $name, $value in $displays {
-  .u-d-#{$name} { display: $value; }
+  .d-#{$name} { display: $value; }
 }
 
 /* Visibility helpers */
-.u-hidden { display: none !important; }
+.hidden { display: none !important; }
 
 /* Position */
 @each $pos in $positions {
-  .u-position-#{$pos} { position: $pos; }
+  .position-#{$pos} { position: $pos; }
 }
 
 
 @each $k, $v in $space-scale {
-  .u-top-#{$k}    { top: $v; }
-  .u-right-#{$k}  { right: $v; }
-  .u-bottom-#{$k} { bottom: $v; }
-  .u-left-#{$k}   { left: $v; }
+  .top-#{$k}    { top: $v; }
+  .right-#{$k}  { right: $v; }
+  .bottom-#{$k} { bottom: $v; }
+  .left-#{$k}   { left: $v; }
 
 /* Logical offsets (recommended for RTL safety) */
-  .u-start-#{$k}  { inset-inline-start: $v; }
-  .u-end-#{$k}    { inset-inline-end: $v; }
+  .start-#{$k}  { inset-inline-start: $v; }
+  .end-#{$k}    { inset-inline-end: $v; }
 }
 
 /* Float */
 @each $name, $value in $floats {
-  .u-float-#{$name} { float: $value; }
+  .float-#{$name} { float: $value; }
 }
 
 @each $k, $v in $z {
-  .u-z-#{$k} { z-index: $v; }
+  .z-#{$k} { z-index: $v; }
 }
