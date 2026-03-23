@@ -15,11 +15,11 @@ To begin all dependencies must be installed.
 
     npm install
 
-Once Sass is installed the SCSS files must be compiled. This can be done using the sass command as followed from the project root directory.
+Once Sass is installed the SCSS files must be compiled. This can be done by calling this script.
 
-    sass .\src\main.scss .\distribution\main.css
+    npm run build:css
 
-This will create the compiled CSS file in the distribution folder from all the SCSS files. 
+This will create the compiled CSS file in the distribution folder from all of the SCSS files. 
 
 Once esbuild is installed, the JavaScript master file must be compiled. This can be used by running the following script.
 	
@@ -35,7 +35,7 @@ This will create a compiled framework.js file in distribution from the framework
 ## StyleLint Tests
 
 1. In the project root folder, open cmd
-2. Run the following: npm install -D stylelint stylelint-config-standard-scss stylelint-scss postcss-scss
+2. Run the following: npm install to install all dependancies from package.json
 3. Run the following: npm run lint:scss
 
 ## Support
@@ -60,6 +60,3 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-## Project Status
-In progress by main developers.
