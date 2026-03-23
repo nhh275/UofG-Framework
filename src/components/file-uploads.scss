@@ -1,11 +1,11 @@
-$btn-border-radius: 0; // sharp edges
+$btn-border-radius: 0; 
 
 .zh-file-upload {
   display: flex;
   flex-direction: column;
   gap: var(--space2, 8px);
   width: 100%;
-  padding-top: var(--space4, 16px);  // space at the top
+  padding-top: var(--space4, 16px);  
   padding-left: var(--space4, 16px);
 
   &__label {
@@ -27,13 +27,14 @@ $btn-border-radius: 0; // sharp edges
   &__button {
     display: inline-block;
     padding: var(--space2, 8px) var(--space5, 16px);
-    border-radius: $btn-border-radius; // sharp edges
+    border-radius: $btn-border-radius;
     border: 2px solid var(--mgrey2, #999);
     background-color: var(--lgrey1, #f5f5f5);
     color: black;
     cursor: pointer;
     text-align: center;
     transition: border-color 0.2s ease;
+    flex-shrink: 0;
 
     &:hover {
       border-color: var(--mgrey2, #999);
@@ -42,7 +43,7 @@ $btn-border-radius: 0; // sharp edges
 
     &:focus {
       outline: none;
-      border-color: var(--highlight, #fd0); // yellow border
+      border-color: var(--highlight, #fd0); 
     }
 
     &:active {
@@ -54,5 +55,8 @@ $btn-border-radius: 0; // sharp edges
     font-size: 0.9rem;
     color: var(--dgrey3);
     white-space: nowrap;
+    overflow: hidden;      
+    text-overflow: ellipsis;
+    flex-grow: 1;              
   }
 }
