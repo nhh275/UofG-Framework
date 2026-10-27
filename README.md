@@ -1,5 +1,8 @@
 # University of Glasgow CSS Framework
 
+NOTE - this is a mirror of the final repository state created by my team at https://github.com/KeiranWalker/UofG-CSS-Framework . Mirrored rather than forked to show Contributors and other exact data, but full credit shown at the bottom of this README and in the attached link.
+
+
 ## Description
 This project provides users with a framework for designing websites in accordance with the University of Glasgow's style and structure guide. It features user Sassy CSS, JavaScript, and a thorough testing suite.
 
